@@ -1,0 +1,19 @@
+= form_for @egg_timer do |f|
+  - if @egg_timer.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@egg_timer.errors.count, "error")} prohibited this egg_timer from being saved:"
+      %ul
+        - @egg_timer.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :kind
+    = f.text_field :kind
+  .field
+    = f.label :assign_time
+    = f.number_field :assign_time
+  .field
+    = f.label :overdue_time
+    = f.number_field :overdue_time
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,28 @@
+.row
+  .col-lg-12
+  
+    - if @part.errors.any?
+      .alert.alert-warning.alert-dismissable
+        %a.close{:'data-dismiss' => "alert", :href => '#'} &times;
+        %i.fa.fa-exclamation-sign
+        = pluralize(@part.errors.count, "error") + ' prevented this part from being created:'
+        %ul
+          - @part.errors.full_messages.each do |msg|
+            %li= msg
+
+  .well.bs-component
+    %fieldset
+      %legend Part
+      = form_for(@part) do |f|
+        .form-group
+          = f.label :part
+          .col-lg-10
+            = f.text_field :part, class: "char-max-length form-control", maxlength: '45', placeholder: 'Enter your part...'
+        .row
+          .col-lg-12
+            .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
+              = link_to :back, style: "text-decoration:none; margin: 10px;" do
+                %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
+                  %i.fa.fa-arrow-left
+              = f.button :submit, :style => "text-decoration:none; margin: 10px;", :class => "btn btn-default btn-circle btn-lg" do
+                %i.fa.fa-save

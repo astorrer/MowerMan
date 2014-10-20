@@ -1,0 +1,70 @@
+.panel.login-panel.panel-default
+  .panel-heading
+    %h3.panel-title Account Settings
+  .panel-body
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        = 'Currently waiting confirmation for: #{ resource.unconfirmed_email }'
+      -else
+        %fieldset
+          .row
+            .col-lg-6
+              .form-group
+                = f.label :password, "Enter a new password."
+                = f.password_field :password, :autofocus => true, :autocomplete => "off", class: "form-control"
+            .col-lg-6
+              .form-group
+                = f.label :password_confirmation, "Confirm your new password."
+                = f.password_field :password_confirmation, class: "form-control"
+          %hr
+          %fieldset
+            .row
+              .col-lg-4
+                .form-group
+                  = f.label :department_id, "Select a department."
+                  = f.collection_select :department_id, Department.order(:name),:id,:name, class: 'select2 form-control'
+              .col-lg-8
+                .form-group
+                  = f.label :phone_number, "Enter your phone number."
+                  = f.text_field :phone_number, class: "form-control phone_us text-center" 
+            .row
+              .col-lg-12
+                .form-group
+                  = f.label :alert, "Check this box to enable and disable your departments alerts."
+                  = f.check_box :alert
+          %hr
+          %fieldset
+            = f.label :locale, "Select a default language."
+            .row.text-center
+              .col-lg-4
+                .form_group
+                  = f.radio_button :locale, 'en', :value => 'en'
+                  = f.label :locale, "English", :value => 'en'
+              .col-lg-4
+                .form_group
+                  = f.radio_button :locale, 'ja', :value => 'ja'
+                  = f.label :locale, "日本語", :value => 'ja'
+              .col-lg-4
+                .form_group
+                  = f.radio_button :locale, 'pl', :value => 'pl'
+                  = f.label :locale, "Polski", :value => 'pl'
+          %hr
+          %fieldset
+            .row
+              .col-lg-8
+                .form-group
+                  = f.label :current_password, "Confirm your changes with your password."
+                  = f.password_field :current_password, class: "form-control"
+              .col-lg-4
+                .form-group
+                  %label Delete Account:
+                  %a{:href => "#", :'data-toggle' => "modal", :'data-target' =>"#confirmModal", :class => 'btn btn-danger'}
+                    %i.fa.fa-exclamation-triangle
+                    Delete
+            %hr
+            .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
+              = link_to dash_path, style: "text-decoration:none; margin: 10px;" do
+                %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
+                  %i.fa.fa-times
+              = f.button :submit, :style => "text-decoration:none; margin: 10px;", :class => "btn btn-default btn-circle btn-lg" do
+                %i.fa.fa-save

@@ -1,0 +1,28 @@
+.row
+  .col-lg-12
+  
+    - if @task_method.errors.any?
+      .alert.alert-warning.alert-dismissable
+        %a.close{:'data-dismiss' => "alert", :href => '#'} &times;
+        %i.fa.fa-exclamation-sign
+        = pluralize(@task_method.errors.count, "error") + ' prevented this task_method from being created:'
+        %ul
+          - @task_method.errors.full_messages.each do |msg|
+            %li= msg
+
+  .well.bs-component
+    %fieldset
+      %legend Method
+      = form_for(@task_method) do |f|
+        .form-group
+          = f.label :method
+          .col-lg-10
+            = f.text_field :method, class: "char-max-length form-control", maxlength: '45', placeholder: 'Enter your task_method...'
+        .row
+          .col-lg-12
+            .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
+              = link_to :back, style: "text-decoration:none; margin: 10px;" do
+                %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
+                  %i.fa.fa-arrow-left
+              = f.button :submit, :style => "text-decoration:none; margin: 10px;", :class => "btn btn-default btn-circle btn-lg" do
+                %i.fa.fa-save

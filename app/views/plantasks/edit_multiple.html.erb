@@ -1,0 +1,57 @@
+<h1>Edit Checked</h1>
+
+<%= form_tag update_multiple_plantasks_path, method: :put do %>
+	<% @plantasks.each do |plantask| %>
+	<%= fields_for "plantasks[]", plantask do |f| %>
+		<% if plantask.errors.any? %>
+	    <div class='alert alert-warning alert-dismissable'>
+	                  <a class="close" data-dismiss="alert" href="#">&times;
+	      </a>
+
+	      <i class='icon-exclamation-sign'></i>
+				<%= pluralize(plantask.errors.count, "error") %> prevented this task from being created:
+		    <ul>
+		    <% plantask.errors.full_messages.each do |msg| %>
+		      <li><%= msg %></li>
+		    <% end %>
+		    </ul>
+	    </div>
+		<% end %>
+		<div class='row'>
+			<div class='col-sm-12'>
+				<div class='box bordered-box white-border'>
+					<div class='box-content box-double-padding'>
+						<fieldset>
+							<div class='col-sm-4'>
+								<div class='box'>
+									<h3><%= plantask.description %></h3>
+									<div class='lead'>
+										<i class=' icon-user'></i>
+										Assignment
+									</div>
+									<small class='text-muted'>Begin typing the name of the associate to assign this task to them.</small>
+								</div>
+							</div>
+							<div class='col-sm-7 col-sm-offset-1'>
+								<div class='row'>
+									<div class='form-group'>
+										<%= f.label :associate, 'Select an associate to assign this task too.' %>
+										<%= f.select(:associate, email_select, {}, {:class => 'select2 form-control'}) %>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	<% end %>
+	<div class='form-actions'>
+		<div class='row'>
+			<div class='col-sm-7 col-sm-offset-5' data-no-turbolink>
+				<%= submit_tag "Update", class: 'btn btn-lg' %>
+			</div>
+		</div>
+	</div>
+<% end %>

@@ -1,0 +1,20 @@
+- provide(:title, 'New Plantask')
+
+.container-fluid
+  / Page Heading
+  .row
+    .col-lg-12
+      %h1.page-header
+        Task Creator 
+        %small & Editor
+
+  = render 'layouts/flash' if !flash.empty?
+
+  .row
+    .col-lg-12
+      .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
+        = link_to :back, style: "text-decoration:none;" do
+          %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-arrow-left
+
+  = render 'form'

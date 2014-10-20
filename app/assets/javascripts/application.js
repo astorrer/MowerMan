@@ -12,4 +12,22 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery-ui
+//= require cocoon
+//= require bootstrap
+//= require plugins/stickyTabs/stickytabs
+//= require plugins/dataTables/jquery.dataTables.js
+//= require plugins/dataTables/dataTables.bootstrap.js
+//= require plugins/metisMenu/metisMenu.min
+//= require plugins/numberSpinner/numberspinner
+//= require plugins/mask/jquery.mask
+//= require plugins/switch/bootstrap-switch
+//= require select2
+//= require sb-admin-2
+//= require inits/select2
+//= require inits/mask
+//= require inits/switch
+
+$(document).ready( function () {
+    $('#datatable').DataTable();
+} );

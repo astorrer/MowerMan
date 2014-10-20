@@ -1,0 +1,17 @@
+- provide(:title, 'Activities')
+
+.container-fluid
+  / Page Heading
+  .row
+    .col-lg-12
+      %h1.page-header
+        Activites
+        %small Sitewide
+
+  .row
+    .col-lg-12
+      - @activities.each do |activity|
+        = "#{activity.owner_id} #{activity.key.rpartition('.').last.titleize} on"
+        = link_to activity.trackable.id, activity.trackable
+        = "- Equipment #{activity.trackable.equip_number}."
+        %hr

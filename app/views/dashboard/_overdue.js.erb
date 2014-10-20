@@ -1,0 +1,19 @@
+<script>
+
+$(document).ready(function() {
+
+    // I just assumed this path
+    var promise = $.getJSON('/overdue.json');
+
+    // Render chart
+    promise.done(function(data){
+      Morris.Donut({
+        colors: ['#5cb85c', '#5bc0de'],
+        resize: true,
+        element: 'overdue-donut-chart',
+        data: data
+      });
+    });
+});
+
+</script>

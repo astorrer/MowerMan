@@ -1,0 +1,84 @@
+%nav.navbar.navbar-default.navbar-static-top{:role => "navigation", :style => "margin-bottom: 0"}
+  .navbar-header
+    %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    = link_to "MowerMan | #{current_user.department.name}", dash_path, :class => "navbar-brand"
+  %ul.nav.navbar-top-links.navbar-right
+    %li.dropdown
+      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %i.fa.fa-send.fa-fw
+        %i.fa.fa-caret-down
+      %ul.dropdown-menu.dropdown-messages
+        %li
+          = link_to :new_conversation, class: 'text-center' do
+            %strong Start a New Conversation
+            %i.fa.fa-angle-right
+        %li.divider
+        %li
+          = link_to :conversations, :class => 'text-center' do
+            %strong View Conversations
+            %i.fa.fa-angle-right
+    %li.dropdown
+      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %i.fa.fa-bell.fa-fw
+        %i.fa.fa-caret-down
+      %ul.dropdown-menu.dropdown-alerts
+        %li
+          = link_to activities_path, class: 'text-center' do
+            %strong All Recent Activities
+            %i.fa.fa-angle-right
+    %li.dropdown
+      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %i.fa.fa-user.fa-fw
+        %i.fa.fa-caret-down
+      %ul.dropdown-menu.dropdown-user
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-user.fa-fw
+            = current_user.name unless @access_user.locale == 'ja'
+            = "#{current_user.name}さん" if @access_user.locale == 'ja'
+        %li
+          = link_to edit_user_registration_path do
+            %i.fa.fa-fw.fa-gear
+            = t('navigation.settings')
+        %li.divider
+        %li
+          = link_to destroy_user_session_path, method: :delete do
+            %i.fa.fa-fw.fa-power-off
+            = t('navigation.logout')
+  .navbar-default.sidebar{:role => "navigation"}
+    .sidebar-nav.navbar-collapse
+      %ul#side-menu.nav
+        %li.sidebar-search
+          = form_tag search_path, class: "input-group", method: :get do
+            .input-group
+              = text_field_tag :query, params[:query], class: "form-control", :placeholder => "Plantasks...", id: "plantask_search", autocomplete: "off"
+              .input-group-btn
+                = submit_tag t('navigation.search'), class: "btn btn-default"
+              - if params[:query].present?
+                .input-group-btn
+                  = link_to search_path, class: "btn btn-default" do
+                    %i.fa.fa-eraser
+        %li
+          = link_to dash_path do
+            %i.fa.fa-fw.fa-dashboard
+            = t('navigation.dashboard')
+        %li
+          = link_to plantasks_path do
+            %i.fa.fa-fw.fa-tasks
+            = t('navigation.plantasks')
+        %li
+          = link_to libraries_path do
+            %i.fa.fa-fw.fa-university
+            = t('navigation.libraries')
+        %li
+          = link_to mytasks_path do
+            %i.fa.fa-fw.fa-wrench
+            = t('navigation.my_tasks')
+        %li
+          = link_to helpdesk_path do
+            %i.fa.fa-fw.fa-life-saver
+            = t('navigation.helpdesk')

@@ -1,0 +1,100 @@
+- provide(:title, t('dashboard.title'))
+
+.container-fluid
+  .row
+    .col-lg-12
+      %h1.page-header
+        = "#{extract_name}#{t('dashboard.welcome')}"
+        %small= "#{t('dashboard.department_tasks')}: #{@total_tasks_count}"
+      %ol.breadcrumb
+        %li.active
+          %i.fa.fa-dashboard
+          = t('dashboard.title')
+  .row
+    .col-lg-4.col-md-4
+      .panel.panel-green
+        .panel-heading
+          .row
+            .col-xs-3
+              %i.fa.fa-smile-o.fa-5x
+            .col-xs-9.text-right
+              .huge{:id => 'good-counter'}
+                = @good
+              %div= t('dashboard.good')
+        %a{:href => "#", :'data-toggle' => "modal", :'data-target' =>"#goodModal"}
+          .panel-footer
+            %span.pull-left= t('view_details')
+            %span.pull-right
+              %i.fa.fa-arrow-circle-right
+            .clearfix
+    .col-lg-4.col-md-4
+      .panel.panel-yellow
+        .panel-heading
+          .row
+            .col-xs-3
+              %i.fa.fa-meh-o.fa-5x
+            .col-xs-9.text-right
+              .huge{:id => 'warning-counter' }
+                = @warning
+              %div= t('dashboard.warning')
+        %a{:href => "#", :'data-toggle' => "modal", :'data-target' =>"#warningModal"}
+          .panel-footer
+            %span.pull-left= t('view_details')
+            %span.pull-right
+              %i.fa.fa-arrow-circle-right
+            .clearfix
+    .col-lg-4.col-md-4
+      .panel.panel-red
+        .panel-heading
+          .row
+            .col-xs-3
+              %i.fa.fa-frown-o.fa-5x
+            .col-xs-9.text-right
+              .huge{:id => 'alert-counter'}
+                = @alert
+              %div= t('dashboard.alert')
+        %a{:href => "#", :'data-toggle' => "modal", :'data-target' =>"#alertModal"}
+          .panel-footer
+            %span.pull-left= t('view_details')
+            %span.pull-right
+              %i.fa.fa-arrow-circle-right
+            .clearfix
+
+  .row
+    .col-lg-6
+      .panel.panel-default
+        .panel-heading
+          = t('dashboard.status_distribution')
+        .panel-body
+          #status-donut-chart
+          .clearfix
+
+    .col-lg-6
+      .panel.panel-default
+        .panel-heading
+          = t('dashboard.overdue_chart')
+        .panel-body
+          #overdue-donut-chart
+          .clearfix
+
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          = t('dashboard.workload_chart')
+        .panel-body
+          #workload-bar-chart
+        %a{:href => "#", :'data-toggle' => "modal", :'data-target' =>"#alertModal"}
+          .panel-footer
+            %span.pull-left= t('view_details')
+            %span.pull-right
+              %i.fa.fa-arrow-circle-right
+            .clearfix
+
+= render 'dashboard/modals/good'
+= render 'dashboard/modals/warning'
+= render 'dashboard/modals/alert'
+
+= render 'dashboard/workload.js'
+= render 'dashboard/status.js'
+= render 'dashboard/overdue.js'

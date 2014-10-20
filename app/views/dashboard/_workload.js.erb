@@ -1,0 +1,21 @@
+<script>
+$(document).ready(function() {
+
+    // I just assumed this path
+    var promise = $.getJSON('/workloads.json');
+
+    // Render chart
+    promise.done(function(data){
+        Morris.Bar({
+          element: 'workload-bar-chart',
+          data: data,
+          xkey: 'a',
+          ykeys: ['b'],
+          labels: ['Name'],
+          hideHover: 'auto',
+          resize: true,
+          stacked: true,
+        });
+    });
+});
+</script>

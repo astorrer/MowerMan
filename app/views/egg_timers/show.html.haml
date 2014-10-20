@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Type:
+  = @egg_timer.kind
+%p
+  %b Assign time:
+  = @egg_timer.assign_time
+%p
+  %b Overdue time:
+  = @egg_timer.overdue_time
+
+= link_to 'Edit', edit_egg_timer_path(@egg_timer)
+\|
+= link_to 'Back', egg_timers_path

@@ -1,0 +1,22 @@
+.panel.panel-primary
+  .panel-heading
+    %h3.panel-title
+      = " No. #{plantask.id} | #{plantask.equipment} "
+      = link_to plantask_path(plantask) do
+        %i.fa.fa-external-link-square
+  .panel-body
+    %p= plantask.description
+    %table.table
+      %tr
+        %th Area
+        %th Equipment
+        %th Part
+        %th Frequency
+      %tr
+        %td= plantask.area
+        %td= plantask.equipment
+        %td= plantask.part
+        %td= plantask.date
+  .panel-footer
+    %h6
+      = "Assigned to: #{plantask.associate}"

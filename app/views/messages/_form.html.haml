@@ -1,0 +1,22 @@
+.row
+  .col-lg-12
+    .well.bs-component
+      %fieldset
+        %legend Message
+        = form_for :message, url: reply_conversation_path(conversation) do |f|
+          .form-group
+            = f.label :subject, "Subject", class: "col-lg-2 control-label"
+            .col-lg-10
+              = f.text_field :subject, class: 'form-control'
+          .form-group
+            = f.label :body, "Body", class: "col-lg-2 control-label"
+            .col-lg-10
+              = f.text_area :body, as: :text, class: 'form-control'
+          .row
+            .col-lg-12
+              .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
+                = link_to :back, style: "text-decoration:none; margin: 10px;" do
+                  %button.btn.btn-danger.btn-circle.btn-lg{:type => "button"}
+                    %i.fa.fa-times
+                = f.button :submit, :style => "text-decoration:none; margin: 10px;", :class => "btn btn-primary btn-circle btn-lg" do
+                  %i.fa.fa-share

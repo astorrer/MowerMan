@@ -1,0 +1,56 @@
+- provide(:title, 'Plantasks')
+
+.container-fluid
+  .row
+    .col-lg-12
+      %h1.page-header
+        Plantasks
+        %small Manager
+      %ol.breadcrumb
+        %li.active
+          %i.fa.fa-tasks
+          = "#{current_user.department.name} Plantasks"
+
+  .row
+    .col-lg-12
+      .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
+        = link_to :back, style: "text-decoration:none; margin: 10px;" do
+          %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-arrow-left
+        = link_to new_plantask_path, style: "text-decoration:none; margin: 10px;" do
+          %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-tasks
+
+  .row
+    .col-lg-12
+      .panel.panel-primary
+        .panel-heading
+          Department Tasks
+        .panel-body
+          = form_tag edit_multiple_plantasks_path, method: :get do
+            %table#datatable.table.table-striped
+              %thead
+                %tr
+                  %th
+                  %th Equip No.
+                  %th Area
+                  %th Equipment
+                  %th Part
+                  %th Associate
+                  %th Date
+                  %th
+              %tbody
+                - @plantasks.each do |plantask|
+                  %tr
+                    %td= check_box_tag "plantask_ids[]", plantask.id
+                    %td= plantask.equip_number
+                    %td= plantask.area
+                    %td= plantask.equipment
+                    %td= plantask.part
+                    %td= plantask.associate
+                    %td= plantask.date
+                    %td
+                      = link_to 'View', plantask_path(plantask)
+                      = link_to 'Edit', edit_plantask_path(plantask)
+                      = link_to 'Delete'.html_safe, plantask, method: :delete, data: { confirm: 'Are you sure?' }
+            = submit_tag "Change Associate", class: 'btn btn-default'

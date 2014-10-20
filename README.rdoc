@@ -1,28 +1,23 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The AG System is a planned task manager. The goal of the AG System is to speed up the PDCA loop. 
+(Plan, Do, Check, Act), by automating the planning and checking processes. 
+The AG System is written in Ruby on Rails, a web application framework. AGS features:
 
-Things you may want to cover:
+* Recurring Task Planning
 
-* Ruby version
+* Automatic Level-Loading
 
-* System dependencies
+* Data Tracking
 
-* Configuration
+* Part Number Tracking
 
-* Database creation
+* Work Instruction Tracking
 
-* Database initialization
+As time goes on, more features will be added, such as a work order system. 
 
-* How to run the test suite
+Requires:
 
-* Services (job queues, cache servers, search engines, etc.)
+* Requires Ruby Version 2.0.0 or higher.
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Rails Version 4.0

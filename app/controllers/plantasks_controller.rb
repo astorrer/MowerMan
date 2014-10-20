@@ -1,0 +1,101 @@
+class PlantasksController < ApplicationController
+  before_filter :authenticate_user!
+  before_action :set_plantask, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @plantasks = Plantask.department(current_user.department_id).all.order(:equip_number)
+    
+    respond_to do |format|
+      format.html
+      format.xls { send_data(@plantasks.to_xls) }
+      format.csv { send_data(@plantasks.to_xls) }
+    end
+  end
+
+  def show
+    @plantask = Plantask.find(params[:id])
+    @records = @plantask.records.order(created_at: :desc)
+    @orders = @plantask.work_orders.order(created_at: :desc)
+    
+    respond_to do |format|
+      format.html
+      format.xls { send_data(@plantask.records.to_xls) }
+      format.csv { send_data(@plantask.records.to_csv) }
+      format.pdf do
+        pdf = TaskSummaryReport.new(@plantask, view_context)
+        send_data pdf.render, filename: "task#{@plantask.id}_for_#{@plantask.equip_number}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+    end
+  end
+
+  def new
+    @plantask = Plantask.new(:current_status => 'GOOD', :date => 'DAILY', :department_id => current_user.department_id)
+  end
+
+  def edit
+  end
+
+  def create
+    @plantask = Plantask.new(plantask_params) 
+    @plantask.assigned_switch = true
+          
+    equip = Equipment.where(equipment: @plantask.equipment).pluck(:number)
+    n = equip.to_s
+    @plantask.equip_number = n.delete "[]"      
+          
+    respond_to do |format|
+      if @plantask.save
+        format.html { redirect_to @plantask, notice: 'You new task was successfully created.' }
+      else
+        format.html { render action: 'new' }
+      end
+    end
+  end
+
+  def update
+    
+    equip = Equipment.where(equipment: @plantask.equipment).pluck(:number)
+    n = equip.to_s
+    @plantask.equip_number = n.delete "[]"
+    
+    respond_to do |format|
+      if @plantask.update(plantask_params)
+        format.html { redirect_to @plantask, notice: 'Your task was successfully updated.' }
+      else
+        format.html { render action: 'edit' }
+      end
+    end
+  end
+
+  def destroy
+    @plantask.destroy
+    respond_to do |format|
+      format.html { redirect_to plantasks_url }
+    end
+  end
+  
+  def edit_multiple
+    @plantasks = Plantask.find(params[:plantask_ids])
+  end
+
+  def update_multiple
+    @plantasks = Plantask.update(params[:plantasks].keys, params[:plantasks].values)
+    @plantasks.reject! { |p| p.errors.empty? }
+    if @plantasks.empty?
+      redirect_to plantasks_path
+    else
+      render "edit_multiple"
+    end
+  end
+
+  private
+    def set_plantask
+      @plantask = Plantask.find(params[:id])
+    end
+
+    def plantask_params
+      params.require(:plantask).permit(:equip_number, :area, :equipment, :part, :description, :ext_description, :date, :data_type, :upper, :lower, :ext_upper, :ext_lower, :est_time, :current_status, :method, :target, :associate, :department_id )
+    end
+end

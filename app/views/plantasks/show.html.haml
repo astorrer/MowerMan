@@ -1,0 +1,83 @@
+- provide(:title, 'View Plantask')
+
+.container-fluid
+  = render 'layouts/flash' if !flash.empty?
+  / Page Heading
+  .row
+    .col-lg-12
+      %h1.page-header= "Planned Task No. #{@plantask.id}"
+
+  .row
+    .col-lg-12
+      .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
+        = link_to :back, style: "text-decoration:none; margin: 10px;" do
+          %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-arrow-left
+        = link_to edit_plantask_path(@plantask), style: "text-decoration:none; margin: 10px;" do
+          %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-edit
+  .row
+    .col-md-12
+      .panel.with-nav-tabs.panel-default
+        .panel-heading
+          %ul.nav.nav-tabs
+            %li.active
+              %a{"data-toggle" => "tab", :href => "#tab1default"} Information
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab2default"} Records
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab3default"} Work Orders
+        .panel-body
+          .tab-content
+            #tab1default.tab-pane.fade.in.active
+              = @plantask.area
+              = @plantask.equipment
+              = @plantask.part
+              = @plantask.description
+              = @plantask.date
+              = @plantask.current_status
+            #tab2default.tab-pane.fade
+              .bs-component{:style => "margin-bottom: 15px;"}
+                .btn-group.btn-group-justified
+                  = link_to "PDF", plantask_path(@plantask, format: "pdf"), class: "btn btn-danger"
+                  = link_to "Excel".html_safe, plantask_path(:format => :xls), class: "btn btn-success"
+                  = link_to 'CSV', plantask_path(:format => :csv), class: "btn btn-warning"
+              %table.table
+                %thead
+                  %tr
+                    %th Status
+                    %th= @plantask.data_type
+                    %th Creation Date
+                    %th Comments
+                %tbody
+                  - @records.each do |record|
+                    %tr
+                      %td= record.status
+                      %td= record.data
+                      %td= record.created_at
+                      - if record.comments.blank?
+                        %td
+                          .btn.btn-inverse.disabled
+                            %i.icon-comment-alt
+                            No Comment
+                      - else
+                        %td
+                          .btn.has-popover{"data-content" => record.comments, "data-original-title" => "", "data-placement" => "top", "data-title" => "Comment", :title => ""}
+                            %i.icon-comment
+                            View Comment
+            #tab3default.tab-pane.fade
+              %table.table
+                %thead
+                  %tr
+                    %th No.
+                    %th Creation Date
+                    %th Description
+                    %th Actions
+                %tbody
+                  - @orders.each do |order|
+                    %tr
+                      %td= order.id
+                      %td= order.created_at
+                      %td= order.description
+                      %td= link_to 'Edit', edit_work_order_path(order.id)
+

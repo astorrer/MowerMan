@@ -1,0 +1,13 @@
+- provide(:title, 'Edit Area')
+
+= render 'layouts/flash' if !flash.empty?
+
+.container-fluid
+  / Page Heading
+  .row
+    .col-lg-12
+      %h1.page-header
+        Area
+        %small Editor
+
+  = render 'form'

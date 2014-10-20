@@ -1,0 +1,13 @@
+- provide(:title, 'New Method')
+
+= render 'layouts/flash' if !flash.empty?
+
+.container-fluid
+  / Page Heading
+  .row
+    .col-lg-12
+      %h1.page-header
+        Method
+        %small Creator
+
+  = render 'form'

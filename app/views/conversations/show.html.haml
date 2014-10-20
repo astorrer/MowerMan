@@ -1,0 +1,35 @@
+- provide(:title, conversation.subject)
+
+.container-fluid
+  / Page Heading
+  .row
+    .col-lg-12
+      %h2.page-header 
+        = conversation.subject
+    .col-lg-12
+      - conversation.receipts_for(current_user).each do |receipt|
+        - letter = receipt.message
+        #wallmessages.qa-message-list
+          %div.message-item{:id => letter.id}
+            .message-inner
+              .message-head.clearfix
+                .avatar.pull-left
+                  %img{:src => "https://ssl.gstatic.com/accounts/ui/avatar_2x.png"}/
+                .user-detail
+                  %h5.handle
+                    = letter.subject
+                  .post-meta
+                    .asker-meta
+                      %span.qa-message-what
+                      %span.qa-message-when
+                        %span.qa-message-when-data
+                          = letter.created_at
+                      %span.qa-message-who
+                        %span.qa-message-who-pad by
+                        %span.qa-message-who-data
+                          = letter.sender.name
+              .qa-message-content
+                = letter.body
+
+  .row{:style => 'margin-top: 25px;'}
+    = render 'messages/form', conversation: conversation

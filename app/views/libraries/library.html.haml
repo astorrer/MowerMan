@@ -1,0 +1,117 @@
+- provide(:title, 'Libraries')
+
+.container-fluid
+  / Page Heading
+  .row
+    .col-lg-12
+      %h1.page-header
+        Libraries
+        %small Shared Resources
+
+  .row
+    .col-lg-12
+      .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
+        = link_to :back, style: "text-decoration:none; margin: 10px;" do
+          %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-arrow-left
+        = link_to new_area_path, style: "text-decoration:none; margin: 10px;" do
+          %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-location-arrow
+        = link_to new_equipment_path, style: "text-decoration:none; margin: 10px;" do
+          %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-cube
+        = link_to new_part_path, style: "text-decoration:none; margin: 10px;" do
+          %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-gear
+        = link_to new_task_method_path, style: "text-decoration:none; margin: 10px;" do
+          %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-crosshairs  
+  .row
+    .col-md-12
+      .panel.with-nav-tabs.panel-primary
+        .panel-heading
+          %ul.nav.nav-tabs
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab1"}
+                %i.fa.fa-location-arrow 
+                Areas
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab2"}
+                %i.fa.fa-cube
+                Equipment
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab3"}
+                %i.fa.fa-gear
+                Parts
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab4"}
+                %i.fa.fa-crosshairs  
+                Methods
+        .panel-body
+          .tab-content
+            #tab1.tab-pane.fade.in.active
+              %table.data-table.table.table-bordered.table-striped
+                %thead
+                  %tr
+                    %th No.
+                    %th Area
+                    %th.col-md-3
+                %tbody
+                  - @area.each do |area|
+                    %tr
+                      %td= area.number
+                      %td= area.area
+                      %td
+                        .btn-group
+                          = link_to 'Edit', edit_area_path(area), class: "btn btn-default"
+                          = link_to 'Delete', area, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
+              = paginate @area, :param_name => "page_area", :params => { :anchor => 'tab1' }
+            #tab2.tab-pane.fade
+              %table.data-table.table.table-bordered.table-striped
+                %thead
+                  %tr
+                    %th No.
+                    %th Equipment
+                    %th.col-md-3
+                %tbody
+                  - @equipment.each do |equipment|
+                    %tr
+                      %td= equipment.number
+                      %td= equipment.equipment
+                      %td
+                        .btn-group
+                          = link_to 'Edit', edit_equipment_path(equipment), class: "btn btn-default"
+                          = link_to 'Delete', equipment, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
+              = paginate @equipment, :param_name => "page_equipment", :params => { :anchor => 'tab2' }
+            #tab3.tab-pane.fade
+              %table.data-table.table.table-bordered.table-striped
+                %thead
+                  %tr
+                    %th Part
+                    %th.col-md-3
+                %tbody
+                  - @part.each do |part|
+                    %tr
+                      %td= part.part
+                      %td
+                        .btn-group
+                          = link_to 'Edit', edit_part_path(part), class: "btn btn-default"
+                          = link_to 'Delete', part, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
+              = paginate @part, :param_name => "page_part", :params => { :anchor => 'tab3' }
+            %div.tab-pane.fade{:id => 'tab4'}
+              %table.data-table.table.table-bordered.table-striped
+                %thead
+                  %tr
+                    %th Method
+                    %th.col-md-3
+                %tbody
+                  - @task_method.each do |task_method|
+                    %tr
+                      %td= task_method.method
+                      %td
+                        .btn-group
+                          = link_to 'Edit', edit_task_method_path(task_method), class: "btn btn-default"
+                          = link_to 'Delete', task_method, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
+              = paginate @task_method, :param_name => "page_method", :params => { :anchor => 'tab4' }
+
+= render 'libraries/tab_memory.js'

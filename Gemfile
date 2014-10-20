@@ -1,61 +1,70 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.6'
-gem "activerecord-session_store", github: "rails/activerecord-session_store"
+gem 'rails', '4.1.4'
+gem 'faker', '1.1.2'
+gem 'haml-rails'
+gem 'whenever', :require => false
 
-gem 'haml-rails' # Use HAML as the templating engine
-gem 'pg' # Use postgresql for development, testing, and production
-gem 'simple_form' # Use the simple form DSL
-gem 'foundation-rails' #Use foundation for the CSS framework
-gem 'devise', '~>3.2'
-gem 'milia', '~>1.0'
-gem 'sass-rails', '~> 4.0.3' # Use SCSS for stylesheets
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
-gem 'figaro'
+# Use Prawn to generate PDFs
+gem 'prawn'
+gem 'prawn-table', '~> 0.1.0'
 
-gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
-gem 'coffee-rails', '~> 4.0.0' # Use CoffeeScript for .js.coffee assets and views
+# Use gon to pass javascript variables to views
+gem 'gon'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
+# Use the helpdesk gem as the IT & Application helpdesk
+gem "helpdesk", :github => 'astorrer/helpdesk'
 
-gem 'jquery-rails' # Use jquery as the JavaScript library
-gem 'jbuilder', '~> 2.0' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+# Use twilio for SMS messaging
+gem 'twilio-ruby'
 
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
+# Use Public Activity to keep users up to date
+gem 'public_activity'
 
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+# Use Mailboxer for internal messaging
+gem 'mailboxer'
 
-gem "recaptcha", require: "recaptcha/rails" # Set to false for now.
+# Use searchkick (Depends on Elasticsearch)
+gem "searchkick"
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+# Authentication Gems
+gem 'devise', '3.2.2'
+gem 'bcrypt-ruby', '3.1.2' # For encryption
+gem "rolify" # Identify user roles
 
-# Use unicorn as the app server
-# gem 'unicorn'
+# Gems for CSV & XLS export. Does not export .XLSX files. (Yet)
+gem 'to_xls-rails'# Last officially released gem
+gem 'to_csv-rails'# Last officially released gem
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# User I18n for translations
+gem 'rails-i18n', '~> 4.0.0'
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+# Use chartkick for dynamic graphs
+gem 'groupdate'
+gem 'active_median'
 
-gem 'rails_12factor', group: :production
+# Jquery & Friends
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem "select2-rails"
 
-group :development, :test do
-	gem "rspec-rails", "~> 3.1.0"
-	gem "factory_girl_rails", "~> 4.4.1"
-end
+gem 'time_difference' # Used for calculations. Must Install.
 
-group :test do
-	gem "faker", "~> 1.4.3"
-	gem 'shoulda-matchers', require: false
-	gem "capybara", "~> 2.4.3"
-	gem "database_cleaner", "~> 1.3.0"
-	gem "launchy", "~> 2.4.2"
-	gem "selenium-webdriver", "~> 2.43.0"
+# Use for nested resources forms.
+gem "cocoon"
+
+# CSS interpreters and GUI Helpers
+gem 'sass-rails', '4.0.3'
+gem 'kaminari' # Enables easy pagination
+gem 'kaminari-bootstrap', '~> 3.0.1' # Styles kaminari to match bootstrap
+
+# Javascript interpreters, DSL, etc
+gem 'uglifier', '2.1.1'
+gem 'coffee-rails', '4.0.1'
+gem 'jbuilder'
+
+group :production do
+  gem 'rails_12factor', '0.0.2'
+  gem 'newrelic_rpm' # For logging during production
+  gem 'pg'
 end

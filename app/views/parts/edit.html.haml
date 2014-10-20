@@ -1,0 +1,14 @@
+- provide(:title, 'Edit Part')
+
+= render 'layouts/flash' if !flash.empty?
+
+.container-fluid
+  / Page Heading
+  .row
+    .col-lg-12
+      %h1.page-header
+        Part
+        %small Editor
+
+  = render 'form'
+

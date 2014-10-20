@@ -1,0 +1,225 @@
+<% provide(:title, 'My Tasks' ) %>
+
+<div class="container-fluid">
+
+	<div class="row">
+	    <div class="col-lg-12">
+	        <h1 class="page-header">
+	            My Tasks
+	        </h1>
+	    </div>
+	</div>
+	<!-- /.row -->
+
+
+	<div class='row'>
+		<div class='col-lg-12'>
+			<div class='tabbable' style="padding:5px;">
+
+			  <ul class='nav nav-tabs nav-tabs-centered'>
+
+			    <li class='active'>
+			      <a data-toggle='tab' href='#tab1'>
+			        Daily
+			      </a>
+			    </li>
+			    <li>
+			      <a data-toggle='tab' href='#tab2'>
+			        Weekly
+			      </a>
+			    </li>
+			    <li>
+			      <a data-toggle='tab' href='#tab3'>
+			        Monthly
+			      </a>
+			    </li>
+			    <li>
+			      <a data-toggle='tab' href='#tab4'>
+			        Yearly
+			      </a>
+			    </li>
+			  </ul>
+		  
+			<div class="tab-content" style="padding: 10px;">
+				
+				<div class="tab-pane active" id='tab1'>
+					
+					<ul class="nav nav-pills nav-stacked col-md-3">
+						<% @daily_equipment_groups.each do |group| %>
+							<li>
+								<a data-toggle="pill" href=<%= '#tab' + group.to_s %> >
+									<%- @var = group.to_i %>
+									<%= group.to_s + ' | ' + Equipment.find_by_number(@var).equipment %>
+								</a>
+							</li>
+						<% end %>
+					</ul>
+	
+					<div class="tab-content col-md-9">
+						<% @daily_equipment_groups.each do |group| %>
+							<div class="tab-pane" <%= "id=#{ 'tab' + group.to_s}" %> >
+								<table class="data-table table table-bordered table-striped" style="padding-left:5px;">
+									<thead>
+										<tr>
+											<th> Part </th>
+											<th> Description </th>
+											<th> Actions </th>
+										</tr>
+									</thead>
+								
+									<tbody>
+										<% Plantask.equipment(group).assigned.each do |x| %>
+											<tr>
+												<td><%= x.part %></td>
+												<td><%= x.description %></td>
+					              			  	<td>
+													<div class="text-right">
+														<%= link_to 'Complete', { :controller => :records, :action => :new, :id => x.id }, :class => "btn btn-success" %>
+													</div>
+												</td>
+											</tr>
+										<% end %>
+									</tbody>
+								</table>
+							</div>
+						<% end %>
+					</div>														
+				</div>
+			
+				<div class="tab-pane" id="tab2">
+					
+					<ul class="nav nav-pills nav-stacked col-md-3">
+						<% @weekly_equipment_groups.each do |group| %>
+							<li>
+								<a data-toggle="pill" href=<%= '#tab' + group.to_s %> >
+									<%- @var = group.to_i %>
+									<%= group.to_s + ' | ' + Equipment.find_by_number(@var).equipment %>
+								</a>
+							</li>
+						<% end %>
+					</ul>
+	
+					<div class="tab-content col-md-9">
+						<% @weekly_equipment_groups.each do |group| %>
+							<div class="tab-pane" <%= "id=#{ 'tab' + group.to_s}" %> >
+								<table class="data-table table table-bordered table-striped" style="padding-left:5px;">
+									<thead>
+										<tr>
+											<th> Part </th>
+											<th> Description </th>
+											<th> Actions </th>
+										</tr>
+									</thead>
+								
+									<tbody>
+										<% Plantask.equipment(group).assigned.each do |x| %>
+											<tr>
+												<td><%= x.part %></td>
+												<td><%= x.description %></td>
+					              			  	<td>
+													<div class="text-right">
+														<%= link_to 'Complete', { :controller => :records, :action => :new, :id => x.id }, :class => "btn btn-success" %>
+													</div>
+												</td>
+											</tr>
+										<% end %>
+									</tbody>
+								</table>
+							</div>
+						<% end %>
+					</div>
+				</div>
+				
+				<div class="tab-pane" id="tab3">
+					
+					<ul class="nav nav-pills nav-stacked col-md-3">
+						<% @monthly_equipment_groups.each do |group| %>
+							<li>
+								<a data-toggle="pill" href=<%= '#tab' + group.to_s %> >
+									<%- @var = group.to_i %>
+									<%= group.to_s + ' | ' + Equipment.find_by_number(@var).equipment %>
+								</a>
+							</li>
+						<% end %>
+					</ul>
+	
+					<div class="tab-content col-md-9">
+						<% @monthly_equipment_groups.each do |group| %>
+							<div class="tab-pane" <%= "id=#{ 'tab' + group.to_s}" %> >
+								<table class="data-table table table-bordered table-striped" style="padding-left:5px;">
+									<thead>
+										<tr>
+											<th> Part </th>
+											<th> Description </th>
+											<th> Actions </th>
+										</tr>
+									</thead>
+								
+									<tbody>
+										<% Plantask.equipment(group).assigned.each do |x| %>
+											<tr>
+												<td><%= x.part %></td>
+												<td><%= x.description %></td>
+					              			  	<td>
+													<div class="text-right">
+														<%= link_to 'Complete', { :controller => :records, :action => :new, :id => x.id }, :class => "btn btn-success" %>
+													</div>
+												</td>
+											</tr>
+										<% end %>
+									</tbody>
+								</table>
+							</div>
+						<% end %>
+					</div>
+				</div>
+				
+				<div class="tab-pane" id="tab4">
+
+					<ul class="nav nav-pills nav-stacked col-md-3">
+						<% @yearly_equipment_groups.each do |group| %>
+							<li>
+								<a data-toggle="pill" href=<%= '#tab' + group.to_s %> >
+									<%- @var = group.to_i %>
+									<%= group.to_s + ' | ' + Equipment.find_by_number(@var).equipment %>
+								</a>
+							</li>
+						<% end %>
+					</ul>
+
+					<div class="tab-content col-md-9">
+						<% @yearly_equipment_groups.each do |group| %>
+							<div class="tab-pane" <%= "id=#{ 'tab' + group.to_s}" %> >
+								<table class="data-table table table-bordered table-striped" style="margin:5px;">
+									<thead>
+										<tr>
+											<th> Part </th>
+											<th> Description </th>
+											<th> Actions </th>
+										</tr>
+									</thead>
+								
+									<tbody>
+										<% Plantask.equipment(group).assigned.each do |x| %>
+											<tr>
+												<td><%= x.part %></td>
+												<td><%= x.description %></td>
+					              			  	<td>
+													<div class="text-right">
+														<%= link_to 'Complete', { :controller => :records, :action => :new, :id => x.id }, :class => "btn btn-success" %>
+													</div>
+												</td>
+											</tr>
+										<% end %>
+									</tbody>
+								</table>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			
+			</div>	
+		</div>
+	</div>
+
+</div>
