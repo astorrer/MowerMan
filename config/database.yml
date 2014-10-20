@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: utf8
-  database: project_development
+  database: mowerman_development
   pool: 5
   username: astorrer
   password:
@@ -9,7 +9,7 @@ development:
 test: &TEST
   adapter: postgresql
   encoding: utf8
-  database: project_test
+  database: mowerman_test
   pool: 5
   username: astorrer
   password:
