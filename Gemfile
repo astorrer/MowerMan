@@ -18,9 +18,6 @@ gem "helpdesk", :github => 'astorrer/helpdesk'
 # Use twilio for SMS messaging
 gem 'twilio-ruby'
 
-# Use Public Activity to keep users up to date
-gem 'public_activity'
-
 # Use Mailboxer for internal messaging
 gem 'mailboxer'
 

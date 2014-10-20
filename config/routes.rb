@@ -21,8 +21,6 @@ AgSystem::Application.routes.draw do
       end
     end  
 
-    resources :activities
-
     resources :conversations, only: [:index, :show, :new, :create] do
       member do
         post :reply

@@ -3,13 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # Inclusions
-  include PublicActivity::StoreController
-
   # Filters
   before_filter :configure_permitted_parameters, if: :devise_controller? 
   before_filter :search
-  before_filter :recent_activites_dropdown
   before_filter :access_user
   before_filter :set_locale
 
@@ -33,10 +29,6 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       I18n.locale = @access_user.locale if @access_user.locale.present?
     end
-  end
-
-  def recent_activites_dropdown
-    @activities_dropdown = PublicActivity::Activity.order("created_at desc").limit(3)
   end
 
   def default_url_options(options = {})
