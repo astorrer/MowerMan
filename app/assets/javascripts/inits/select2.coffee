@@ -6,4 +6,5 @@ $(document).ready ->
   $("#associate_selector").select2()
   $("#user_department_id").select2()
   $("#plantask_department_id").select2()
+  $("#plantask_egg_timer_id}").select2()
   return

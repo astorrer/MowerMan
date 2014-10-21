@@ -116,26 +116,11 @@
                     %i.fa.fa-fw.fa-plus
               %span.help-block Minutes only please.
         %fieldset
-          %legend Frequency
+          %legend Egg Timer
           .form-group
-            = f.label :date, "How often do you need this task completed?", class: "col-lg-2 control-label"
+            = f.label :egg_timer_id, "Select a timer.", class: "col-lg-2 control-label"
             .col-lg-10
-              .radio
-                %label
-                  = f.radio_button :date, 'DAILY', :checked => "checked"
-                  = f.label :date, "DAILY", :value => 'DAILY'
-              .radio
-                %label
-                  = f.radio_button :date, 'WEEKLY'
-                  = f.label :date, "WEEKLY", :value => 'WEEKLY'
-              .radio
-                %label
-                  = f.radio_button :date, 'MONTHLY'
-                  = f.label :date, "MONTHLY", :value => 'MONTHLY'
-              .radio
-                %label
-                  = f.radio_button :date, 'YEARLY'
-                  = f.label :date, "YEARLY", :value => 'YEARLY'
+              = f.collection_select :egg_timer_id, EggTimer.order(:kind),:id,:kind, class: 'select2 form-control'
         %fieldset
           %legend Intial Status
           .form-group

@@ -50,5 +50,5 @@ AgSystem::Application.routes.draw do
     match "/about"     =>    "static_pages#about",     via: :get
     match "/products"  =>    "static_pages#products",  via: :get
     match "/contact"   =>    "static_pages#contact",   via: :get
-    end
+  end
 end

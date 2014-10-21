@@ -25,7 +25,10 @@
             %i.fa.fa-gear
         = link_to new_task_method_path, style: "text-decoration:none; margin: 10px;" do
           %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
-            %i.fa.fa-crosshairs  
+            %i.fa.fa-crosshairs
+        = link_to new_egg_timer_path, style: "text-decoration:none; margin: 10px;" do
+          %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-clock-o
   .row
     .col-md-12
       .panel.with-nav-tabs.panel-primary
@@ -47,6 +50,10 @@
               %a{"data-toggle" => "tab", :href => "#tab4"}
                 %i.fa.fa-crosshairs  
                 Methods
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab5"}
+                %i.fa.fa-clock-o  
+                Egg Timers
         .panel-body
           .tab-content
             #tab1.tab-pane.fade.in.active
@@ -113,5 +120,6 @@
                           = link_to 'Edit', edit_task_method_path(task_method), class: "btn btn-default"
                           = link_to 'Delete', task_method, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
               = paginate @task_method, :param_name => "page_method", :params => { :anchor => 'tab4' }
+            %div.tab-pane.fade{:id => 'tab5'}
 
 = render 'libraries/tab_memory.js'
