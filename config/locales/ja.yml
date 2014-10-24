@@ -12,6 +12,7 @@ ja:
   navigation:
     dashboard: ダッシュボード
     plantasks: 整備
+    workorders: Work Orders
     libraries: ライブラリー
     my_tasks: マイタスク
     helpdesk: ヘルプデスク

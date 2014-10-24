@@ -1,11 +1,13 @@
--provide(:title, 'Create A Workorder')
+- provide(:title, 'New Work Order')
 
-%div.row.animated.fadeInDown
-  %div.col-sm-12
-    %div.page-header
-      %h1.pull-left
-        %i.icon-briefcase
-          %span
-          Create a New Workorder
-          
-= render 'form'
+= render 'layouts/flash' if !flash.empty?
+
+.container-fluid
+  / Page Heading
+  .row
+    .col-lg-12
+      %h1.page-header
+        Work Order
+        %small Creator
+
+  = render 'form'

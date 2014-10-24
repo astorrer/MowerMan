@@ -1,41 +1,52 @@
-%div.col-xs-12.col-md-12.animated.fadeInDown
-  %div.box
-    %div.box-header.white-background
-      %div.title
-        %i.icon-wrench
-          Workorder
-    %div.box-content
-      - if @work_order.errors.any?
-        %div.error_explanation
-          %h2
-            = pluralize(@work_order.errors.count, "error")
-            prohibited this work_order from being saved:
-          %ul
-            - @work_order.errors.full_messages.each do |message|
-              %li = message
+.row
+  .col-lg-12
+  
+    - if @work_order.errors.any?
+      .alert.alert-warning.alert-dismissable
+        %a.close{:'data-dismiss' => "alert", :href => '#'} &times;
+        %i.fa.fa-exclamation-sign
+        = pluralize(@work_order.errors.count, "error") + ' prevented this area from being created:'
+        %ul
+          - @work_order.errors.full_messages.each do |msg|
+            %li= msg
 
+  .well.bs-component
+    %fieldset
+      %legend Area
       = form_for @work_order, :url => { :action => :create, :id => @plantask.id } do |f|
-
-        %div.field
-          = f.label :urgency, "How urgent is this task?"
-          %div.switch-toggle.switch-5.switch-candy
-            = f.radio_button :urgency, '1'
-            = f.label :urgency, '1', :value => '1'
-            = f.radio_button :urgency, '2'
-            = f.label :urgency, '2', :value => '2'
-            = f.radio_button :urgency, '3'
-            = f.label :urgency, '3', :value => '3'
-            = f.radio_button :urgency, '4'
-            = f.label :urgency, '4', :value => '4'
-            = f.radio_button :urgency, '5'
-            = f.label :urgency, '5', :value => '5'
+        .form-group
+          .row
+            .col-lg-2
+              = f.label :urgency, "How urgent is this task?"
+            .col-lg-10
+              = f.radio_button :urgency, '1'
+              = f.label :urgency, '1', :value => '1'
+              = f.radio_button :urgency, '2'
+              = f.label :urgency, '2', :value => '2'
+              = f.radio_button :urgency, '3'
+              = f.label :urgency, '3', :value => '3'
+              = f.radio_button :urgency, '4'
+              = f.label :urgency, '4', :value => '4'
+              = f.radio_button :urgency, '5'
+              = f.label :urgency, '5', :value => '5'
             %a
-        %div.field  
-          = f.label :description
-          = f.text_area :description, class: 'form-control'
-        %div.field
-          = f.select :user_ids, User.all.collect {|x| [x.email, x.id]}, {}, :multiple => true
-        %div.form-actions
-          %div.row
-            %div.column-sm-7.col-sm-offset-5
-              = f.submit 'Create Workorder', class: 'btn'
+        .form-group
+          .row
+            .col-lg-2
+              = f.label :description
+            .col-lg-10
+              = f.text_area :description, class: 'form-control'
+        .form-group
+          .row
+            .col-lg-2
+              = f.label :select_users
+            .col-lg-12
+              = f.select :user_ids, User.all.collect {|x| [x.email, x.id]}, {}, :multiple => true, :class => 'select-2 form-control'
+        .row
+          .col-lg-12
+            .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
+              = link_to :back, style: "text-decoration:none; margin: 10px;" do
+                %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
+                  %i.fa.fa-arrow-left
+              = f.button :submit, :style => "text-decoration:none; margin: 10px;", :class => "btn btn-default btn-circle btn-lg" do
+                %i.fa.fa-save

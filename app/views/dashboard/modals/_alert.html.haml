@@ -7,6 +7,20 @@
           %span.sr-only Close
         %h4.modal-title Alert Task Details
       .modal-body
-        %p Details & Table
+        .table-responsive
+          %table.table.table-hover
+            %thead
+              %tr
+                %th Area
+                %th Equipment
+                %th Part
+                %th Actions
+            %tbody
+              - @plantasks.alert.each do |task|
+                %tr
+                  %td= task.area
+                  %td= task.equipment
+                  %td= task.part
+                  %td= link_to 'Create Work Order', { :controller => :work_orders, :action => :new, :id => task.id }, :class => "btn btn-default"
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007185124) do
+ActiveRecord::Schema.define(version: 20141022182115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -286,6 +286,11 @@ ActiveRecord::Schema.define(version: 20141007185124) do
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
+  create_table "users_work_orders", id: false, force: true do |t|
+    t.integer "work_order_id"
+    t.integer "user_id"
+  end
+
   create_table "work_orders", force: true do |t|
     t.integer  "plantask_id"
     t.integer  "urgency"
@@ -293,11 +298,6 @@ ActiveRecord::Schema.define(version: 20141007185124) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "completion_switch"
-  end
-
-  create_table "work_orders_users", id: false, force: true do |t|
-    t.integer "work_order_id"
-    t.integer "user_id"
   end
 
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", name: "mb_opt_outs_on_conversations_id", column: "conversation_id"
