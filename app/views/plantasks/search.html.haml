@@ -7,7 +7,9 @@
       %h1.page-header
         Search Results
         %small Plantask
-
+  
+  = render 'layouts/flash' if !flash.empty?
+  
   .row
     .col-lg-12
       = render @plantask_results

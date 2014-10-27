@@ -10,6 +10,9 @@
         %li.active
           %i.fa.fa-dashboard
           = t('dashboard.title')
+
+  = render 'layouts/flash' if !flash.empty?
+
   .row
     .col-lg-4.col-md-4
       .panel.panel-green
