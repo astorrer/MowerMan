@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   scope :department,      -> (number) { where(:department_id => number) }
   
   def name
-    email.rpartition('_').first.titleize
+    email.rpartition('@').first.titleize
   end
 
   def mailboxer_email(object)

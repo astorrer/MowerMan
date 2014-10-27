@@ -1,0 +1,40 @@
+.row
+  .col-lg-12
+    .tabbable{:style => "padding:5px;"}
+      %ul.nav.nav-tabs.nav-tabs-centered
+        - @timers.each do |timer|
+          %li
+            %a{"data-toggle" => "tab", :href => "#tab#{timer.id}"}
+              = timer.kind
+
+    .tab-content{:style => "padding: 10px;"}
+      - @timers.each do |timer|
+        %div{ :id => "tab#{timer.id}", class: 'tab-pane active'}
+          - o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
+          - @string = (0...50).map { o[rand(o.length)] }.join
+          %h2= timer.kind
+          - @all = timer.plantasks.associated_user(current_user).uniq.pluck(:equip_number)
+          %ul.nav.nav-pills.nav-stacked.col-md-3
+            - @all.each do |task|
+              %li
+                %a{"data-toggle" => "pill", :href => "#tab#{task.to_s + @string}"}
+                  - @var = task.to_i
+                  = task.to_s + ' | ' + Equipment.find_by_number(@var).equipment
+
+          .tab-content.col-md-9
+            - @all.each do |task|
+              %div{:class => "tab-pane", :id => "tab#{task.to_s + @string}"}
+                %table.data-table.table.table-bordered.table-striped{:style => "padding-left:5px;"}
+                  %thead
+                    %tr
+                      %th Part
+                      %th Description
+                      %th Actions
+                  %tbody
+                    - timer.plantasks.equipment(task).each do |x|
+                      %tr
+                        %td= x.part
+                        %td= x.description
+                        %td
+                          .text-right
+                            = link_to 'Complete', { :controller => :records, :action => :new, :id => x.id }, :class => "btn btn-success"
