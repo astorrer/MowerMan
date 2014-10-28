@@ -32,6 +32,20 @@
             %a
         .form-group
           .row
+            .col-lg-6
+              .row
+                .col-lg-3
+                  = f.label :start_date
+                .col-lg-8
+                  = f.datetime_select :start_date
+            .col-lg-6
+              .row
+                .col-lg-3
+                  = f.label :due_date
+                .col-lg-8
+                  = f.datetime_select :due_date
+        .form-group
+          .row
             .col-lg-2
               = f.label :description
             .col-lg-10
