@@ -16,6 +16,22 @@
                 = f.password_field :password, placeholder: "Password", class: "form-control pwstrength"
               .form-group
                 = f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "form-control"
+              .form-group
+                = f.label :department_id, "Select a department."
+                = f.collection_select :department_id, Department.order(:name),:id,:name, class: 'select2 form-control'
+              .form-group
+                = f.label :locale, "Select a default language."
+                .row
+                  .col-lg-4
+                    .form_group
+                      = f.radio_button :locale, 'en', :value => 'en', :checked => 'checked'
+                      = f.label :locale, "English", :value => 'en'
+                    .form_group
+                      = f.radio_button :locale, 'ja', :value => 'ja'
+                      = f.label :locale, "日本語", :value => 'ja'
+                    .form_group
+                      = f.radio_button :locale, 'pl', :value => 'pl'
+                      = f.label :locale, "Polski", :value => 'pl'
               / Change this to a button or input when using this as a form
               = f.submit "Sign Up", class: "btn btn-lg btn-success btn-block"
 .row
@@ -23,4 +39,3 @@
     .text-center
       %a{:href => "forgot_password.html"}
       = render "devise/shared/links"
-
