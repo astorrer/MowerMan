@@ -33,6 +33,12 @@
         .form-group
           .row
             .col-lg-2
+              = f.label :due_date
+            .col-lg-10
+              = f.datetime_select :due_date, class: 'form-control'
+        .form-group
+          .row
+            .col-lg-2
               = f.label :description
             .col-lg-10
               = f.text_area :description, class: 'form-control'
@@ -41,7 +47,7 @@
             .col-lg-2
               = f.label :select_users
             .col-lg-12
-              = f.select :user_ids, User.all.collect {|x| [x.email, x.id]}, {}, :multiple => true, :class => 'select-2 form-control'
+              = f.select :user_ids, User.all.collect {|x| [x.name, x.id]}, {}, :multiple => true, :class => 'select-2 form-control'
         .row
           .col-lg-12
             .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}

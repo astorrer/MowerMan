@@ -7,7 +7,7 @@
           .form-group
             = f.label :recipients, "Recipients", class: "col-lg-2 control-label"
             .col-lg-10
-              = f.text_field :recipients, class: 'form-control'
+              = f.select :recipients, User.all.collect {|x| [x.name, x.email]}, {}, :multiple => true, :class => 'select-2 form-control'
           .form-group
             = f.label :subject, "Subject", class: "col-lg-2 control-label"
             .col-lg-10

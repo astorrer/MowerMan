@@ -98,6 +98,9 @@ GEM
     foreigner (1.6.1)
       activerecord (>= 3.0.0)
     fssm (0.2.10)
+    fullcalendar-rails (2.1.1.0)
+      jquery-rails (>= 3.1.1, < 5.0.0)
+      momentjs-rails (~> 2.8, >= 2.8.3)
     globalize (4.0.2)
       activemodel (>= 4.0.0, < 5)
       activerecord (>= 4.0.0, < 5)
@@ -143,6 +146,8 @@ GEM
       rails (>= 3.2.0)
     mime-types (1.25.1)
     minitest (5.4.2)
+    momentjs-rails (2.8.3)
+      railties (>= 3.1)
     multi_json (1.10.1)
     multipart-post (2.0.0)
     newrelic_rpm (3.9.5.251)
@@ -254,6 +259,7 @@ DEPENDENCIES
   coffee-rails (= 4.0.1)
   devise (= 3.2.2)
   faker (= 1.1.2)
+  fullcalendar-rails
   gon
   groupdate
   haml-rails

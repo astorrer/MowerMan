@@ -15,6 +15,7 @@
 //= require jquery-ui
 //= require cocoon
 //= require bootstrap
+//= require fullcalendar
 //= require plugins/stickyTabs/stickytabs
 //= require plugins/dataTables/jquery.dataTables.js
 //= require plugins/dataTables/dataTables.bootstrap.js

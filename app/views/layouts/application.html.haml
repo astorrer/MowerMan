@@ -9,7 +9,7 @@
     %title= "MowerMan | #{yield(:title)}"
     = include_gon
     = csrf_meta_tags
-    = favicon_link_tag 'favicon.ico'
+    = render 'layouts/favicons'
     
     %link{ :href => "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", :rel => "stylesheet" }
     = stylesheet_link_tag "application", media: "all"

@@ -21,7 +21,7 @@
         .panel-body
           .tab-content{:style => "padding: 10px;"}
             - @timers.each do |timer|
-              %div{ :id => "tab#{timer.id}", class: 'tab-pane active'}
+              %div{ :id => "tab#{timer.id}", class: 'tab-pane'}
                 - o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
                 - @string = (0...50).map { o[rand(o.length)] }.join
                 %h2= timer.kind

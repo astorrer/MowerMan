@@ -9,36 +9,42 @@
       %ol.breadcrumb
         %li.active
           %i.fa.fa-tasks
-          All Departments Work Orders
-
-.row
-  .col-sm-12
-    .box.bordered-box.green-border{:style => "margin-bottom:0"}
-      .box-content.box-no-padding
-        = form_tag complete_work_orders_path, method: :put do
-          %table.table.table-bordered.table-striped
-            %thead
-              %tr
-                %th Actions
-                %th Plantask
-                %th Urgency
-                %th Description
-                %th T/F
-                %th
-            %tbody
-              - @work_orders.incomplete.each do |work_order|
+          Work Orders | All Departments
+      
+  .row
+    .col-lg-12
+      .box.bordered-box.green-border{:style => "margin-bottom:0"}
+        .box-content.box-no-padding
+          = form_tag complete_work_orders_path, method: :put do
+            %table.table.table-bordered.table-striped
+              %thead
                 %tr
-                  %td= check_box_tag "work_order_ids[]", work_order.id
-                  %td= work_order.plantask_id
-                  %td= work_order.urgency
-                  %td= work_order.description
-                  %td= work_order.completion_switch
-                  %td
-                    .btn-group
-                      = link_to 'View', work_order, class: "btn btn-primary"
-                      = link_to 'Edit', edit_work_order_path(work_order), class: "btn btn-success"
-                      = link_to 'Delete', work_order, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
-          .form-actions
-            .row
-              .col-sm-7.col-sm-offset-5
-                = submit_tag "Complete Checked", class: 'btn btn-large'
+                  %th Actions
+                  %th Plantask
+                  %th Urgency
+                  %th Description
+                  %th T/F
+                  %th
+              %tbody
+                - @work_orders.incomplete.each do |work_order|
+                  %tr
+                    %td= check_box_tag "work_order_ids[]", work_order.id
+                    %td= work_order.plantask_id
+                    %td= work_order.urgency
+                    %td= work_order.description
+                    %td= work_order.completion_switch
+                    %td
+                      .btn-group
+                        = link_to 'View', work_order, class: "btn btn-primary"
+                        = link_to 'Edit', edit_work_order_path(work_order), class: "btn btn-success"
+                        = link_to 'Delete', work_order, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
+            .form-actions
+              .row
+                .col-lg-12
+                  %hr 
+                  = submit_tag "Complete Checked", class: 'btn btn-default'
+  .row
+    .col-lg-12
+      #calendar
+
+= render 'work_orders/calendar.js'

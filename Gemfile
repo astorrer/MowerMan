@@ -44,6 +44,7 @@ gem 'active_median'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem "select2-rails"
+gem 'fullcalendar-rails'
 
 gem 'time_difference' # Used for calculations. Must Install.
 

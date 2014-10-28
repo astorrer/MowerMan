@@ -9,7 +9,7 @@
       %ol.breadcrumb
         %li.active
           %i.fa.fa-tasks
-          = "#{current_user.department.name} Plantasks"
+          = "Plantasks | #{current_user.department.name} Department"
 
   = render 'layouts/flash' if !flash.empty?
   
