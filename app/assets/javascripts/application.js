@@ -15,7 +15,8 @@
 //= require jquery-ui
 //= require cocoon
 //= require bootstrap
-//= require moment.min
+//= require moment
+//= require bootstrap-datetimepicker
 //= require fullcalendar
 //= require plugins/stickyTabs/stickytabs
 //= require plugins/dataTables/jquery.dataTables.js
@@ -29,6 +30,7 @@
 //= require inits/select2
 //= require inits/mask
 //= require inits/switch
+//= require inits/datepicker
 
 $(document).ready( function () {
     $('#datatable').DataTable();

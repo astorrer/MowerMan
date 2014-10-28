@@ -21,6 +21,7 @@
  *= require plugins/social-buttons
  *= require plugins/timeline
  *= require plugins/bootstrap-switch
+ *= require bootstrap-datetimepicker
  *= require select2
  *= require select2-bootstrap
  *= require fullcalendar

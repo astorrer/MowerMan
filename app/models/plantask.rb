@@ -1,6 +1,7 @@
 class Plantask < ActiveRecord::Base  
   belongs_to :department
   belongs_to :egg_timer
+  has_many :work_orders
 
   # include PublicActivity::Model
 

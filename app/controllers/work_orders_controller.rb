@@ -67,6 +67,6 @@ class WorkOrdersController < ApplicationController
     end
 
     def work_order_params
-      params.require(:work_order).permit(:plantask_id, :urgency, :description, :due_date, :completion_switch, :user_ids => [])
+      params.require(:work_order).permit(:plantask_id, :start_date, :urgency, :description, :due_date, :completion_switch, :user_ids => [])
     end
 end

@@ -10,47 +10,48 @@
         %li.active
           %i.fa.fa-tasks
           Work Orders | All Departments
-      
-  .row
-    .col-lg-12
-      .panel.panel-danger
-        .panel-heading
-          Work Orders | List
-        .panel-body
-          = form_tag complete_work_orders_path, method: :put do
-            %table.table.table-bordered.table-striped
-              %thead
-                %tr
-                  %th Actions
-                  %th Plantask
-                  %th Urgency
-                  %th Description
-                  %th T/F
-                  %th
-              %tbody
-                - @work_orders.incomplete.each do |work_order|
-                  %tr
-                    %td= check_box_tag "work_order_ids[]", work_order.id
-                    %td= work_order.plantask_id
-                    %td= work_order.urgency
-                    %td= work_order.description
-                    %td= work_order.completion_switch
-                    %td
-                      .btn-group
-                        = link_to 'View', work_order, class: "btn btn-primary"
-                        = link_to 'Edit', edit_work_order_path(work_order), class: "btn btn-success"
-                        = link_to 'Delete', work_order, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
-            .form-actions
-              .row
-                .col-lg-12
-                  = submit_tag "Complete Checked", class: 'btn btn-default'
 
   .row
-    .col-lg-12
-      .panel.panel-default
+    .col-md-12
+      .panel.with-nav-tabs.panel-default
         .panel-heading
-          Work Orders | Calendar
+          %ul.nav.nav-tabs
+            %li.active
+              %a{"data-toggle" => "tab", :href => "#tab1default"} Calendar
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab2default"} List
+
         .panel-body
-          #calendar
+          .tab-content
+            #tab1default.tab-pane.fade.in.active
+              #calendar
+            #tab2default.tab-pane.fade
+              = form_tag complete_work_orders_path, method: :put do
+                %table#datatable.table.table-striped
+                  %thead
+                    %tr
+                      %th Actions
+                      %th Plantask
+                      %th Urgency
+                      %th Description
+                      %th Complete?
+                      %th.col-md-3
+                  %tbody
+                    - @work_orders.each do |work_order|
+                      %tr
+                        %td= check_box_tag "work_order_ids[]", work_order.id
+                        %td= work_order.plantask_id
+                        %td= work_order.urgency
+                        %td= work_order.description
+                        %td= work_order.completion_switch
+                        %td
+                          .btn-group
+                            = link_to 'View', work_order
+                            = link_to 'Edit', edit_work_order_path(work_order)
+                            = link_to 'Delete', work_order, method: :delete, data: { confirm: 'Are you sure?' }
+                .form-actions
+                  .row
+                    .col-lg-12
+                      = submit_tag "Complete Checked", class: 'btn btn-default'
 
 = render 'work_orders/calendar.js'

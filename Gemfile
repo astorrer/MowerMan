@@ -42,8 +42,10 @@ gem 'active_median'
 
 # Jquery & Friends
 gem 'jquery-rails'
+gem 'momentjs-rails'
 gem 'jquery-ui-rails'
 gem "select2-rails"
+gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 
 gem 'time_difference' # Used for calculations. Must Install.
 
