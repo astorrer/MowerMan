@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/astorrer/helpdesk.git
-  revision: 773462f6b574aa4de8b8f56ba1535fc770e43f3a
+  revision: 5f5b2d737bb39568142d1ac90b4b7ad069251f5f
   specs:
     helpdesk (0.0.27)
       batch_translations
