@@ -7,6 +7,7 @@
         .panel-heading
           %h3.panel-title Please Sign In
         .panel-body
+          = image_tag('name.png')
           = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
             = devise_error_messages!
             %fieldset
