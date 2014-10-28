@@ -1,11 +1,11 @@
 - provide(:title, 'View Plantask')
 
 .container-fluid
-  = render 'layouts/flash' if !flash.empty?
-  / Page Heading
   .row
     .col-lg-12
       %h1.page-header= "Planned Task No. #{@plantask.id}"
+
+  = render 'layouts/flash' if !flash.empty?
 
   .row
     .col-lg-12
@@ -33,12 +33,28 @@
         .panel-body
           .tab-content
             #tab1default.tab-pane.fade.in.active
-              = @plantask.area
-              = @plantask.equipment
-              = @plantask.part
-              = @plantask.description
-              = @plantask.date
-              = @plantask.current_status
+              .row
+                .col-md-6
+                  %h3 Area
+                  = @plantask.area
+                .col-md-6
+                  %h3 Equipment
+                  = @plantask.equipment
+              %hr
+              .row
+                .col-md-2
+                  %h4 Part
+                  = @plantask.part
+                .col-md-7
+                  %h4 Description
+                  = @plantask.description
+                .col-md-3
+                  %h4 Frequency / Timer
+                  = @plantask.egg_timer.kind
+              %hr
+              .row
+                .col-lg-12
+                  %h3= "Current Status: #{@plantask.current_status}"
             #tab2default.tab-pane.fade
               .bs-component{:style => "margin-bottom: 15px;"}
                 .btn-group.btn-group-justified
