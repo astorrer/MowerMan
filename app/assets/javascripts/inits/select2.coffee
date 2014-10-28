@@ -6,7 +6,7 @@ $(document).ready ->
   $("#associate_selector").select2()
   $("#user_department_id").select2()
   $("#plantask_department_id").select2()
-  $("#plantask_egg_timer_id}").select2()
+  $("#plantask_egg_timer_id").select2()
   $("#work_order_user_ids").select2()
-  $("#conversation_recipients}").select2()
+  $("#conversation_recipients").select2()
   return
