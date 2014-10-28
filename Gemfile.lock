@@ -1,12 +1,12 @@
 GIT
   remote: git://github.com/astorrer/helpdesk.git
-  revision: b94a247cc3f8f807b253122bcb26d9bed375f8ab
+  revision: 773462f6b574aa4de8b8f56ba1535fc770e43f3a
   specs:
     helpdesk (0.0.27)
       batch_translations
       globalize
       kaminari
-      rails (>= 4.0.0)
+      rails
       rails_autolink
       sass-rails (>= 3.2.3)
       simple_form
