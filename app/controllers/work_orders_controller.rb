@@ -5,6 +5,7 @@ class WorkOrdersController < ApplicationController
 
   def index
     @work_orders = WorkOrder.all
+    @incomplete_work_orders = WorkOrder.incomplete.all
   end
 
   def show

@@ -4,7 +4,7 @@ class PlantasksController < ApplicationController
 
   def index
     @plantasks = Plantask.department(current_user.department_id).all.order(:equip_number)
-    
+
     respond_to do |format|
       format.html
       format.xls { send_data(@plantasks.to_xls) }
