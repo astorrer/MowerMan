@@ -74,16 +74,7 @@
                       %td= record.status
                       %td= record.data
                       %td= record.created_at
-                      - if record.comments.blank?
-                        %td
-                          .btn.btn-inverse.disabled
-                            %i.icon-comment-alt
-                            No Comment
-                      - else
-                        %td
-                          .btn.has-popover{"data-content" => record.comments, "data-original-title" => "", "data-placement" => "top", "data-title" => "Comment", :title => ""}
-                            %i.icon-comment
-                            View Comment
+                      %td= record.comments
             #tab3default.tab-pane.fade
               %table.table
                 %thead
