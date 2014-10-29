@@ -51,6 +51,7 @@ class Plantask < ActiveRecord::Base
 
   def self.associate_workload
     # Find the average yearly workload of all tasks based upon a 40 hour workweek
+    # Note: This is a dangerous hack. Please fix imediently. 
     avl_time = 480
     daily = self.daily.sum(:est_time)
     daily = daily * 270

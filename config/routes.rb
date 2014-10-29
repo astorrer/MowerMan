@@ -1,10 +1,15 @@
 AgSystem::Application.routes.draw do
-  resources :egg_timers
 
   mount Helpdesk::Engine, :at => '/helpdesk'
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
-    root 'dashboard#dash' # Default URL ('Home Page')    
+    
+    authenticated do
+      root :to => 'dashboard#dash', as: :authenticated
+    end
+    
+    root :to => 'static_pages#home'
+    
     devise_for :users # Devise resource paths
     resources :users
 
@@ -14,6 +19,8 @@ AgSystem::Application.routes.draw do
         put :update_multiple
       end
     end
+
+    resources :egg_timers
 
     resources :work_orders do
       collection do
@@ -48,7 +55,6 @@ AgSystem::Application.routes.draw do
 
     match "/home"      =>    "static_pages#home",      via: :get
     match "/about"     =>    "static_pages#about",     via: :get
-    match "/products"  =>    "static_pages#products",  via: :get
     match "/contact"   =>    "static_pages#contact",   via: :get
   end
 end

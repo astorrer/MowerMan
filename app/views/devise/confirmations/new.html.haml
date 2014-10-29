@@ -11,8 +11,8 @@
             %fieldset
               .form-group
                 = f.email_field :email, placeholder: "E-mail", class: "form-control", :autofocus => true
-              = f.submit "Resend confirmation instructions", class: "btn btn-lg btn-success btn-block"
-.row
-  .col-sm-12
-    .text-center
-      = render "devise/shared/links"
+              = f.submit "Resend Confirmation", class: "btn btn-lg btn-success btn-block"
+  .row
+    .col-sm-12
+      .text-center
+        = render "devise/shared/links"
