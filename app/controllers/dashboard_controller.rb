@@ -20,14 +20,14 @@ class DashboardController < ApplicationController
     gon.watch.alert   = @alert
   end
 
-  def workloads
-    @user = User.department(current_user.department_id).all
-    workloads = Hash.new
-    @user.each do |user|
-      workloads[user.name] = Plantask.associated_user(user).associate_workload
-    end
-    @array = workloads.collect { |k, v| [k, v] }
-  end
+  #def workloads
+  #  @user = User.department(current_user.department_id).all
+  #  workloads = Hash.new
+  #  @user.each do |user|
+  #    workloads[user.name] = Plantask.associated_user(user).associate_workload
+  #  end
+  #  @array = workloads.collect { |k, v| [k, v] }
+  #end
 
   def status
     plantask  = Plantask.department(current_user.department_id).all
