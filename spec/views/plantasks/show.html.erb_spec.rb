@@ -7,7 +7,6 @@ describe "plantasks/show" do
       :equipment => "Equipment",
       :part => "Part",
       :description => "MyText",
-      :date => "MyText",
       :data_type => "Data Type",
       :upper => 1,
       :lower => 2,

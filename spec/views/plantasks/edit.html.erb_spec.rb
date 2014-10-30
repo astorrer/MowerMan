@@ -7,7 +7,6 @@ describe "plantasks/edit" do
       :equipment => "MyString",
       :part => "MyString",
       :description => "MyText",
-      :date => "MyText",
       :data_type => "MyString",
       :upper => 1,
       :lower => 1,

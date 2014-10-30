@@ -20,8 +20,6 @@ AgSystem::Application.routes.draw do
       end
     end
 
-    resources :egg_timers
-
     resources :work_orders do
       collection do
         put :complete
@@ -41,6 +39,7 @@ AgSystem::Application.routes.draw do
     resources :equipment, except: [:index, :show]
     resources :areas, except: [:index, :show]
     resources :task_methods, except: [:index, :show]
+    resources :egg_timers, except: [:index, :show]
 
     match "/search"    =>  "plantasks#search",         via: :get
 

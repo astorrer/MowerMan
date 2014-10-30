@@ -5,9 +5,6 @@ class RecordsController < ApplicationController
   def new
     @plantask = Plantask.find(params[:id])
     @record = @plantask.records.build(:status => 'GOOD') 
-    @upper_lower_bound = @plantask.upper_lower_bound
-    @upper_bound  = @plantask.upper_bound
-    @lower_bound = @plantask.lower_bound
     @target = @plantask.target.to_s
   end
 
@@ -24,7 +21,7 @@ class RecordsController < ApplicationController
         if @record.status == 'ALERT'
           @user = User.all
           @user.each do |user|
-            if user.alert?
+            if user.alert
               SendSMS.send(user.phone_number, "#{@plantask.equipment}, #{@record.status}, #{@record.comments}")
             end
           end

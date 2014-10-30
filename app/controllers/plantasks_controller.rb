@@ -31,23 +31,24 @@ class PlantasksController < ApplicationController
   end
 
   def new
-    @plantask = Plantask.new(:current_status => 'GOOD', :date => 'DAILY', :department_id => current_user.department_id)
+    @plantask = Plantask.new(:current_status => 'GOOD', :department_id => current_user.department_id)
   end
 
   def edit
   end
 
   def create
-    @plantask = Plantask.new(plantask_params) 
+    @plantask = Plantask.new(plantask_params)
     @plantask.assigned_switch = true
-          
+    @plantask.overdue_count = 0
+    
     equip = Equipment.where(equipment: @plantask.equipment).pluck(:number)
     n = equip.to_s
     @plantask.equip_number = n.delete "[]"      
           
     respond_to do |format|
       if @plantask.save
-        format.html { redirect_to @plantask, notice: 'You new task was successfully created.' }
+        format.html { redirect_to @plantask, notice: 'Your new task was successfully created.' }
       else
         format.html { render action: 'new' }
       end
@@ -55,7 +56,6 @@ class PlantasksController < ApplicationController
   end
 
   def update
-    
     equip = Equipment.where(equipment: @plantask.equipment).pluck(:number)
     n = equip.to_s
     @plantask.equip_number = n.delete "[]"
@@ -96,6 +96,6 @@ class PlantasksController < ApplicationController
     end
 
     def plantask_params
-      params.require(:plantask).permit(:equip_number, :area, :equipment, :part, :description, :ext_description, :date, :data_type, :upper, :lower, :ext_upper, :ext_lower, :est_time, :current_status, :method, :target, :associate, :department_id )
+      params.require(:plantask).permit(:equip_number, :area, :equipment, :part, :description, :ext_description, :data_type, :upper, :lower, :ext_upper, :ext_lower, :est_time, :current_status, :method, :target, :associate, :department_id, :egg_timer_id )
     end
 end

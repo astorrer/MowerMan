@@ -46,22 +46,10 @@
 					      </div>
 					      <div class='panel-collapse collapse' id='collapseTwo-accordion'>
 					        <div class='panel-body'>
-										<% if @upper_lower_bound.nil? %>
-											<h2>No data is required for this task.</h2>
-										<% else %>
-											<h3>
-												Your target( or ideal value) for this task is <%= @target %>.
-											</h3>
-											<div style='background-color: red; padding: 5px;'>
-													<h4><%= @upper_bound %></h4>
-											</div>
-										  <div class="field">
-										    <%= f.number_field :data, class: 'form-control' %>
-										  </div>
-											<div style='background-color: green; padding: 5px;'>
-													<h4><%= @lower_bound %></h4>
-											</div>
-										<% end %>
+											Your target( or ideal value) for this task is <%= @target %>.
+									  <div class="field">
+									    <%= f.number_field :data, class: 'form-control' %>
+									  </div>
 					        </div>
 					      </div>
 					    </div>
@@ -93,19 +81,3 @@
     </div>
   </div>
 </div>
-
-<script>
-	$("[data-slider]")
-	  .each(function () {
-	    var input = $(this);
-	    $("<span>")
-	      .addClass("output")
-				.addClass("h2")
-	      .insertAfter($(this));
-	  })
-	  .bind("slider:ready slider:changed", function (event, data) {
-	    $(this)
-	      .nextAll(".output:first")
-	        .html(data.value.toFixed(1));
-	  });
-</script>
