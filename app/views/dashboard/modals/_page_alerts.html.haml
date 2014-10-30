@@ -1,0 +1,6 @@
+%tr
+  %td= task.area
+  %td= task.equipment
+  %td= task.part
+  %td= task.records.last.comments # Displays comment on most recent record.
+  %td= link_to 'View', plantask_path(task), class: 'btn btn-default'

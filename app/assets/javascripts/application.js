@@ -34,4 +34,6 @@
 
 $(document).ready( function () {
     $('#datatable').DataTable();
+    $('tbody#page_alerts').html('<%= escape_javascript render(@page_alerts) %>');
+    $('#paginator').html('<%= escape_javascript(paginate(@page_alerts, :remote => true).to_s) %>');
 } );

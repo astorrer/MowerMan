@@ -16,11 +16,8 @@
                 %th Part
                 %th Actions
             %tbody
-              - @plantasks.alert.each do |task|
-                %tr
-                  %td= task.area
-                  %td= task.equipment
-                  %td= task.part
-                  %td= link_to 'View', plantask_path(task), class: 'btn btn-default'
+              - @page_alerts.each do |task|
+                = render @page_alerts
+        #paginator
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
