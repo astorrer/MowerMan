@@ -12,30 +12,32 @@
           %i.fa.fa-dashboard
             Libraries | All Departments
 
+  = render 'layouts/flash' if !flash.empty?
+
   .row
     .col-lg-12
       .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
         = link_to :back, style: "text-decoration:none; margin: 10px;" do
           %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
             %i.fa.fa-arrow-left
-        = link_to new_area_path, style: "text-decoration:none; margin: 10px;" do
+        = link_to new_area_path, style: "text-decoration:none; margin: 8px;" do
           %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
             %i.fa.fa-location-arrow
-        = link_to new_equipment_path, style: "text-decoration:none; margin: 10px;" do
+        = link_to new_equipment_path, style: "text-decoration:none; margin: 8px;" do
           %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
             %i.fa.fa-cube
-        = link_to new_part_path, style: "text-decoration:none; margin: 10px;" do
+        = link_to new_part_path, style: "text-decoration:none; margin: 8px;" do
           %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
             %i.fa.fa-gear
-        = link_to new_task_method_path, style: "text-decoration:none; margin: 10px;" do
+        = link_to new_task_method_path, style: "text-decoration:none; margin: 8px;" do
           %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
             %i.fa.fa-crosshairs
-        = link_to new_egg_timer_path, style: "text-decoration:none; margin: 10px;" do
+        = link_to new_egg_timer_path, style: "text-decoration:none; margin: 8px;" do
           %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
             %i.fa.fa-clock-o
   .row
     .col-md-12
-      .panel.with-nav-tabs.panel-primary
+      .panel.with-nav-tabs.panel-default
         .panel-heading
           %ul.nav.nav-tabs
             %li
@@ -109,7 +111,7 @@
                           = link_to 'Edit', edit_part_path(part), class: "btn btn-default"
                           = link_to 'Delete', part, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
               = paginate @part, :param_name => "page_part", :params => { :anchor => 'tab3' }
-            %div.tab-pane.fade{:id => 'tab4'}
+            #tab4.tab-pane.fade.in
               %table.data-table.table.table-bordered.table-striped
                 %thead
                   %tr
@@ -124,6 +126,18 @@
                           = link_to 'Edit', edit_task_method_path(task_method), class: "btn btn-default"
                           = link_to 'Delete', task_method, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
               = paginate @task_method, :param_name => "page_method", :params => { :anchor => 'tab4' }
-            %div.tab-pane.fade{:id => 'tab5'}
-
-= render 'libraries/tab_memory.js'
+            #tab5.tab-pane.fade.in
+              %table.data-table.table.table-bordered.table-striped
+                %thead
+                  %tr
+                    %th Timer
+                    %th.col-md-3
+                %tbody
+                  - @egg_timer.each do |egg_timer|
+                    %tr
+                      %td= egg_timer.kind
+                      %td
+                        .btn-group
+                          = link_to 'Edit', edit_egg_timer_path(egg_timer), class: "btn btn-default"
+                          = link_to 'Delete', egg_timer, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
+              = paginate @egg_timer, :param_name => "page_timer", :params => { :anchor => 'tab5' }

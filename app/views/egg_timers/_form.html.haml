@@ -1,19 +1,36 @@
-= form_for @egg_timer do |f|
-  - if @egg_timer.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@egg_timer.errors.count, "error")} prohibited this egg_timer from being saved:"
-      %ul
-        - @egg_timer.errors.full_messages.each do |msg|
-          %li= msg
+.row
+  .col-lg-12
+  
+    - if @egg_timer.errors.any?
+      .alert.alert-warning.alert-dismissable
+        %a.close{:'data-dismiss' => "alert", :href => '#'} &times;
+        %i.fa.fa-exclamation-sign
+        = "#{pluralize(@egg_timer.errors.count, "error")} prohibited this egg_timer from being saved:"
+        %ul
+          - @egg_timer.errors.full_messages.each do |msg|
+            %li= msg
 
-  .field
-    = f.label :kind
-    = f.text_field :kind
-  .field
-    = f.label :assign_time
-    = f.number_field :assign_time
-  .field
-    = f.label :overdue_time
-    = f.number_field :overdue_time
-  .actions
-    = f.submit 'Save'
+  .well.bs-component
+    %fieldset
+      %legend Area
+      = form_for @egg_timer do |f|
+        .form-group
+          = f.label :kind
+          .col-lg-10
+            = f.text_field :kind, class: "form-control"
+        .form-group
+          = f.label :assign_time
+          .col-lg-10
+            = f.number_field :assign_time, class: "form-control"
+        .form-group
+          = f.label :overdue_time
+          .col-lg-10
+            = f.number_field :overdue_time, class: "form-control"
+        .row
+          .col-lg-12
+            .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
+              = link_to :back, style: "text-decoration:none; margin: 10px;" do
+                %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
+                  %i.fa.fa-arrow-left
+              = f.button :submit, :style => "text-decoration:none; margin: 10px;", :class => "btn btn-default btn-circle btn-lg" do
+                %i.fa.fa-save

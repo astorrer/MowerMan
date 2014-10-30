@@ -5,8 +5,22 @@
         %button.close{"data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} &times;
           %span.sr-only Close
-        %h4.modal-title Good Task Details
+        %h4.modal-title Good Task Details | Most Recently Updated
       .modal-body
-        %p Details & Table
+        .table-responsive
+          %table.table.table-hover
+            %thead
+              %tr
+                %th Area
+                %th Equipment
+                %th Part
+                %th Actions
+            %tbody
+              - @page_good.each do |task|
+                %tr
+                  %td= task.area
+                  %td= task.equipment
+                  %td= task.part
+                  %td= link_to 'View', plantask_path(task), class: 'btn btn-default'
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

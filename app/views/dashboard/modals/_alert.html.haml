@@ -5,7 +5,7 @@
         %button.close{"data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} &times;
           %span.sr-only Close
-        %h4.modal-title Alert Task Details
+        %h4.modal-title Alert Task Details | Most Recently Updated
       .modal-body
         .table-responsive
           %table.table.table-hover
@@ -17,7 +17,10 @@
                 %th Actions
             %tbody
               - @page_alerts.each do |task|
-                = render @page_alerts
-        #paginator
+                %tr
+                  %td= task.area
+                  %td= task.equipment
+                  %td= task.part
+                  %td= link_to 'View', plantask_path(task), class: 'btn btn-default'
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

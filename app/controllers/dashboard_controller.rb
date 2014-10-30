@@ -6,8 +6,10 @@ class DashboardController < ApplicationController
     @plantasks         = Plantask.department(current_user.department_id).all
     @total_tasks_count = @plantasks.count
 
-    # Variables for Modal Lists
-    @page_alerts = @plantasks.alert.all.page(params[:page_alerts]).per(2)
+    # Modal Lists
+    @page_good    = @plantasks.good.order("updated_at DESC").limit(5)
+    @page_warning = @plantasks.warning.order("updated_at DESC").limit(5)
+    @page_alerts  = @plantasks.alert.order("updated_at DESC").limit(5)
 
     # Variables to be parse to javascript via gon
     @good     = Plantask.department(current_user.department_id).good.count

@@ -6,5 +6,6 @@ class LibrariesController < ApplicationController
     @equipment   = Equipment.all.page(params[:page_equipment]).per(8)
     @part        = Part.all.page(params[:page_part]).per(8)
     @task_method = TaskMethod.all.page(params[:page_method]).per(8)
+    @egg_timer   = EggTimer.all.page(params[:page_timer]).per(8)
   end
 end

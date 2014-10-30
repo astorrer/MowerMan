@@ -1,7 +1,13 @@
-%h1 Editing egg_timer
+- provide(:title, 'Edit Egg Timer')
 
-= render 'form'
+.container-fluid
+  / Page Heading
+  .row
+    .col-lg-12
+      %h1.page-header
+        Egg Timer
+        %small Editor
 
-= link_to 'Show', @egg_timer
-\|
-= link_to 'Back', egg_timers_path
+  = render 'layouts/flash' if !flash.empty?
+
+  = render 'form'
