@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/astorrer/helpdesk.git
-  revision: 5f5b2d737bb39568142d1ac90b4b7ad069251f5f
+  revision: cf640c450a4c7cd1377e1ea669663583cf66e428
   specs:
     helpdesk (0.0.27)
       batch_translations
@@ -89,7 +89,7 @@ GEM
     globalize (4.0.2)
       activemodel (>= 4.0.0, < 5)
       activerecord (>= 4.0.0, < 5)
-    gon (5.2.0)
+    gon (5.2.1)
       actionpack (>= 2.3.0)
       json
       multi_json

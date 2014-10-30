@@ -29,10 +29,11 @@
                 - @all = timer.plantasks.associated_user(current_user).uniq.pluck(:equip_number)
                 %ul.nav.nav-pills.nav-stacked.col-md-3
                   - @all.each do |task|
-                    %li
-                      %a{"data-toggle" => "pill", :href => "#tab#{task.to_s + @string}"}
-                        - @var = task.to_i
-                        = task.to_s + ' | ' + Equipment.find_by_number(@var).equipment
+                    - unless timer.plantasks.assigned.equipment(task).blank?
+                      %li
+                        %a{"data-toggle" => "pill", :href => "#tab#{task.to_s + @string}"}
+                          - @var = task.to_i
+                          = task.to_s + ' | ' + Equipment.find_by_number(@var).equipment
 
                 .tab-content.col-md-9
                   - @all.each do |task|
