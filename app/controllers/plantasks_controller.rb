@@ -16,6 +16,15 @@ class PlantasksController < ApplicationController
     @plantask = Plantask.find(params[:id])
     @records = @plantask.records.order(created_at: :desc)
     @orders = @plantask.work_orders.order(created_at: :desc)
+
+    # Change the panel color based upon the tasks current status.
+    if @plantask.current_status == 'GOOD'
+      @panel_style = "panel-success"
+    elsif @plantask.current_status == 'WARNING'
+      @panel_style = "panel-warning"
+    elsif @plantask.current_status == 'ALERT'
+      @panel_style = "panel-danger"
+    end
     
     respond_to do |format|
       format.html

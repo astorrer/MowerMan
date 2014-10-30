@@ -1,0 +1,70 @@
+- provide(:title, 'New Part')
+
+= render 'layouts/flash' if !flash.empty?
+
+.container-fluid
+  / Page Heading
+  .row
+    .col-lg-12
+      %h1.page-header
+        Work Order
+        %small= @work_order.plantask.equipment
+
+  = render 'layouts/flash' if !flash.empty?
+
+  .row
+    .col-lg-12
+      .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
+        = link_to :back, style: "text-decoration:none; margin: 10px;" do
+          %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-arrow-left
+        = link_to edit_work_order_path(@work_order), style: "text-decoration:none; margin: 8px;" do
+          %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-edit
+
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          = "Work Order No. #{@work_order.id}"
+        .panel-body
+          .row
+            .col-lg-12
+              %h1= "Urgency: #{@work_order.urgency}"
+          %hr
+          .row
+            .col-lg-12
+              %h3 Instruction
+              %p= @work_order.description
+          .row
+            .col-lg-4
+              %strong Start:
+              = @work_order.start_date
+            .col-lg-4
+              %strong Due:
+              = @work_order.due_date
+          %hr
+          .row
+            .col-lg-12
+              %strong Associates
+              %ul
+              - @work_order.users.each do |x|
+                %li= x.name
+          .clearfix
+
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          = link_to 'View Plantask', plantask_path(@work_order.plantask), class: 'btn btn-xs btn-default'
+        .panel-body
+          .row
+            .col-lg-4
+              %h4= "Equipment No. #{@work_order.plantask.equip_number}" 
+            .col-lg-4
+              %h4= "Task No. #{@work_order.plantask_id}"
+          %hr
+          .row
+            .col-lg-12
+              = @work_order.plantask.description
+          .clearfix
