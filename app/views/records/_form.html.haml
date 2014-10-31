@@ -14,7 +14,7 @@
     .well.bs-component
       %fieldset
         %legend Record
-        = form_for @record, :url => { :action => :create, :id => @record.id } do |f|
+        = form_for @record, :url => { :action => :create, :id => @plantask.id } do |f|
           .row
             .col-lg-12
               = f.label :status, "Use your best judgement."
