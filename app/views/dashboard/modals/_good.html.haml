@@ -23,4 +23,5 @@
                   %td= task.part
                   %td= link_to 'View', plantask_path(task), class: 'btn btn-default'
       .modal-footer
+        = link_to "View All #{@good}", view_good_path, class: 'btn btn-success'
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

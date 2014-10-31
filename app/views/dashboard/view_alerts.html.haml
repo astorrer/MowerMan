@@ -1,0 +1,50 @@
+- provide(:title, 'Alert Plantasks')
+
+.container-fluid
+  .row
+    .col-lg-12
+      %h1.page-header
+        Alert Plantasks
+        %small Viewer
+      %ol.breadcrumb
+        %li.active
+          %i.fa.fa-tasks
+          = "Alert Plantasks | #{current_user.department.name} Department"
+
+  = render 'layouts/flash' if !flash.empty?
+
+  .row
+    .col-lg-12
+      .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
+        = link_to :back, style: "text-decoration:none; margin: 10px;" do
+          %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-arrow-left
+
+  .row
+    .col-lg-12
+      .panel.panel-danger
+        .panel-heading
+          Alert Tasks
+        .panel-body
+          %table#datatable.table.table-striped
+            %thead
+              %tr
+                %th Equip No.
+                %th Area
+                %th Equipment
+                %th Part
+                %th Associate
+                %th Date
+                %th Actions
+            %tbody
+              - @alerts.each do |plantask|
+                %tr
+                  %td= plantask.equip_number
+                  %td= plantask.area
+                  %td= plantask.equipment
+                  %td= plantask.part
+                  %td= plantask.associate
+                  %td= plantask.date
+                  %td
+                    = link_to 'View', plantask_path(plantask)
+                    = link_to 'Edit', edit_plantask_path(plantask)

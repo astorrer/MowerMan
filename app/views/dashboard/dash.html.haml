@@ -78,7 +78,12 @@
           = t('dashboard.overdue_chart')
         .panel-body
           #overdue-donut-chart
-          .clearfix
+        = link_to view_overdue_path do
+          .panel-footer
+            %span.pull-left= t('view_details')
+            %span.pull-right
+              %i.fa.fa-arrow-circle-right
+            .clearfix
 
   .row
     .col-lg-12

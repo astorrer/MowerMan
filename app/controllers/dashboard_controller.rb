@@ -1,9 +1,10 @@
 class DashboardController < ApplicationController
   before_filter :authenticate_user!
+  before_action :set_plantask
+
   require 'jbuilder'
 
   def dash
-    @plantasks         = Plantask.department(current_user.department_id).all
     @total_tasks_count = @plantasks.count
 
     # Modal Lists
@@ -12,12 +13,30 @@ class DashboardController < ApplicationController
     @page_alerts  = @plantasks.alert.order("updated_at DESC").limit(5)
 
     # Variables to be parse to javascript via gon
-    @good     = Plantask.department(current_user.department_id).good.count
-    @warning  = Plantask.department(current_user.department_id).warning.count
-    @alert    = Plantask.department(current_user.department_id).alert.count  
+    @good     = @plantasks.good.count
+    @warning  = @plantasks.warning.count
+    @alert    = @plantasks.alert.count
+
+    # Set these to an instance variable, otherwise the view will load will 'nill'
     gon.watch.good    = @good
     gon.watch.warning = @warning
     gon.watch.alert   = @alert
+  end
+
+  def view_good
+    @good = @plantasks.good.all
+  end
+
+  def view_warnings
+    @warnings = @plantasks.warning.all
+  end
+
+  def view_alerts
+   @alerts = @plantasks.alert.all
+  end
+
+  def view_overdue
+    @overdue = @plantasks.overdue.all
   end
 
   #def workloads
@@ -30,17 +49,20 @@ class DashboardController < ApplicationController
   #end
 
   def status
-    plantask  = Plantask.department(current_user.department_id).all
-    good      = plantask.good.count
-    warning   = plantask.warning.count
-    alert     = plantask.alert.count
+    good      = @plantasks.good.count
+    warning   = @plantasks.warning.count
+    alert     = @plantasks.alert.count
     @array    = [['Good', good], ['Warning', warning], ['Alert', alert]]
   end
 
   def overdue
-    plantasks = Plantask.department(current_user.department_id).all
-    overdue   = plantasks.overdue.count
-    remaining = plantasks.count - overdue
+    overdue   = @plantasks.overdue.count
+    remaining = @plantasks.count - overdue
     @array    = [['On Time', remaining], ['Overdue', overdue]] 
   end
+  
+  private
+    def set_plantask
+      @plantasks = Plantask.department(current_user.department_id).all
+    end 
 end
