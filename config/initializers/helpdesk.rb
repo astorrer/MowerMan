@@ -17,10 +17,10 @@ require 'helpdesk'
   config.sign_in_url = 'new_user_session_path'
 
   # Helpdesk email for notification
-  config.email = 'aaron.storrer@gmail.com'
+  config.email = 'support@mowerman.net'
 
   # Send confirmation emails
-  config.send_confirmation_emails = false
+  config.send_confirmation_emails = true
 
   # Site name in email footer
   config.site_name = "ACMG Helpdesk Team"

@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-
 gem 'rails', '4.1.7'
 gem 'faker', '1.1.2'
 gem 'haml-rails'
