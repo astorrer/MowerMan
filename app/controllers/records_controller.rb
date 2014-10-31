@@ -6,6 +6,15 @@ class RecordsController < ApplicationController
     @plantask = Plantask.find(params[:id])
     @record = @plantask.records.build(:status => 'GOOD') 
     @target = @plantask.target.to_s
+    
+    # Change the panel color based upon the tasks current status.
+    if @plantask.current_status == 'GOOD'
+      @panel_style = "panel-success"
+    elsif @plantask.current_status == 'WARNING'
+      @panel_style = "panel-warning"
+    elsif @plantask.current_status == 'ALERT'
+      @panel_style = "panel-danger"
+    end
   end
 
   def create

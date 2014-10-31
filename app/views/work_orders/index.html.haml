@@ -11,6 +11,8 @@
           %i.fa.fa-tasks
           Work Orders | All Departments
 
+  = render 'layouts/flash' if !flash.empty?
+
   .row
     .col-md-12
       .panel.with-nav-tabs.panel-default

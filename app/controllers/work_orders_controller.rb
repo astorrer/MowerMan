@@ -9,6 +9,14 @@ class WorkOrdersController < ApplicationController
   end
 
   def show
+    # Change the panel color based upon the tasks current status.
+    if @work_order.plantask.current_status == 'GOOD'
+      @panel_style = "panel-success"
+    elsif @work_order.plantask.current_status == 'WARNING'
+      @panel_style = "panel-warning"
+    elsif @work_order.plantask.current_status == 'ALERT'
+      @panel_style = "panel-danger"
+    end
   end
 
   def new

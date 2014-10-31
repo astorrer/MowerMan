@@ -1,0 +1,31 @@
+- provide(:title, 'New Record')
+
+.container-fluid
+  / Page Heading
+  .row
+    .col-lg-12
+      %h1.page-header
+        New Record
+        %small= " Task No. #{@plantask.id}"
+      %ol.breadcrumb
+        %li.active
+          %i.fa.fa-wrench
+            = "New Record | #{@plantask.equipment}"
+
+  = render 'layouts/flash' if !flash.empty?
+  
+  .row
+    .col-lg-12
+      .div{ :class => "panel panel-default #{@panel_style}"}
+        .panel-heading
+          = link_to "View Plantask No. #{@plantask.id}", plantask_path(@plantask), class: 'btn btn-default'
+        .panel-body
+          .row
+            .col-lg-6
+              %h4 Task Description
+              = @plantask.description
+            .col-lg-6
+              %h4 Task Target
+              = @plantask.target
+  
+  = render 'form'

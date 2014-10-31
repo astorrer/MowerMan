@@ -1,6 +1,4 @@
-- provide(:title, 'New Part')
-
-= render 'layouts/flash' if !flash.empty?
+- provide(:title, 'Work Order')
 
 .container-fluid
   / Page Heading
@@ -54,15 +52,13 @@
 
   .row
     .col-lg-12
-      .panel.panel-default
+      .div{ :class => "panel panel-default #{@panel_style}"}
         .panel-heading
-          = link_to 'View Plantask', plantask_path(@work_order.plantask), class: 'btn btn-xs btn-default'
+          = link_to "View Plantask No. #{@work_order.plantask.id}", plantask_path(@work_order.plantask), class: 'btn btn-default'
         .panel-body
           .row
             .col-lg-4
               %h4= "Equipment No. #{@work_order.plantask.equip_number}" 
-            .col-lg-4
-              %h4= "Task No. #{@work_order.plantask_id}"
           %hr
           .row
             .col-lg-12
