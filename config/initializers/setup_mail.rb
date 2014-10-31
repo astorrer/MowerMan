@@ -1,3 +1,4 @@
+ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
   :address => "smtp.mandrillapp.com",
   :port => 587, # ports 587 and 2525 are also supported with STARTTLS
