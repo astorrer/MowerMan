@@ -54,26 +54,26 @@
                   = link_to search_path, class: "btn btn-default" do
                     %i.fa.fa-eraser
         %li
-          = link_to dash_path do
+          = link_to dash_path, class: active_page(dash_path) do
             %i.fa.fa-fw.fa-dashboard
             = t('navigation.dashboard')
         %li
-          = link_to plantasks_path do
+          = link_to plantasks_path, class: active_page(plantasks_path) do
             %i.fa.fa-fw.fa-tasks
             = t('navigation.plantasks')
         %li
-          = link_to work_orders_path do
+          = link_to work_orders_path, class: active_page(work_orders_path) do
             %i.fa.fa-fw.fa-bug
             = t('navigation.workorders')
         %li
-          = link_to libraries_path do
+          = link_to libraries_path, class: active_page(libraries_path) do
             %i.fa.fa-fw.fa-university
             = t('navigation.libraries')
         %li
-          = link_to mytasks_path do
+          = link_to mytasks_path, class: active_page(mytasks_path) do
             %i.fa.fa-fw.fa-wrench
             = t('navigation.my_tasks')
         %li
-          = link_to helpdesk_path do
+          = link_to helpdesk_path, class: active_page(helpdesk_path) do
             %i.fa.fa-fw.fa-life-saver
             = t('navigation.helpdesk')
