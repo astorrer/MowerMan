@@ -26,6 +26,7 @@
 //= require plugins/mask/jquery.mask
 //= require plugins/switch/bootstrap-switch
 //= require plugins/dataSlider/data-slider
+//= require plugins/modalDelete/modal-delete
 //= require select2
 //= require sb-admin-2
 //= require inits/select2

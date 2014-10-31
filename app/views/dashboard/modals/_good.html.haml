@@ -1,4 +1,4 @@
-#goodModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "goodModal", :role => "dialog", :tabindex => "-1"}
+#goodModal.modal{"aria-hidden" => "true", "aria-labelledby" => "goodModal", :role => "dialog", :tabindex => "-1"}
   .modal-dialog
     .modal-content
       .modal-header
@@ -21,7 +21,7 @@
                   %td= task.area
                   %td= task.equipment
                   %td= task.part
-                  %td= link_to 'View', plantask_path(task), class: 'btn btn-default'
+                  %td= link_to 'VIEW', plantask_path(task), class: 'btn btn-default'
       .modal-footer
-        = link_to "View All #{@good}", view_good_path, class: 'btn btn-success'
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        = link_to "VIEW ALL #{@good}", view_good_path, class: 'btn btn-success'
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} CLOSE

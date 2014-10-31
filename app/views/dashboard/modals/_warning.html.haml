@@ -1,4 +1,4 @@
-#warningModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "warningModal", :role => "dialog", :tabindex => "-1"}
+#warningModal.modal{"aria-hidden" => "true", "aria-labelledby" => "warningModal", :role => "dialog", :tabindex => "-1"}
   .modal-dialog
     .modal-content
       .modal-header
@@ -21,7 +21,7 @@
                   %td= task.area
                   %td= task.equipment
                   %td= task.part
-                  %td= link_to 'View', plantask_path(task), class: 'btn btn-default'
+                  %td= link_to 'VIEW', plantask_path(task), class: 'btn btn-default'
       .modal-footer
-        = link_to "View All #{@warning}", view_warnings_path, class: 'btn btn-warning'
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        = link_to "VIEW ALL #{@warning}", view_warnings_path, class: 'btn btn-warning'
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} CLOSE
