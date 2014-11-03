@@ -14,6 +14,7 @@ class Ability
       can :manage, Equipment
       can :manage, Parts
       can :manage, TaskMethod
+      can :manage, WorkOrder
       can :update, EggTimer
     else
       can :read, :all
