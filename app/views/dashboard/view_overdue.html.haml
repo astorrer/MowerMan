@@ -47,4 +47,5 @@
                   %td= plantask.date
                   %td
                     = link_to 'View', plantask_path(plantask)
-                    = link_to 'Edit', edit_plantask_path(plantask)
+                    - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+                      = link_to 'Edit', edit_plantask_path(plantask)

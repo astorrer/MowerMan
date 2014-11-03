@@ -5,7 +5,13 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    = link_to "MowerMan | #{current_user.department.name}", dash_path, :class => "navbar-brand"
+    = link_to dash_path, :class => "navbar-brand" do
+      - if current_user.has_role? :admin
+        = "MowerMan | #{current_user.department.name}-Administrator"
+      - elsif current_user.has_role? :manager
+        = "MowerMan | #{current_user.department.name}-Manager"
+      - else
+        = "MowerMan | #{current_user.department.name}"
   %ul.nav.navbar-top-links.navbar-right
     %li.dropdown
       %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
@@ -57,18 +63,20 @@
           = link_to dash_path, class: active_page(dash_path) do
             %i.fa.fa-fw.fa-dashboard
             = t('navigation.dashboard')
-        %li
-          = link_to plantasks_path, class: active_page(plantasks_path) do
-            %i.fa.fa-fw.fa-tasks
-            = t('navigation.plantasks')
+        - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+          %li
+            = link_to plantasks_path, class: active_page(plantasks_path) do
+              %i.fa.fa-fw.fa-tasks
+              = t('navigation.plantasks')
         %li
           = link_to work_orders_path, class: active_page(work_orders_path) do
             %i.fa.fa-fw.fa-bug
             = t('navigation.workorders')
-        %li
-          = link_to libraries_path, class: active_page(libraries_path) do
-            %i.fa.fa-fw.fa-university
-            = t('navigation.libraries')
+        - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+          %li
+            = link_to libraries_path, class: active_page(libraries_path) do
+              %i.fa.fa-fw.fa-university
+              = t('navigation.libraries')
         %li
           = link_to mytasks_path, class: active_page(mytasks_path) do
             %i.fa.fa-fw.fa-wrench
@@ -82,6 +90,11 @@
             %i.fa.fa-fw.fa-envelope
             = t('navigation.suggestion_system')
         %li
-          = link_to helpdesk_path, class: active_page(helpdesk_path) do
+          = link_to helpdesk_path do
             %i.fa.fa-fw.fa-life-saver
             = t('navigation.helpdesk')
+        - if current_user.has_role? :admin
+          %li
+            = link_to helpdesk.admin_root_path do
+              %i.fa.fa-fw.fa-life-saver
+              = t('navigation.manage_helpdesk')

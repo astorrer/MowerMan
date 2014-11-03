@@ -27,6 +27,7 @@ gem "searchkick"
 gem 'devise', '3.2.2'
 gem 'bcrypt-ruby', '3.1.2' # For encryption
 gem "rolify" # Identify user roles
+gem "cancan"
 
 # Gems for CSV & XLS export. Does not export .XLSX files. (Yet)
 gem 'to_xls-rails'# Last officially released gem

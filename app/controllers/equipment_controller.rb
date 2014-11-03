@@ -1,5 +1,6 @@
 class EquipmentController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   before_action :set_equipment, only: [:edit, :update, :destroy]
 
   def new
