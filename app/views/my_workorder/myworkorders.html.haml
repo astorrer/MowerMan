@@ -1,6 +1,40 @@
-- @work_orders.each do |work_order|
-  = work_order.plantask.area
-  = work_order.plantask.equipment
-  = work_order.plantask.part
-  = work_order.start_date
-  = work_order.due_date
+- provide(:title, 'My Work Orders')
+
+.container-fluid
+  .row
+    .col-lg-12
+      %h1.page-header
+        My Work Orders
+        %small Tracker
+      %ol.breadcrumb
+        %li.active
+          %i.fa.fa-bug
+          = "Work Orders | #{current_user.name}"
+
+  = render 'layouts/flash' if !flash.empty?
+
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-body        
+          .table-responsive
+            %table.table.table-hover
+              %thead
+                %tr
+                  %th Area
+                  %th Equipment
+                  %th Part
+                  %th Start Date
+                  %th Due Date
+                  %th Complete?
+                  %th Actions
+              %tbody
+                - @work_orders.each do |work_order|
+                  %tr
+                    %td= work_order.plantask.area
+                    %td= work_order.plantask.equipment
+                    %td= work_order.plantask.part
+                    %td= work_order.start_date
+                    %td= work_order.due_date
+                    %td= work_order.completion_switch
+                    %td= link_to 'VIEW', work_order_path(work_order), class: 'btn btn-default'
