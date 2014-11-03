@@ -8,6 +8,7 @@ require "sprockets/railtie"
 require "csv"
 require "twilio-ruby"
 require "prawn"
+require 'rolify/railtie'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
