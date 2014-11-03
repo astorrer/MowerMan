@@ -1,7 +1,7 @@
 class WorkOrdersController < ApplicationController
   before_filter :authenticate_user!
   
-  before_action :set_work_order, only: [:show, :update, :destroy]
+  before_action :set_work_order, only: [:show, :edit, :update, :destroy]
 
   def index
     @work_orders = WorkOrder.all
@@ -25,7 +25,6 @@ class WorkOrdersController < ApplicationController
   end
 
   def edit
-    @work_order = WorkOrder.find(params[:id])
   end
 
   def create

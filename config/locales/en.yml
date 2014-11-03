@@ -35,6 +35,8 @@ en:
     workorders: Work Orders
     libraries: Libraries
     my_tasks: My Tasks
+    my_workorders: My Work Orders
+    suggestion_system: Suggestion System
     helpdesk: Helpdesk
     settings: Settings
     logout: Log Out

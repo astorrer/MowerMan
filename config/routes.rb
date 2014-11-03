@@ -55,7 +55,8 @@ AgSystem::Application.routes.draw do
     
     match "/libraries" =>  "libraries#library",        via: :get  
 
-    match "/mytasks"   =>   "my_task#mytasks",         via: :get
+    match "/mytasks"      =>   "my_task#mytasks",                  via: :get
+    match "/myworkorders" =>   "my_workorder#myworkorders",         via: :get
 
     match "/home"      =>    "static_pages#home",      via: :get
     match "/about"     =>    "static_pages#about",     via: :get

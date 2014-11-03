@@ -15,6 +15,8 @@ ja:
     workorders: Work Orders
     libraries: ライブラリー
     my_tasks: マイタスク
+    my_workorders: My Work Orders
+    suggestion_system: Suggestion System
     helpdesk: ヘルプデスク
     settings: 設定
     logout: ログアウト
