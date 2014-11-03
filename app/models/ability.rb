@@ -9,11 +9,11 @@ class Ability
       can :read, :all
     elsif user.has_role? :manager
       can :read, :all
-      can :manage, Plantasks
+      can :manage, Plantask
       can :manage, Area
       can :manage, Equipment
       can :manage, Parts
-      can :manage, Methods
+      can :manage, TaskMethod
       can :update, EggTimer
     else
       can :read, :all
