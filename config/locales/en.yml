@@ -38,6 +38,7 @@ en:
     my_workorders: My Work Orders
     suggestion_system: Suggestion System
     helpdesk: Helpdesk
+    manage_helpdesk: Manage Helpdesk
     settings: Settings
     logout: Log Out
     search: Search

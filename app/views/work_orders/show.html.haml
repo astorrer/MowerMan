@@ -16,9 +16,10 @@
         = link_to :back, style: "text-decoration:none; margin: 10px;" do
           %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
             %i.fa.fa-arrow-left
-        = link_to edit_work_order_path(@work_order), style: "text-decoration:none; margin: 8px;" do
-          %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
-            %i.fa.fa-edit
+        - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+          = link_to edit_work_order_path(@work_order), style: "text-decoration:none; margin: 8px;" do
+            %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
+              %i.fa.fa-edit
 
   .row
     .col-lg-12

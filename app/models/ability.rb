@@ -15,13 +15,10 @@ class Ability
       can :manage, Parts
       can :manage, Methods
       can :update, EggTimer
-      can :create, Record
-      can :update, Record
-    elsif user.has_role? :associate
+    else
       can :read, :all
-      can :update, Plantask, :assigned_switch => true
+      can :update, Plantask
       can :update, WorkOrder
-      can :create, Record
     end
 
     # Define abilities for the passed in user here. For example:

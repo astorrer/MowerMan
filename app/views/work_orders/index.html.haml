@@ -49,8 +49,9 @@
                         %td
                           .btn-group
                             = link_to 'View', work_order
-                            = link_to 'Edit', edit_work_order_path(work_order)
-                            = link_to 'Delete', work_order, method: :delete, data: { confirm: 'Are you sure?' }
+                            - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+                              = link_to 'Edit', edit_work_order_path(work_order)
+                              = link_to 'Delete', work_order, method: :delete, data: { confirm: 'Are you sure?' }
                 .form-actions
                   .row
                     .col-lg-12

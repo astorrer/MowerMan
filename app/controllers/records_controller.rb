@@ -1,6 +1,5 @@
 class RecordsController < ApplicationController
   before_filter :authenticate_user!
-  load_and_authorize_resource
   require 'send_sms'
 
   def new
