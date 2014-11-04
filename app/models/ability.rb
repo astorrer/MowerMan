@@ -18,6 +18,7 @@ class Ability
     else
       can :read, :all
       can :update, Plantask
+      can :create, Record
       can :update, WorkOrder
     end
   end
