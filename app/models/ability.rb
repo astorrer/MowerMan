@@ -14,6 +14,7 @@ class Ability
       can :manage, Part
       can :manage, TaskMethod
       can :manage, WorkOrder
+      can :create, Record
       can :update, EggTimer
     else
       can :read, :all
