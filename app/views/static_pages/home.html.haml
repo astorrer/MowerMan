@@ -1,40 +1,31 @@
 - provide(:title, 'Home')
 
-/ Page Content
 .container
-  / Heading Row
   .row
     .col-md-7
       = image_tag("mockup.png", style: 'height: 350px;')
-    / /.col-md-8
     .col-md-5
       .panel.panel-default
         .panel-body
           %h1 Simple, planned maintenance in the cloud.
           %p An easy, inexpensive, and maintainable CMMS solution. Comming soon. Request early access today.
           = mail_to "request@mowerman.net", "REQUEST ACCESS", class: "btn btn-primary btn-lg"
-    / /.col-md-4
-  / /.row
+
   %hr/
-  / Call to Action Well
   .row
     .col-lg-12
       .well.text-center
         The Cloud is the future of preventive maintenance planning.
-    / /.col-lg-12
-  / /.row
-  / Content Row
+
   .row
     .col-md-4
       %h2 Built to meet your needs.
       %p MowerMan was built for the floor, on the floor. MowerMan was satisfies maintenance needs first.
       = link_to "More Info", about_path, class: "btn btn-default"
-    / /.col-md-4
     .col-md-4
       %h2 Are you an associate at ACM?
       %p If so, you can access the testing system at any time, by selecting "Asama Login".
       = link_to 'Asama Login', new_user_session_path, class: "btn btn-default"
-    / /.col-md-4
     .col-md-4
       %h2 One license to rule them all. No more rabid licensing weasels.
       %p MowerMan is licensed company wide. You only pay for the resources you need, and only maintain one license. A single company wide license renews monthly, and allows you unlimited users, managers, admins, and departments. Your only limit is your hardware package.
