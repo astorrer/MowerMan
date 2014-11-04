@@ -27,11 +27,7 @@ body {
     }
 }
 .full {
-  background: image-url("background.jpg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background: image-url("noisy_grid.png"); 
 }
 .navbar-top-links li {
     display: inline-block;
