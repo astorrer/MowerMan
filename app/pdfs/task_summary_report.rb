@@ -42,6 +42,6 @@ class TaskSummaryReport < ApplicationReport
   end
 
   def record_table_data
-    record_table_data ||= @plantask.records.limit(10).map { |r| [r.status.to_s, r.created_at.to_s, r.data.to_s, r.comments.to_s] }
+    record_table_data ||= @plantask.records.all.map { |r| [r.status.to_s, r.created_at.to_s, r.data.to_s, r.comments.to_s] }
   end
 end
