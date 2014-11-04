@@ -3,6 +3,7 @@ gem 'rails', '4.1.7'
 gem 'faker', '1.1.2'
 gem 'haml-rails'
 gem 'whenever', :require => false
+gem 'useragent'
 
 # Use Prawn to generate PDFs
 gem 'prawn'

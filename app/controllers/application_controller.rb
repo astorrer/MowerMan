@@ -8,13 +8,14 @@ class ApplicationController < ActionController::Base
   before_filter :search
   before_filter :access_user
   before_filter :set_locale
-  
+  before_filter :check_browser
+
   before_action do  
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
   end  
-  
+
   # Helpers
   helper :all
   helper_method :helpdesk_user,:helpdesk_admin?,:helpdesk_admin_collection
@@ -84,5 +85,23 @@ class ApplicationController < ActionController::Base
                 :current_password, :alert, :department_id, :phone_number, :locale)
      end
    end
+   
+  private
 
+     Browser = Struct.new(:browser, :version)
+
+     SupportedBrowsers = [
+       Browser.new('Safari', '6.0.2'),
+       Browser.new('Firefox', '19.0.2'),
+       Browser.new('Internet Explorer', '10.0'),
+       Browser.new('Internet Explorer', '11.0'),
+       Browser.new('Chrome', '25.0.1364.160'),
+     ]
+
+     def check_browser
+       user_agent = UserAgent.parse(request.user_agent)
+       unless SupportedBrowsers.detect { |browser| user_agent >= browser }
+         render text: 'Your browser is not supported!'
+       end
+     end
 end
