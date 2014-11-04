@@ -1,20 +1,45 @@
 - provide(:title, 'Home')
 
+/ Page Content
 .container
+  / Heading Row
   .row
-    .col-md-6.col-sm-12
-      %h1= image_tag('name.png', style: 'width: 50%;')
+    .col-md-7
+      = image_tag("mockup.png", style: 'height: 350px;')
+    / /.col-md-8
+    .col-md-5
       .panel.panel-default
         .panel-body
-          %p Mower is a planned task manager, or CMMS.  Speed up the PDCA loop. (Plan, Do, Check, Act), by automating the planning and checking process. 
-          %h4 Major Features:
-          %ul
-            %li Repeating Tasks Planning
-            %li Automatic Task Level-Loading
-            %li Data Tracking
-            %li SMS Alerts
-            %li PDF, Excel, and CSV data export.
-            %li Work Order Tracking
-            %li Department Grouping
-            %li Internal Messaging 
-            %li Internal Helpdesk & Support
+          %h1 Simple, planned maintenance in the cloud.
+          %p An easy, inexpensive, and maintainable CMMS solution. Comming soon. Request early access today.
+          %a.btn.btn-primary.btn-lg{:href => "#"} REQUEST ACCESS
+    / /.col-md-4
+  / /.row
+  %hr/
+  / Call to Action Well
+  .row
+    .col-lg-12
+      .well.text-center
+        The Cloud is the future of preventive maintenance planning.
+    / /.col-lg-12
+  / /.row
+  / Content Row
+  .row
+    .col-md-4
+      %h2 Built to meet your needs.
+      %p MowerMan was built for the floor, on the floor. MowerMan was satisfies maintenance needs first.
+      %a.btn.btn-default{:href => "#"} More Info
+    / /.col-md-4
+    .col-md-4
+      %h2 This page is under construction.
+      %p This page is being worked on. We apologize for the delay.
+      %a.btn.btn-default{:href => "#"} More Info
+    / /.col-md-4
+    .col-md-4
+      %h2 One license to rule them all. No more rabid licensing weasels.
+      %p MowerMan is licensed company wide. You only pay for the resources you need, and only maintain one license. A single company wide license renews monthly, and allows you unlimited users, managers, admins, and departments. Your only limit is your hardware package.
+      %a.btn.btn-default{:href => "#"} More Info
+  %footer
+    .row
+      .col-lg-12
+        %p Copyright © MowerMan 2014

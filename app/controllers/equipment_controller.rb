@@ -35,7 +35,7 @@ class EquipmentController < ApplicationController
   def destroy
     @equipment.destroy
     respond_to do |format|
-      format.html { redirect_to @equipment }
+      format.html { redirect_to libraries_path }
     end
   end
 
