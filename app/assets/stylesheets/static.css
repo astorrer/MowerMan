@@ -13,7 +13,6 @@
 *= require_self
 *= require jquery-ui
 *= require small-business
-*= require feature
 */
 
 .header-image {
