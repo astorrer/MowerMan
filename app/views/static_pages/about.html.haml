@@ -1,13 +1,29 @@
-- provide(:title, 'Contact')
+- provide(:title, 'About')
 
+/ Page Content
 .container
-  .row
-    .col-md-8
-      %h1 Under Construction
-
   %hr/
-  
-  %footer
-    .row
-      .col-lg-12
-        %p Copyright © MowerMan 2014
+  .row
+    .col-lg-12
+      .well.text-center
+        Some of our key features...
+        
+  %hr.featurette-divider/
+  #about.featurette
+    = image_tag('timer.png', class: "featurette-image img-circle img-responsive pull-right")
+    %h2.featurette-heading
+      Schedule all the things. 
+      %span.text-muted Leave nothing forgotten.
+    %p.lead MowerMan makes routine planning a synch. Add a task to the system, and let it plan itself. Customizable timers let you set how often a task needs to be completed, whether that’s once a month, daily, or every 321 ½ days. It is entirely up to you. 
+  #services.featurette
+    = image_tag('libraries.png', class: "featurette-image img-circle img-responsive pull-left")
+    %h2.featurette-heading
+      Together,
+      %span.text-muted we can record everything.
+    %p.lead Forget about data entry personnel, paperwork overhead, and a lag time between results. MowerMan will record everything along the way, so you don’t need too.
+  #contact.featurette
+    = image_tag('sms_phone.png', class: "featurette-image img-circle img-responsive pull-right")
+    %h2.featurette-heading
+      Focus,
+      %span.text-muted on most important problems.
+    %p.lead MowerMan hides the status quo in the background, and brings your attention towards the problems that matter most. A built in SMS alert system will keep everyone up to date, as soon as a problem is discovered- smart phone not required.
