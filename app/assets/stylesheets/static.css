@@ -13,15 +13,5 @@
  *= require_self
  *= require jquery-ui
  *= require small-business
-*/
-
-.header-image {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background: image-url('banner.png') no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
+ *= require feature
+ */
