@@ -12,11 +12,9 @@
           Work Planners | Directory
 
   = render 'layouts/flash' if !flash.empty?
-  
+
   .row
     .col-lg-6.col-md-6.col-xs-6
-      = link_to 'All Trackable', work_orders_path, class: "btn btn-primary btn-lg btn-block"
-      = link_to 'All Misc.', work_orders_path, class: "btn btn-primary btn-lg btn-block"
-    .col-lg-6.col-lg-6.col-md-6.col-xs-6
-      = link_to "#{current_user.department.name} Tackable", work_orders_path, class: "btn btn-primary btn-lg btn-block"
-      = link_to "#{current_user.department.name} Misc.", work_orders_path, class: "btn btn-primary btn-lg btn-block"
+      = link_to "#{current_user.department.name} Trackable", work_orders_path, class: "btn btn-primary btn-lg btn-block"
+    .col-lg-6.col-md-6.col-xs-6
+      = link_to "#{current_user.department.name} Misc.", misc_work_orders_path, class: "btn btn-primary btn-lg btn-block"

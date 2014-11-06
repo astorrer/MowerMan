@@ -1,35 +1,54 @@
-%h1 Listing misc_work_orders
+- provide(:title, 'Misc. Work Orders')
 
-%table
-  %tr
-    %th Account number
-    %th Cost unit
-    %th Cost center
-    %th Cost description
-    %th Start date
-    %th Due date
-    %th Description
-    %th Urgency
-    %th Completion switch
-    %th
-    %th
-    %th
+.container-fluid
+  .row
+    .col-lg-12
+      %h1.page-header
+        Misc. Work Orders
+        %small Manager
+      %ol.breadcrumb
+        %li.active
+          %i.fa.fa-tasks
+          Misc. Work Orders | All Departments
 
-  - @misc_work_orders.each do |misc_work_order|
-    %tr
-      %td= misc_work_order.account_number
-      %td= misc_work_order.cost_unit
-      %td= misc_work_order.cost_center
-      %td= misc_work_order.cost_description
-      %td= misc_work_order.start_date
-      %td= misc_work_order.due_date
-      %td= misc_work_order.description
-      %td= misc_work_order.urgency
-      %td= misc_work_order.completion_switch
-      %td= link_to 'Show', misc_work_order
-      %td= link_to 'Edit', edit_misc_work_order_path(misc_work_order)
-      %td= link_to 'Destroy', misc_work_order, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  = render 'layouts/flash' if !flash.empty?
 
-%br
+  .row
+    .col-md-12
+      .panel.with-nav-tabs.panel-default
+        .panel-heading
+          %ul.nav.nav-tabs
+            %li.active
+              %a{"data-toggle" => "tab", :href => "#tab1default"} Calendar
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab2default"} List
 
-= link_to 'New Misc work order', new_misc_work_order_path
+        .panel-body
+          .tab-content
+            #tab1default.tab-pane.fade.in.active
+              #calendar
+            #tab2default.tab-pane.fade
+              %table#datatable.table.table-striped
+                %thead
+                  %tr
+                    %th Actions
+                    %th Urgency
+                    %th Description
+                    %th Complete?
+                    %th.col-md-3
+                %tbody
+                  - @misc_work_orders.each do |work_order|
+                    %tr
+                      %td= check_box_tag "work_order_ids[]", work_order.id
+                      %td= work_order.urgency
+                      %td= work_order.description
+                      %td= work_order.completion_switch
+                      %td
+                        .btn-group
+                          = link_to 'View', work_order
+                          - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+                            = link_to 'Edit', edit_work_order_path(work_order)
+                            = link_to 'Delete', work_order, method: :delete, data: { confirm: 'Are you sure?' }
+ 
+
+= render 'misc_work_orders/calendar.js'

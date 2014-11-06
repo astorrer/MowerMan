@@ -1,10 +1,13 @@
 class MiscWorkOrdersController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
   before_action :set_misc_work_order, only: [:show, :edit, :update, :destroy]
 
   # GET /misc_work_orders
   # GET /misc_work_orders.json
   def index
     @misc_work_orders = MiscWorkOrder.all
+    @incomplete_work_orders = MiscWorkOrder.incomplete.all
   end
 
   # GET /misc_work_orders/1
@@ -25,6 +28,7 @@ class MiscWorkOrdersController < ApplicationController
   # POST /misc_work_orders.json
   def create
     @misc_work_order = MiscWorkOrder.new(misc_work_order_params)
+    @work_order.completion_switch = false
 
     respond_to do |format|
       if @misc_work_order.save

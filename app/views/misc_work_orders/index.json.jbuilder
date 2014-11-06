@@ -1,4 +1,7 @@
-json.array!(@misc_work_orders) do |misc_work_order|
-  json.extract! misc_work_order, :id, :account_number, :cost_unit, :cost_center, :cost_description, :start_date, :due_date, :description, :urgency, :completion_switch
-  json.url misc_work_order_url(misc_work_order, format: :json)
+json.array!(@incomplete_work_orders) do |work_order|
+  json.extract! work_order, :id, :urgency, :description
+  json.title work_order.id
+  json.start work_order.start_date
+  json.end work_order.due_date
+  json.url misc_work_order_url(work_order, format: :html)
 end
