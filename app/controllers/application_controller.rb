@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
   # heroku config:add ELASTICSEARCH_URL=`heroku config:get BONSAI_URL`
   def search
     if params[:query].present?
-      @plantask_results = Plantask.search(params[:query], page: params[:page], per_page: 4)
+      @plantask_results = Plantask.search(params[:query], misspellings: {edit_distance: 2}, page: params[:page], per_page: 4)
     else
       @plantask_results = Plantask.all.page params[:page]
     end
