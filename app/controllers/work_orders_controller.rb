@@ -21,7 +21,7 @@ class WorkOrdersController < ApplicationController
 
   def new
     @plantask = Plantask.find(params[:id])
-    @work_order = @plantask.work_orders.build(:urgency => '1') 
+    @work_order = @plantask.work_orders.build(:urgency => '1', :department_id => current_user.department_id) 
   end
 
   def edit
@@ -74,6 +74,6 @@ class WorkOrdersController < ApplicationController
     end
 
     def work_order_params
-      params.require(:work_order).permit(:plantask_id, :start_date, :urgency, :description, :due_date, :completion_switch, :user_ids => [])
+      params.require(:work_order).permit(:plantask_id, :start_date, :urgency, :description, :department_id, :due_date, :completion_switch, :user_ids => [])
     end
 end

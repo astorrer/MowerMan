@@ -1,4 +1,5 @@
 class WorkOrder < ActiveRecord::Base
+  belongs_to :department
   belongs_to :plantask
   has_and_belongs_to_many :users
 
