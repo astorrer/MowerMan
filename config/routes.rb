@@ -26,6 +26,8 @@ AgSystem::Application.routes.draw do
       end
     end  
 
+    resources :misc_work_orders
+
     resources :conversations, only: [:index, :show, :new, :create] do
       member do
         post :reply

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106141948) do
+ActiveRecord::Schema.define(version: 20141106155651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,6 +184,21 @@ ActiveRecord::Schema.define(version: 20141106141948) do
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
 
+  create_table "misc_work_orders", force: true do |t|
+    t.integer  "account_number"
+    t.string   "cost_unit"
+    t.string   "cost_center"
+    t.text     "cost_description"
+    t.datetime "start_date"
+    t.datetime "due_date"
+    t.text     "description"
+    t.integer  "urgency"
+    t.boolean  "completion_switch"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "department_id"
+  end
+
   create_table "parts", force: true do |t|
     t.string   "part"
     t.datetime "created_at"
@@ -278,6 +293,13 @@ ActiveRecord::Schema.define(version: 20141106141948) do
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "users_misc_work_orders", force: true do |t|
+    t.integer  "misc_work_order_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users_roles", id: false, force: true do |t|
     t.integer "user_id"

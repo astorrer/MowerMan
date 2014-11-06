@@ -10,4 +10,5 @@ $(document).ready ->
   $("#work_order_user_ids").select2()
   $("#conversation_recipients").select2()
   $("#work_order_department_id").select2()
+  $("#misc_work_order_department_id").select2()
   return

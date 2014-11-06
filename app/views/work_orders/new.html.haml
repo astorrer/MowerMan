@@ -1,7 +1,5 @@
 - provide(:title, 'New Work Order')
 
-= render 'layouts/flash' if !flash.empty?
-
 .container-fluid
   / Page Heading
   .row
@@ -9,5 +7,7 @@
       %h1.page-header
         Work Order
         %small Creator
+
+  = render 'layouts/flash' if !flash.empty?
 
   = render 'form'

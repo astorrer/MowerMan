@@ -5,4 +5,6 @@ class WorkOrder < ActiveRecord::Base
 
   scope :complete,        -> { where(completion_switch: true) }
   scope :incomplete,      -> { where(completion_switch: false) }
+
+  # Seriously Need to add validations here...
 end

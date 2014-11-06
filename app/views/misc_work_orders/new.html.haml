@@ -1,0 +1,13 @@
+- provide(:title, 'New Misc. Work Order')
+
+.container-fluid
+  / Page Heading
+  .row
+    .col-lg-12
+      %h1.page-header
+        Misc. Work Order
+        %small Creator
+
+  = render 'layouts/flash' if !flash.empty?
+  
+  = render 'form'

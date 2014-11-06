@@ -12,12 +12,12 @@
 
   .well.bs-component
     %fieldset
-      %legend Area
+      %legend Work Order
       = form_for @work_order, :url => { :action => :create, :id => @plantask.id } do |f|
         .form-group
           .row
             .col-lg-2
-              = f.label :department, "Select a department for this task."
+              = f.label :department_id, "Select a department for this task."
             .col-lg-10
               = f.select :department_id, Department.all.collect { |x| [x.name, x.id]}, {}, :class => 'select-2 form-control'
         .form-group

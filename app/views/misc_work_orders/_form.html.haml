@@ -1,0 +1,88 @@
+.row
+  .col-lg-12
+
+    - if @misc_work_order.errors.any?
+      .alert.alert-warning.alert-dismissable
+        %a.close{:'data-dismiss' => "alert", :href => '#'} &times;
+        %i.fa.fa-exclamation-sign
+        = pluralize(@misc_work_order.errors.count, "error") + ' prevented this area from being created:'
+        %ul
+          - @misc_work_order.errors.full_messages.each do |msg|
+            %li= msg
+
+  .well.bs-component
+    %fieldset
+      %legend Work Order
+      = form_for @misc_work_order do |f|
+        .form-group
+          .row
+            .col-lg-2
+              = f.label :department_id, "Select a department for this task."
+            .col-lg-10
+              = f.select :department_id, Department.all.collect{ |x| [x.name, x.id] }, {}, class: 'select2 form-control'
+        .form-group
+          .row
+            .col-lg-2
+              = f.label :account_number
+            .col-lg-10
+              = f.number_field :account_number, class: 'form-control'
+        .form-group
+          .row
+            .col-lg-2
+              = f.label :cost_unit
+            .col-lg-10
+              = f.text_field :cost_unit, class: 'form-control'
+        .form-group
+          .row
+            .col-lg-2
+              = f.label :cost_center
+            .col-lg-10
+              = f.text_field :cost_center, class: 'form-control'
+        .form-group
+          .row
+            .col-lg-2
+              = f.label :cost_description
+            .col-lg-10
+              = f.text_area :cost_description, class: 'form-control'
+        .form-group
+          .row
+            .col-lg-2
+              = f.label :start_date
+            .col-lg-10
+              = f.datetime_select :start_date, class: 'form-control'
+        .form-group
+          .row
+            .col-lg-2
+              = f.label :due_date
+            .col-lg-10
+              = f.datetime_select :due_date, class: 'form-control'
+        .form-group
+          .row
+            .col-lg-2
+              = f.label :description
+            .col-lg-10
+              = f.text_area :description, class: 'form-control'
+        .form-group
+          .row
+            .col-lg-2
+              = f.label :urgency, "How urgent is this task?"
+            .col-lg-10
+              = f.radio_button :urgency, '1'
+              = f.label :urgency, '1', :value => '1'
+              = f.radio_button :urgency, '2'
+              = f.label :urgency, '2', :value => '2'
+              = f.radio_button :urgency, '3'
+              = f.label :urgency, '3', :value => '3'
+              = f.radio_button :urgency, '4'
+              = f.label :urgency, '4', :value => '4'
+              = f.radio_button :urgency, '5'
+              = f.label :urgency, '5', :value => '5'
+            %a
+        .row
+          .col-lg-12
+            .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
+              = link_to :back, style: "text-decoration:none; margin: 10px;" do
+                %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
+                  %i.fa.fa-arrow-left
+              = f.button :submit, :style => "text-decoration:none; margin: 10px;", :class => "btn btn-default btn-circle btn-lg" do
+                %i.fa.fa-save
