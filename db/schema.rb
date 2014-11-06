@@ -199,11 +199,9 @@ ActiveRecord::Schema.define(version: 20141106155651) do
     t.integer  "department_id"
   end
 
-  create_table "misc_work_orders_users", force: true do |t|
-    t.integer  "misc_work_order"
-    t.integer  "user"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "misc_work_orders_users", id: false, force: true do |t|
+    t.integer "misc_work_order_id"
+    t.integer "user_id"
   end
 
   create_table "parts", force: true do |t|
