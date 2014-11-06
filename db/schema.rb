@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028154130) do
+ActiveRecord::Schema.define(version: 20141106155651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,6 +184,28 @@ ActiveRecord::Schema.define(version: 20141028154130) do
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
 
+  create_table "misc_work_orders", force: true do |t|
+    t.integer  "account_number"
+    t.string   "cost_unit"
+    t.string   "cost_center"
+    t.text     "cost_description"
+    t.datetime "start_date"
+    t.datetime "due_date"
+    t.text     "description"
+    t.integer  "urgency"
+    t.boolean  "completion_switch"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "department_id"
+  end
+
+  create_table "misc_work_orders_users", force: true do |t|
+    t.integer  "misc_work_order"
+    t.integer  "user"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "parts", force: true do |t|
     t.string   "part"
     t.datetime "created_at"
@@ -300,6 +322,7 @@ ActiveRecord::Schema.define(version: 20141028154130) do
     t.boolean  "completion_switch"
     t.datetime "due_date"
     t.datetime "start_date"
+    t.integer  "department_id",     default: 1
   end
 
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", name: "mb_opt_outs_on_conversations_id", column: "conversation_id"

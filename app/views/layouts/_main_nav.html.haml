@@ -70,9 +70,17 @@
               %i.fa.fa-fw.fa-tasks
               = t('navigation.plantasks')
         %li
-          = link_to work_orders_path, class: active_page(work_orders_path) do
+          = link_to workplanner_path do
             %i.fa.fa-fw.fa-bug
-            = t('navigation.workorders')
+            = t('navigation.workplanner')
+            %span.fa.arrow
+          %ul.nav.nav-second-level
+            %li
+              = link_to "Trackable Work Orders", work_orders_path, class: active_page(work_orders_path)
+            %li
+              = link_to "Misc. Work Orders", misc_work_orders_path, class: active_page(misc_work_orders_path)
+            %li
+              = link_to "My Work Orders", myworkorders_path, class: active_page(myworkorders_path)
         - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
           %li
             = link_to libraries_path, class: active_page(libraries_path) do
@@ -82,10 +90,6 @@
           = link_to mytasks_path, class: active_page(mytasks_path) do
             %i.fa.fa-fw.fa-wrench
             = t('navigation.my_tasks')
-        %li
-          = link_to myworkorders_path, class: active_page(myworkorders_path) do
-            %i.fa.fa-fw.fa-gear
-            = t('navigation.my_workorders')
         %li
           %a{:href => "http://suggestions.asamacm.com/splash.html"}
             %i.fa.fa-fw.fa-envelope

@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Account number:
+  = @misc_work_order.account_number
+%p
+  %b Cost unit:
+  = @misc_work_order.cost_unit
+%p
+  %b Cost center:
+  = @misc_work_order.cost_center
+%p
+  %b Cost description:
+  = @misc_work_order.cost_description
+%p
+  %b Start date:
+  = @misc_work_order.start_date
+%p
+  %b Due date:
+  = @misc_work_order.due_date
+%p
+  %b Description:
+  = @misc_work_order.description
+%p
+  %b Urgency:
+  = @misc_work_order.urgency
+%p
+  %b Completion switch:
+  = @misc_work_order.completion_switch
+
+= link_to 'Edit', edit_misc_work_order_path(@misc_work_order)
+\|
+= link_to 'Back', misc_work_orders_path

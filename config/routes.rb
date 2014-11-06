@@ -7,9 +7,9 @@ AgSystem::Application.routes.draw do
     authenticated do
       root :to => 'dashboard#dash', as: :authenticated
     end
-    
+
     root :to => 'static_pages#home'
-    
+
     devise_for :users # Devise resource paths
     resources :users
 
@@ -25,6 +25,8 @@ AgSystem::Application.routes.draw do
         put :complete
       end
     end  
+
+    resources :misc_work_orders
 
     resources :conversations, only: [:index, :show, :new, :create] do
       member do
@@ -47,12 +49,12 @@ AgSystem::Application.routes.draw do
     match "/workloads" =>  "dashboard#workloads",      via: :get
     match "/status"    =>  "dashboard#status",         via: :get
     match "/overdue"   =>  "dashboard#overdue",        via: :get
-    
+
     match "/view_good"      =>  "dashboard#view_good",     via: :get
     match "/view_warnings"  =>  "dashboard#view_warnings", via: :get
     match "/view_alerts"    =>  "dashboard#view_alerts",   via: :get
     match "/view_overdue"   =>  "dashboard#view_overdue",  via: :get
-    
+
     match "/libraries" =>  "libraries#library",        via: :get  
 
     match "/mytasks"      =>   "my_task#mytasks",                  via: :get
@@ -61,5 +63,7 @@ AgSystem::Application.routes.draw do
     match "/home"      =>    "static_pages#home",      via: :get
     match "/about"     =>    "static_pages#about",     via: :get
     match "/contact"   =>    "static_pages#contact",   via: :get
+
+    match "/workplanner" => "work_planner#index", via: :get
   end
 end
