@@ -17,7 +17,7 @@ require 'helpdesk'
   config.sign_in_url = 'new_user_session_path'
 
   # Helpdesk email for notification
-  config.email = 'support@mowerman.net'
+  config.email = 'helpdesk@mowerman.net'
 
   # Send confirmation emails
   config.send_confirmation_emails = true

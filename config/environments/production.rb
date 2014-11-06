@@ -20,7 +20,7 @@ AgSystem::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Default Mailer URL
-  config.action_mailer.default_url_options = { :host => 'mowerman.net', :protocol => 'https' }
+  config.action_mailer.default_url_options = { :host => 'mowerman.net' }
   config.action_mailer.perform_deliveries = true
     
   # Disable Rails's static asset server (Apache or nginx will already do this).
