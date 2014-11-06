@@ -26,16 +26,16 @@ class RecordsController < ApplicationController
         @plantask.update_plantask_status
         @plantask.update_plantask_comment
         @plantask.unassign_plantask
-        
+
         if @record.status == 'ALERT'
-          @user = User.all
-          @user.each do |user|
-            if user.alert
-              SendSMS.send(user.phone_number, "#{@plantask.equipment}, #{@record.status}, #{@record.comments}")
+          user = User.all
+          user.each do |u|
+            if u.alert
+              SendSMS.send(u.phone_number, "#{@plantask.equipment}, #{@record.status}, #{@record.comments}")
             end
           end
         end
-        
+
         format.html { redirect_to mytasks_path, notice: 'You record was created.' }
       else
         format.html { render action: 'new' }
