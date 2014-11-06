@@ -7,6 +7,10 @@
       %h1.page-header
         Work Order
         %small= @work_order.plantask.equipment
+      %ol.breadcrumb
+        %li.active
+          %i.fa.fa-tasks
+          = "Work Order | #{@work_order.department.name} Department"
 
   = render 'layouts/flash' if !flash.empty?
 
