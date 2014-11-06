@@ -13,7 +13,7 @@ gem 'prawn-table', '~> 0.1.0'
 gem 'gon'
 
 # Use the helpdesk gem as the IT & Application helpdesk
-gem "helpdesk", :github => 'astorrer/helpdesk'
+gem "helpdesk", :github => 'wacaw/helpdesk'
 
 # Use twilio for SMS messaging
 gem 'twilio-ruby'

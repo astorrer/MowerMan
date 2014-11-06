@@ -1,17 +1,20 @@
 GIT
-  remote: git://github.com/astorrer/helpdesk.git
-  revision: cf640c450a4c7cd1377e1ea669663583cf66e428
+  remote: git://github.com/wacaw/helpdesk.git
+  revision: 9da1f561caae1de17da13fa97ff982bbe4d8273c
   specs:
-    helpdesk (0.0.27)
+    helpdesk (0.0.30)
       batch_translations
+      bootstrap-sass
+      ckeditor
       globalize
+      jquery-ui-rails
       kaminari
       rails
       rails_autolink
-      sass-rails (>= 3.2.3)
+      sass-rails
+      select2-rails
       simple_form
       state_machine
-      twitter-bootstrap-rails
 
 GEM
   remote: https://rubygems.org/
@@ -47,6 +50,8 @@ GEM
     arel (5.0.1.20140414130214)
     batch_translations (0.1.3)
     bcrypt-ruby (3.1.2)
+    bootstrap-sass (3.3.0.1)
+      sass (~> 3.2)
     bootstrap3-datetimepicker-rails (3.1.3)
       momentjs-rails (>= 2.8.1)
     builder (3.2.2)
@@ -57,6 +62,9 @@ GEM
       json (>= 1.7)
       mime-types (>= 1.16)
     chronic (0.10.2)
+    ckeditor (4.1.0)
+      mime-types
+      orm_adapter (~> 0.5.0)
     cocoon (1.2.6)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -215,11 +223,6 @@ GEM
       builder (>= 2.1.2)
       jwt (~> 1.0.0)
       multi_json (>= 1.3.0)
-    twitter-bootstrap-rails (3.2.0)
-      actionpack (~> 4.1)
-      execjs (~> 2.2)
-      rails (~> 4.1)
-      railties (~> 4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.1.1)
