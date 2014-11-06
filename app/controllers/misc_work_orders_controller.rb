@@ -14,7 +14,7 @@ class MiscWorkOrdersController < ApplicationController
 
   # GET /misc_work_orders/new
   def new
-    @misc_work_order = MiscWorkOrder.new
+    @misc_work_order = MiscWorkOrder.new(:urgency => '1', :department_id => current_user.department_id) 
   end
 
   # GET /misc_work_orders/1/edit

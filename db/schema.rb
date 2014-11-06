@@ -199,6 +199,13 @@ ActiveRecord::Schema.define(version: 20141106155651) do
     t.integer  "department_id"
   end
 
+  create_table "misc_work_orders_users", force: true do |t|
+    t.integer  "misc_work_order"
+    t.integer  "user"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "parts", force: true do |t|
     t.string   "part"
     t.datetime "created_at"
@@ -293,13 +300,6 @@ ActiveRecord::Schema.define(version: 20141106155651) do
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "users_misc_work_orders", force: true do |t|
-    t.integer  "misc_work_order_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "users_roles", id: false, force: true do |t|
     t.integer "user_id"

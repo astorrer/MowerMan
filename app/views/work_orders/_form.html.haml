@@ -17,7 +17,7 @@
         .form-group
           .row
             .col-lg-2
-              = f.label :department_id, "Select a department for this task."
+              = f.label :department, "Select a department for this task."
             .col-lg-10
               = f.select :department_id, Department.all.collect { |x| [x.name, x.id]}, {}, :class => 'select-2 form-control'
         .form-group
