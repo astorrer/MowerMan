@@ -14,6 +14,7 @@ class Ability
       can :manage, Part
       can :manage, TaskMethod
       can :manage, WorkOrder
+      can :manage, MiscWorkOrder
       can :create, Record
       can :update, EggTimer
     else
@@ -21,6 +22,7 @@ class Ability
       can :update, Plantask
       can :create, Record
       can :update, WorkOrder
+      can :update, MiscWorkOrder
     end
   end
 end

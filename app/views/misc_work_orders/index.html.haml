@@ -19,9 +19,10 @@
         = link_to :back, style: "text-decoration:none; margin: 10px;" do
           %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
             %i.fa.fa-arrow-left
-        = link_to new_misc_work_order_path, style: "text-decoration:none; margin: 10px;" do
-          %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
-            %i.fa.fa-bug
+        - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+          = link_to new_misc_work_order_path, style: "text-decoration:none; margin: 10px;" do
+            %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
+              %i.fa.fa-bug
 
   .row
     .col-md-12
