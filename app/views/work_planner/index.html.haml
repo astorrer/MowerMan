@@ -1,0 +1,22 @@
+- provide(:title, 'Work Planner')
+
+.container-fluid
+  .row
+    .col-lg-12
+      %h1.page-header
+        Work Planner
+        %small Directory
+      %ol.breadcrumb
+        %li.active
+          %i.fa.fa-bug
+          Work Planners | All Departments
+
+  = render 'layouts/flash' if !flash.empty?
+  
+  .row
+    .col-lg-6.col-md-6.col-xs-6
+      = link_to 'All Trackable', work_orders_path, class: "btn btn-primary btn-lg btn-block"
+      = link_to 'All Misc.', work_orders_path, class: "btn btn-primary btn-lg btn-block"
+    .col-lg-6.col-lg-6.col-md-6.col-xs-6
+      = link_to '(DEP) Tackable', work_orders_path, class: "btn btn-primary btn-lg btn-block"
+      = link_to '(DEP) Misc.', work_orders_path, class: "btn btn-primary btn-lg btn-block"
