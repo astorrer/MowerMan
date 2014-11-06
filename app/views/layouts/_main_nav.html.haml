@@ -5,13 +5,7 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    = link_to dash_path, :class => "navbar-brand" do
-      - if current_user.has_role? :admin
-        = "MowerMan | #{current_user.department.name}-Administrator"
-      - elsif current_user.has_role? :manager
-        = "MowerMan | #{current_user.department.name}-Manager"
-      - else
-        = "MowerMan | #{current_user.department.name}"
+    = link_to "MowerMan | #{current_user.department.name}", dash_path, :class => "navbar-brand"
   %ul.nav.navbar-top-links.navbar-right
     %li.dropdown
       %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
@@ -32,6 +26,15 @@
         %i.fa.fa-user.fa-fw
         %i.fa.fa-caret-down
       %ul.dropdown-menu.dropdown-user
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-lock.fa-fw
+            - if current_user.has_role? :admin
+              = "Administrator"
+            - elsif current_user.has_role? :manager
+              = "Manager"
+            - else
+              = "Associate"
         %li
           %a{:href => "#"}
             %i.fa.fa-user.fa-fw

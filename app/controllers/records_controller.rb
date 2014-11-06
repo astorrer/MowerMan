@@ -27,7 +27,7 @@ class RecordsController < ApplicationController
         @plantask.update_plantask_comment
         @plantask.unassign_plantask
 
-        if @record.status == 'ALERT'
+        if @record.status == 'ALERT' || @record.status == 'WARNING'
           user = User.all
           user.each do |u|
             if u.alert
