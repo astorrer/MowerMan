@@ -1,6 +1,5 @@
 .row
   .col-lg-12
-  
     - if @equipment.errors.any?
       .alert.alert-warning.alert-dismissable
         %a.close{:'data-dismiss' => "alert", :href => '#'} &times;
@@ -10,18 +9,24 @@
           - @equipment.errors.full_messages.each do |msg|
             %li= msg
 
+.row
+  .col-lg-12
   .well.bs-component
     %fieldset
       %legend Equipment
       = form_for(@equipment) do |f|
         .form-group
-          = f.label :equipment
-          .col-lg-10
-            = f.text_field :equipment, class: "form-control", maxlength: '45', placeholder: 'Enter your equipment...'
+          .row
+            .col-lg-2
+              = f.label :equipment
+            .col-lg-10
+              = f.text_field :equipment, class: "form-control", maxlength: '45', placeholder: 'Enter your equipment...'
         .form-group
-          = f.label :number
-          .col-lg-10
-            = f.number_field :number, class: "form-control", maxlength: '5', placeholder: 'Enter your equipment number...'
+          .row
+            .col-lg-2
+              = f.label :number
+            .col-lg-10
+              = f.number_field :number, class: "form-control", maxlength: '5', placeholder: 'Enter your equipment number...'
         .row
           .col-lg-12
             .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}

@@ -5,6 +5,8 @@ gem 'haml-rails'
 gem 'whenever', :require => false
 gem 'useragent' # Required to detect and block internet explorer.
 
+gem 'phony_rails' # Use to enable nice validations on phone_numbers
+
 # Use Prawn to generate PDFs
 gem 'prawn'
 gem 'prawn-table', '~> 0.1.0'
