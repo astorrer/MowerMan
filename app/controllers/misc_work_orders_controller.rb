@@ -28,7 +28,7 @@ class MiscWorkOrdersController < ApplicationController
   # POST /misc_work_orders.json
   def create
     @misc_work_order = MiscWorkOrder.new(misc_work_order_params)
-    @work_order.completion_switch = false
+    @misc_work_order.completion_switch = false
 
     respond_to do |format|
       if @misc_work_order.save
