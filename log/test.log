@@ -752,3 +752,818 @@ Migrating to AddDepartmentIdToMiscWorkOrders (20141106155651)
         
   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (13.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RenameAreaAreaToName (20141110180215)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "areas" RENAME COLUMN "area" TO "name"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141110180215"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.5ms)[0m  [1m
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'areas'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        [0m
+  [1m[35m (2.1ms)[0m  
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'departments'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        
+  [1m[36m (2.1ms)[0m  [1m
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'egg_timers'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        [0m
+  [1m[35m (2.1ms)[0m  
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'equipment'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        
+  [1m[36m (2.1ms)[0m  [1m
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'helpdesk_comments'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        [0m
+  [1m[35m (2.1ms)[0m  
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'helpdesk_faq_translations'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        
+  [1m[36m (2.1ms)[0m  [1m
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'helpdesk_faqs'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        [0m
+  [1m[35m (2.1ms)[0m  
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'helpdesk_subscribers'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        
+  [1m[36m (1.7ms)[0m  [1m
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'helpdesk_ticket_type_translations'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        [0m
+  [1m[35m (1.6ms)[0m  
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'helpdesk_ticket_types'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        
+  [1m[36m (1.7ms)[0m  [1m
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'helpdesk_tickets'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        [0m
+  [1m[35m (1.6ms)[0m  
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'mailboxer_conversation_opt_outs'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        
+  [1m[36m (1.8ms)[0m  [1m
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'mailboxer_conversations'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        [0m
+  [1m[35m (1.8ms)[0m  
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'mailboxer_notifications'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        
+  [1m[36m (1.7ms)[0m  [1m
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'mailboxer_receipts'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        [0m
+  [1m[35m (1.6ms)[0m  
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'misc_work_orders'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        
+  [1m[36m (1.9ms)[0m  [1m
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'misc_work_orders_users'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        [0m
+  [1m[35m (1.9ms)[0m  
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'parts'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        
+  [1m[36m (1.6ms)[0m  [1m
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'plantasks'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        [0m
+  [1m[35m (1.7ms)[0m  
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'records'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        
+  [1m[36m (1.8ms)[0m  [1m
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'roles'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        [0m
+  [1m[35m (1.9ms)[0m  
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'task_histories'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        
+  [1m[36m (2.0ms)[0m  [1m
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'task_methods'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        [0m
+  [1m[35m (1.7ms)[0m  
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'users'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        
+  [1m[36m (1.6ms)[0m  [1m
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'users_roles'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        [0m
+  [1m[35m (2.1ms)[0m  
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'users_work_orders'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        
+  [1m[36m (1.7ms)[0m  [1m
+          SELECT t2.relname AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confdeltype AS dependency
+          FROM pg_constraint c
+          JOIN pg_class t1 ON c.conrelid = t1.oid
+          JOIN pg_class t2 ON c.confrelid = t2.oid
+          JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+          JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+          JOIN pg_namespace t3 ON c.connamespace = t3.oid
+          WHERE c.contype = 'f'
+            AND t1.relname = 'work_orders'
+            AND t3.nspname = ANY (current_schemas(false))
+          ORDER BY c.conname
+        [0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (9.7ms)[0m  INSERT INTO "areas" ("created_at", "name", "number", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-10 18:25:47.590399"], ["name", "Melt"], ["number", 12345], ["updated_at", "2014-11-10 18:25:47.590399"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "areas" ("created_at", "name", "number", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-10 18:26:10.213235"], ["name", "Melt"], ["number", 12345], ["updated_at", "2014-11-10 18:26:10.213235"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mArea Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.3ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 2343 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "areas" ("created_at", "name", "number", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-10 18:32:32.695903"], ["name", "Melt"], ["number", 12345], ["updated_at", "2014-11-10 18:32:32.695903"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (13.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (12.1ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "areas" ("created_at", "name", "number", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-10 19:29:44.483473"], ["name", "Melt"], ["number", 12345], ["updated_at", "2014-11-10 19:29:44.483473"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 2343 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 2343 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "areas" ("created_at", "name", "number", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-10 19:30:15.635794"], ["name", "Melt"], ["number", 12345], ["updated_at", "2014-11-10 19:30:15.635794"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.3ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "areas" ("created_at", "name", "number", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-10 19:32:19.770432"], ["name", "Melt"], ["number", 12345], ["updated_at", "2014-11-10 19:32:19.770432"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (12.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (12.5ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.3ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.3ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mArea Exists (0.5ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "areas" ("created_at", "name", "number", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-10 19:49:09.077829"], ["name", "Melt"], ["number", 12345], ["updated_at", "2014-11-10 19:49:09.077829"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.3ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "areas" ("created_at", "name", "number", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-10 19:49:31.132570"], ["name", "Melt"], ["number", 12345], ["updated_at", "2014-11-10 19:49:31.132570"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mArea Exists (0.5ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "areas" ("created_at", "name", "number", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-10 19:49:52.254330"], ["name", "Melt"], ["number", 12345], ["updated_at", "2014-11-10 19:49:52.254330"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mArea Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "areas" ("created_at", "name", "number", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2014-11-10 19:56:49.073531"], ["name", "Melt"], ["number", 12345], ["updated_at", "2014-11-10 19:56:49.073531"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mArea Exists (0.5ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "areas" ("created_at", "name", "number", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-10 19:57:56.009388"], ["name", "Melt"], ["number", 12345], ["updated_at", "2014-11-10 19:57:56.009388"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "areas" ("created_at", "name", "number", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-10 19:59:27.599943"], ["name", "Melt"], ["number", 12345], ["updated_at", "2014-11-10 19:59:27.599943"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
