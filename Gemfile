@@ -5,7 +5,8 @@ gem 'haml-rails'
 gem 'whenever', :require => false
 gem 'useragent' # Required to detect and block internet explorer.
 
-gem 'phony_rails' # Use to enable nice validations on phone_numbers
+gem 'phony_rails' # Use to enable validations on phone_numbers, rational numbers only. 
+gem 'bootstrap-wysihtml5-rails'
 
 # Use Prawn to generate PDFs
 gem 'prawn'
@@ -15,7 +16,7 @@ gem 'prawn-table', '~> 0.1.0'
 gem 'gon'
 
 # Use the helpdesk gem as the IT & Application helpdesk
-gem "helpdesk", :github => 'wacaw/helpdesk'
+gem "helpdesk", :github => 'astorrer/helpdesk'
 
 # Use twilio for SMS messaging
 gem 'twilio-ruby'

@@ -18,6 +18,8 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require fullcalendar
+//= require bootstrap-wysihtml5
+//= require bootstrap-wysihtml5/locales
 //= require plugins/stickyTabs/stickytabs
 //= require plugins/dataTables/jquery.dataTables.js
 //= require plugins/dataTables/dataTables.bootstrap.js
@@ -37,3 +39,11 @@
 $(document).ready( function () {
     $('#datatable').DataTable();
 } );
+
+$(document).ready(function(){
+
+  $('.wysihtml5').each(function(i, elem) {
+    $(elem).wysihtml5();
+  });
+
+})

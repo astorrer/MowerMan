@@ -1,0 +1,8 @@
+.well.bs-component
+  %fieldset
+    %legend Department
+    .form-group
+      .col-lg-4
+        = f.label :department_id, "Select a department.", class: "col-lg-2 control-label"
+      .col-lg-8
+        = f.select :department_id, Department.all.collect {|x| [x.name, x.id]}, {}, :class => 'select-2 form-control'

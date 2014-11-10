@@ -15,9 +15,11 @@
       %legend Method
       = form_for(@task_method) do |f|
         .form-group
-          = f.label :method
-          .col-lg-10
-            = f.text_field :method, class: "char-max-length form-control", maxlength: '45', placeholder: 'Enter your task_method...'
+          .row
+            .col-lg-2
+              = f.label :method
+            .col-lg-10
+              = f.text_field :method, class: "char-max-length form-control", maxlength: '45', placeholder: 'Enter your method...'
         .row
           .col-lg-12
             .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}

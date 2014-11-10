@@ -15,9 +15,11 @@
       %legend Part
       = form_for(@part) do |f|
         .form-group
-          = f.label :part
-          .col-lg-10
-            = f.text_field :part, class: "form-control", maxlength: '45', placeholder: 'Enter your part...'
+          .row
+            .col-lg-2
+              = f.label :part
+            .col-lg-10
+              = f.text_field :part, class: "form-control", maxlength: '45', placeholder: 'Enter your part...'
         .row
           .col-lg-12
             .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}

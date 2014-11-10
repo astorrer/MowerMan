@@ -1,149 +1,192 @@
 .row
   .col-lg-12
-    .well.bs-component
-      = form_for @plantask, :html => {:class => "form-horizontal"} do |f|
-        - if @plantask.errors.any?
-          .alert.alert-warning.alert-dismissable
-            %a.close{"data-dismiss" => "alert", :href => "#"}
-              \×
-            %i.icon-exclamation-sign
-            = pluralize(@plantask.errors.count, "error")
-            prevented this task from being created:
-            %ul
-              - @plantask.errors.full_messages.each do |msg|
-                %li= msg
+    - if @plantask.errors.any?
+      .alert.alert-warning.alert-dismissable
+        %a.close{"data-dismiss" => "alert", :href => "#"}
+          \×
+        %i.icon-exclamation-sign
+        = pluralize(@plantask.errors.count, "error")
+        prevented this task from being created:
+        %ul
+          - @plantask.errors.full_messages.each do |msg|
+            %li= msg
+.row
+  .col-lg-12
+    = form_for @plantask, :html => {:class => "form-horizontal"} do |f|
+      .well.bs-component
         %fieldset
           %legend Department
           .form-group
-            = f.label :department_id, "Select a department.", class: "col-lg-2 control-label"
-            .col-lg-10
-              = f.collection_select :department_id, Department.order(:name),:id,:name, class: 'select2 form-control'
+            .row
+              .col-lg-4
+                = f.label :department_id, "Select a department.", class: "col-lg-2 control-label"
+              .col-lg-8
+                = f.select :department_id, Department.all.collect {|x| [x.name, x.id]}, {}, :class => 'select-2 form-control'
+      .well.bs-component
+        %fieldset
           %legend Basic Information
           .form-group
-            = f.label :area, "Area", class: "col-lg-2 control-label"
-            .col-lg-10
-              = f.select(:area, area_select, {}, {:class => 'select2 form-control', :id => "area_selector"})
+            .row
+              .col-lg-2
+                = f.label :area, "Area", class: "col-lg-2 control-label"
+              .col-lg-10
+                = f.select(:area, area_select, {}, {:class => 'select2 form-control', :id => "area_selector"})
           .form-group
-            = f.label :equipment, "Equipment", class: "col-lg-2 control-label"
-            .col-lg-10
-              = f.select(:equipment, equipment_select, {}, {:class => 'select2 form-control', :id => "equipment_selector"})
+            .row
+              .col-lg-2
+                = f.label :equipment, "Equipment", class: "col-lg-2 control-label"
+              .col-lg-10
+                = f.select(:equipment, equipment_select, {}, {:class => 'select2 form-control', :id => "equipment_selector"})
           .form-group
-            = f.label :part, "Part", class: "col-lg-2 control-label"
-            .col-lg-10
-              = f.select(:part, part_select, {}, {:class => 'select2 form-control', :id => "part_selector"})
+            .row
+              .col-lg-2
+                = f.label :part, "Part", class: "col-lg-2 control-label"
+              .col-lg-10
+                = f.select(:part, part_select, {}, {:class => 'select2 form-control', :id => "part_selector"})
           .form-group
-            = f.label :method, "Method", class: "col-lg-2 control-label"
-            .col-lg-10
-              = f.select(:method, method_select, {}, {:class => 'select2 form-control', :id => "method_selector"})
+            .row
+              .col-lg-2
+                = f.label :method, "Method", class: "col-lg-2 control-label"
+              .col-lg-10
+                = f.select(:method, method_select, {}, {:class => 'select2 form-control', :id => "method_selector"})
+      .well.bs-component
+        %fieldset
+          %legend= f.label :description, "Description"
           .form-group
-            = f.label :description, "Desc.", class: "col-lg-2 control-label"
-            .col-lg-10
-              = f.text_area :description, class: "form-control", rows: '3'
-              %span.help-block Please keep your description brief, and less than 140 Characters.
+            .row
+              .col-lg-12
+                = f.text_area :description, class: "form-control wysihtml5"
+                %span.help-block Please keep your description less than 140 Characters.
+      .well.bs-component
         %fieldset
           %legend Data Profile
           .form-group
-            = f.label :data_type, "Data Type", class: "col-lg-2 control-label"
-            .col-lg-10
-              = f.text_field :data_type, class: "form-control"
-              %span.help-block Fill, Weight, Tempature, etc.
+            .row
+              .col-lg-2
+                = f.label :data_type, "Data Type", class: "col-lg-2 control-label"
+              .col-lg-10
+                = f.text_field :data_type, class: "form-control"
+                %span.help-block Fill, Weight, Tempature, etc.
           .form-group
-            = f.label :target, "Target", class: "col-lg-2 control-label"
-            .col-lg-10
-              = f.number_field :target, class: "form-control"
+            .row
+              .col-lg-2
+                = f.label :target, "Target", class: "col-lg-2 control-label"
+              .col-lg-10
+                = f.number_field :target, class: "form-control"
           .form-group
-            = f.label :ext_upper, "Upper Limit", class: "col-lg-2 control-label"
-            .col-lg-10.col-sm-6
-              .input-group.number-spinner
-                %span.input-group-btn
-                  %button.btn.btn-default{"data-dir" => "dwn", :type => "button"}
-                    %i.fa.fa-fw.fa-minus
-                = f.number_field :ext_upper, class: "form-control text-center", value: "1"
-                %span.input-group-btn
-                  %button.btn.btn-default{"data-dir" => "up", :type => "button"}
-                    %i.fa.fa-fw.fa-plus
+            .row
+              .col-lg-2
+                = f.label :ext_upper, "Upper Limit", class: "col-lg-2 control-label"
+              .col-lg-10.col-sm-6
+                .input-group.number-spinner
+                  %span.input-group-btn
+                    %button.btn.btn-default{"data-dir" => "dwn", :type => "button"}
+                      %i.fa.fa-fw.fa-minus
+                  = f.number_field :ext_upper, class: "form-control text-center", value: "1"
+                  %span.input-group-btn
+                    %button.btn.btn-default{"data-dir" => "up", :type => "button"}
+                      %i.fa.fa-fw.fa-plus
           .form-group
-            = f.label :upper, "Upper Control Limit", class: "col-lg-2 control-label"
-            .col-lg-10.col-sm-6
-              .input-group.number-spinner
-                %span.input-group-btn
-                  %button.btn.btn-default{"data-dir" => "dwn", :type => "button"}
-                    %i.fa.fa-fw.fa-minus
-                = f.number_field :upper, class: "form-control text-center", value: "1"
-                %span.input-group-btn
-                  %button.btn.btn-default{"data-dir" => "up", :type => "button"}
-                    %i.fa.fa-fw.fa-plus
+            .row
+              .col-lg-2
+                = f.label :upper, "Upper Control Limit", class: "col-lg-2 control-label"
+              .col-lg-10.col-sm-6
+                .input-group.number-spinner
+                  %span.input-group-btn
+                    %button.btn.btn-default{"data-dir" => "dwn", :type => "button"}
+                      %i.fa.fa-fw.fa-minus
+                  = f.number_field :upper, class: "form-control text-center", value: "1"
+                  %span.input-group-btn
+                    %button.btn.btn-default{"data-dir" => "up", :type => "button"}
+                      %i.fa.fa-fw.fa-plus
           .form-group
-            = f.label :ext_lower, "Lower Control Limit", class: "col-lg-2 control-label"
-            .col-lg-10.col-sm-6
-              .input-group.number-spinner
-                %span.input-group-btn
-                  %button.btn.btn-default{"data-dir" => "dwn", :type => "button"}
-                    %i.fa.fa-fw.fa-minus
-                = f.number_field :ext_lower, class: "form-control text-center", value: "1"
-                %span.input-group-btn
-                  %button.btn.btn-default{"data-dir" => "up", :type => "button"}
-                    %i.fa.fa-fw.fa-plus
+            .row
+              .col-lg-2
+                = f.label :ext_lower, "Lower Control Limit", class: "col-lg-2 control-label"
+              .col-lg-10.col-sm-6
+                .input-group.number-spinner
+                  %span.input-group-btn
+                    %button.btn.btn-default{"data-dir" => "dwn", :type => "button"}
+                      %i.fa.fa-fw.fa-minus
+                  = f.number_field :ext_lower, class: "form-control text-center", value: "1"
+                  %span.input-group-btn
+                    %button.btn.btn-default{"data-dir" => "up", :type => "button"}
+                      %i.fa.fa-fw.fa-plus
           .form-group
-            = f.label :lower, "Lower Limit", class: "col-lg-2 control-label"
-            .col-lg-10.col-sm-6
-              .input-group.number-spinner
-                %span.input-group-btn
-                  %button.btn.btn-default{"data-dir" => "dwn", :type => "button"}
-                    %i.fa.fa-fw.fa-minus
-                = f.number_field :lower, class: "form-control text-center", value: "1"
-                %span.input-group-btn
-                  %button.btn.btn-default{"data-dir" => "up", :type => "button"}
-                    %i.fa.fa-fw.fa-plus
+            .row
+              .col-lg-2
+                = f.label :lower, "Lower Limit", class: "col-lg-2 control-label"
+              .col-lg-10.col-sm-6
+                .input-group.number-spinner
+                  %span.input-group-btn
+                    %button.btn.btn-default{"data-dir" => "dwn", :type => "button"}
+                      %i.fa.fa-fw.fa-minus
+                  = f.number_field :lower, class: "form-control text-center", value: "1"
+                  %span.input-group-btn
+                    %button.btn.btn-default{"data-dir" => "up", :type => "button"}
+                      %i.fa.fa-fw.fa-plus
+      .well.bs-component
         %fieldset
           %legend Assignment
           .form-group
-            = f.label :associate, 'Associate', class: "col-lg-2 control-label"
-            .col-lg-10
-              = f.select(:associate, email_select, {}, {:class => 'select2 form-control', :id => "associate_selector"})
+            .row
+              .col-lg-2
+                = f.label :associate, 'Associate', class: "col-lg-2 control-label"
+              .col-lg-10
+                = f.select(:associate, email_select, {}, {:class => 'select2 form-control', :id => "associate_selector"})
+      .well.bs-component
         %fieldset
           %legend Estimated Time
           .form-group
-            = f.label :est_time, "Time", class: "col-lg-2 control-label"
-            .col-lg-10.col-sm-6
-              .input-group.number-spinner
-                %span.input-group-btn
-                  %button.btn.btn-default{"data-dir" => "dwn", :type => "button"}
-                    %i.fa.fa-fw.fa-minus
-                = f.number_field :est_time, class: "form-control text-center", value: "1"
-                %span.input-group-btn
-                  %button.btn.btn-default{"data-dir" => "up", :type => "button"}
-                    %i.fa.fa-fw.fa-plus
-              %span.help-block Minutes only please.
+            .row
+              .col-lg-2
+                = f.label :est_time, "Time", class: "col-lg-2 control-label"
+              .col-lg-10.col-sm-6
+                .input-group.number-spinner
+                  %span.input-group-btn
+                    %button.btn.btn-default{"data-dir" => "dwn", :type => "button"}
+                      %i.fa.fa-fw.fa-minus
+                  = f.number_field :est_time, class: "form-control text-center", value: "1"
+                  %span.input-group-btn
+                    %button.btn.btn-default{"data-dir" => "up", :type => "button"}
+                      %i.fa.fa-fw.fa-plus
+                %span.help-block Minutes only please.
+      .well.bs-component
         %fieldset
           %legend Egg Timer
           .form-group
-            = f.label :egg_timer_id, "Select a timer.", class: "col-lg-2 control-label"
-            .col-lg-10
-              = f.collection_select :egg_timer_id, EggTimer.order(:kind),:id,:kind, class: 'select2 form-control'
+            .row
+              .col-lg-2
+                = f.label :egg_timer_id, "Select a timer.", class: "col-lg-2 control-label"
+              .col-lg-10
+                = f.collection_select :egg_timer_id, EggTimer.order(:kind),:id,:kind, class: 'select2 form-control'
+      .well.bs-component
         %fieldset
           %legend Intial Status
           .form-group
-            = f.label :current_status, "Select an initial status.", class: "col-lg-2 control-label"
-            .col-lg-10
-              .radio
-                %label
-                  = f.radio_button :current_status, 'GOOD'
-                  = f.label :current_status, "GOOD", :value => 'GOOD'
-              .radio
-                %label
-                  = f.radio_button :current_status, 'WARNING'
-                  = f.label :current_status, "WARNING", :value => 'WARNING'
-              .radio
-                %label
-                  = f.radio_button :current_status, 'ALERT'
-                  = f.label :current_status, "ALERT", :value => 'ALERT'
-          .form-group
-        .row
-          .col-lg-12
-            .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
-              = link_to :back, style: "text-decoration:none; margin: 10px;" do
-                %button.btn.btn-danger.btn-circle.btn-lg{:type => "button"}
-                  %i.fa.fa-times
-              = f.button :submit, :style => "text-decoration:none; margin: 10px;", :class => "btn btn-default btn-circle btn-lg" do
-                %i.fa.fa-save
+            .row
+              .col-lg-2
+                = f.label :current_status, "Select an initial status.", class: "col-lg-2 control-label"
+              .col-lg-10
+                .radio
+                  %label
+                    = f.radio_button :current_status, 'GOOD'
+                    = f.label :current_status, "GOOD", :value => 'GOOD'
+                .radio
+                  %label
+                    = f.radio_button :current_status, 'WARNING'
+                    = f.label :current_status, "WARNING", :value => 'WARNING'
+                .radio
+                  %label
+                    = f.radio_button :current_status, 'ALERT'
+                    = f.label :current_status, "ALERT", :value => 'ALERT'
+      .well.bs-component
+        %fieldset
+          .row
+            .col-lg-12
+              .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
+                = link_to :back, style: "text-decoration:none; margin: 10px;" do
+                  %button.btn.btn-danger.btn-circle.btn-lg{:type => "button"}
+                    %i.fa.fa-times
+                = f.button :submit, :style => "text-decoration:none; margin: 10px;", :class => "btn btn-default btn-circle btn-lg" do
+                  %i.fa.fa-save

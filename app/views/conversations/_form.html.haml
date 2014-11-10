@@ -5,17 +5,23 @@
         %legend Conversation
         = form_for :conversation, url: :conversations do |f|
           .form-group
-            = f.label :recipients, "Recipients", class: "col-lg-2 control-label"
-            .col-lg-10
-              = f.select :recipients, User.all.collect {|x| [x.name, x.email]}, {}, :multiple => true, :class => 'select-2 form-control'
+            .row
+              .col-lg-2
+                = f.label :recipients, "Recipients", class: "col-lg-2 control-label"
+              .col-lg-10
+                = f.select :recipients, User.all.collect {|x| [x.name, x.email]}, {}, :multiple => true, :class => 'select-2 form-control'
           .form-group
-            = f.label :subject, "Subject", class: "col-lg-2 control-label"
-            .col-lg-10
-              = f.text_field :subject, class: 'form-control'
+            .row
+              .col-lg-2
+                = f.label :subject, "Subject", class: "col-lg-2 control-label"
+              .col-lg-10
+                = f.text_field :subject, class: 'form-control'
           .form-group
-            = f.label :body, "Body", class: "col-lg-2 control-label"
-            .col-lg-10
-              = f.text_area :body, as: :text, class: 'form-control'
+            .row
+              .col-lg-2
+                = f.label :body, "Body", class: "col-lg-2 control-label"
+              .col-lg-10
+                = f.text_area :body, as: :text, class: 'form-control wysihtml5'
           .row
             .col-lg-12
               .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
