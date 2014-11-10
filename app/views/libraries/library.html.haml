@@ -76,7 +76,7 @@
                   - @area.each do |area|
                     %tr
                       %td= area.number
-                      %td= area.area
+                      %td= area.name
                       - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
                         %td
                           .btn-group
