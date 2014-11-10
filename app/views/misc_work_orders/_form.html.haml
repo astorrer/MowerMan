@@ -80,12 +80,16 @@
                     = f.label :due_date
                   .col-lg-8
                     = f.datetime_select :due_date
+      .well.bs-component
+        %fieldset
+          %legend= f.label :description
           .form-group
             .row
-              .col-lg-2
-                = f.label :description
-              .col-lg-10
-                = f.text_area :description, class: 'form-control'
+              .col-lg-12
+                = f.text_area :description, class: 'form-control wysihtml5'
+      .well.bs-component
+        %fieldset
+          %legend Assign Associates
           .form-group
             .row
               .col-lg-2
