@@ -2299,3 +2299,48 @@ Migrating to RenameEquipmentToNameOnEquipment (20141111135051)
   [1m[35mEquipment Exists (0.2ms)[0m  SELECT  1 AS one FROM "equipment"  WHERE "equipment"."number" IS NULL LIMIT 1
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
   [1m[36mActiveRecord::SchemaMigration Load (13.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (12.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mEquipment Exists (12.5ms)[0m  [1mSELECT  1 AS one FROM "equipment"  WHERE "equipment"."number" = 123456 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mEquipment Exists (0.4ms)[0m  SELECT  1 AS one FROM "equipment"  WHERE "equipment"."number" = 33197 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mEquipment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "equipment"  WHERE "equipment"."number" = 78419 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mEquipment Exists (0.2ms)[0m  SELECT  1 AS one FROM "equipment"  WHERE "equipment"."number" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mEquipment Exists (0.2ms)[0m  SELECT  1 AS one FROM "equipment"  WHERE "equipment"."number" = 12345 LIMIT 1
+  [1m[36mSQL (7.1ms)[0m  [1mINSERT INTO "equipment" ("created_at", "name", "number", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-11 14:56:13.769287"], ["name", "orchid"], ["number", 12345], ["updated_at", "2014-11-11 14:56:13.769287"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mEquipment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "equipment"  WHERE "equipment"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mEquipment Exists (0.3ms)[0m  SELECT  1 AS one FROM "equipment"  WHERE "equipment"."number" = 85717 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (1.4ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 123456 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 34148 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mArea Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 88566 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.3ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mArea Exists (0.3ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "areas" ("created_at", "name", "number", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-11-11 14:56:13.804867"], ["name", "Automotive, Books & Garden"], ["number", 12345], ["updated_at", "2014-11-11 14:56:13.804867"]]
+  [1m[35m (1.6ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mArea Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 12345 LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mArea Exists (0.2ms)[0m  SELECT  1 AS one FROM "areas"  WHERE "areas"."number" = 85640 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
