@@ -16,6 +16,12 @@ RSpec.configure do |config|
   # Include FactoryGirl syntax to simplify calls to factories
   config.include FactoryGirl::Syntax::Methods
   
+  # Include devise helper methdos
+  config.include Devise::TestHelpers, type: :controller
+  
+  # Set rspec to infer test type from directory
+  config.infer_spec_type_from_file_location!
+  
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

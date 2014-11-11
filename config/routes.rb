@@ -55,7 +55,7 @@ AgSystem::Application.routes.draw do
     match "/view_alerts"    =>  "dashboard#view_alerts",   via: :get
     match "/view_overdue"   =>  "dashboard#view_overdue",  via: :get
 
-    match "/libraries" =>  "libraries#library",        via: :get  
+    match "/libraries" =>  "libraries#index",        via: :get  
 
     match "/mytasks"      =>   "my_task#mytasks",                  via: :get
     match "/myworkorders" =>   "my_workorder#myworkorders",         via: :get

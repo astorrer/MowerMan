@@ -1,7 +1,7 @@
 class LibrariesController < ApplicationController
   before_filter :authenticate_user!
   
-  def library
+  def index
     @area        = Area.order("number").page(params[:page_area]).per(8)
     @equipment   = Equipment.all.page(params[:page_equipment]).per(8)
     @part        = Part.all.page(params[:page_part]).per(8)

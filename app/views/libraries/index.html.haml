@@ -1,0 +1,155 @@
+- provide(:title, 'Libraries')
+
+.container-fluid
+  / Page Heading
+  .row
+    .col-lg-12
+      %h1.page-header
+        Libraries
+        %small Shared Resources
+      %ol.breadcrumb
+        %li.active
+          %i.fa.fa-dashboard
+            Libraries | All Departments
+
+  = render 'layouts/flash' if !flash.empty?
+
+  .row
+    .col-lg-12
+      .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
+        = link_to :back, style: "text-decoration:none; margin: 10px;" do
+          %button.btn.btn-primary.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-arrow-left
+        - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+          = link_to new_area_path, style: "text-decoration:none; margin: 8px;" do
+            %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
+              %i.fa.fa-location-arrow
+          = link_to new_equipment_path, style: "text-decoration:none; margin: 8px;" do
+            %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
+              %i.fa.fa-cube
+          = link_to new_part_path, style: "text-decoration:none; margin: 8px;" do
+            %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
+              %i.fa.fa-gear
+          = link_to new_task_method_path, style: "text-decoration:none; margin: 8px;" do
+            %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
+              %i.fa.fa-crosshairs
+        - if current_user.has_role? :admin
+          = link_to new_egg_timer_path, style: "text-decoration:none; margin: 8px;" do
+            %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
+              %i.fa.fa-clock-o
+  .row
+    .col-md-12
+      .panel.with-nav-tabs.panel-default
+        .panel-heading
+          %ul.nav.nav-tabs
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab1"}
+                %i.fa.fa-location-arrow 
+                Areas
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab2"}
+                %i.fa.fa-cube
+                Equipment
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab3"}
+                %i.fa.fa-gear
+                Parts
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab4"}
+                %i.fa.fa-crosshairs  
+                Methods
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab5"}
+                %i.fa.fa-clock-o  
+                Egg Timers
+        .panel-body
+          .tab-content
+            #tab1.tab-pane.fade.in
+              %table.data-table.table.table-bordered.table-striped
+                %thead
+                  %tr
+                    %th No.
+                    %th Area
+                    - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+                      %th.col-md-3
+                %tbody
+                  - @area.each do |area|
+                    %tr
+                      %td= area.number
+                      %td= area.name
+                      - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+                        %td
+                          .btn-group
+                            = link_to 'EDIT', edit_area_path(area), class: "btn btn-default"
+                            = link_to 'DELETE', area, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
+              = paginate @area, :param_name => "page_area", :params => { :anchor => 'tab1' }
+            #tab2.tab-pane.fade.in
+              %table.data-table.table.table-bordered.table-striped
+                %thead
+                  %tr
+                    %th No.
+                    %th Equipment
+                    - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+                      %th.col-md-3
+                %tbody
+                  - @equipment.each do |equipment|
+                    %tr
+                      %td= equipment.number
+                      %td= equipment.name
+                      - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+                        %td
+                          .btn-group
+                            = link_to 'EDIT', edit_equipment_path(equipment), class: "btn btn-default"
+                            = link_to 'DELETE', equipment, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
+              = paginate @equipment, :param_name => "page_equipment", :params => { :anchor => 'tab2' }
+            #tab3.tab-pane.fade.in
+              %table.data-table.table.table-bordered.table-striped
+                %thead
+                  %tr
+                    %th Part
+                    - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+                      %th.col-md-3
+                %tbody
+                  - @part.each do |part|
+                    %tr
+                      %td= part.part
+                      - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+                        %td
+                          .btn-group
+                            = link_to 'EDIT', edit_part_path(part), class: "btn btn-default"
+                            = link_to 'DELETE', part, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
+              = paginate @part, :param_name => "page_part", :params => { :anchor => 'tab3' }
+            #tab4.tab-pane.fade.in
+              %table.data-table.table.table-bordered.table-striped
+                %thead
+                  %tr
+                    %th Method
+                    - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+                      %th.col-md-3
+                %tbody
+                  - @task_method.each do |task_method|
+                    %tr
+                      %td= task_method.method
+                      - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+                        %td
+                          .btn-group
+                            = link_to 'EDIT', edit_task_method_path(task_method), class: "btn btn-default"
+                            = link_to 'DELETE', task_method, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
+              = paginate @task_method, :param_name => "page_method", :params => { :anchor => 'tab4' }
+            #tab5.tab-pane.fade.in
+              %table.data-table.table.table-bordered.table-striped
+                %thead
+                  %tr
+                    %th Timer
+                    - if current_user.has_role? :admin
+                      %th.col-md-3
+                %tbody
+                  - @egg_timer.each do |egg_timer|
+                    %tr
+                      %td= egg_timer.kind
+                      - if current_user.has_role? :admin
+                        %td
+                          .btn-group
+                            = link_to 'EDIT', edit_egg_timer_path(egg_timer), class: "btn btn-default"
+                            = link_to 'DELETE', egg_timer, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
+              = paginate @egg_timer, :param_name => "page_timer", :params => { :anchor => 'tab5' }
