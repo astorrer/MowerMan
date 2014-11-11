@@ -1,5 +1,6 @@
 http://mowerman.net/assets/name-099c916555c964be8dd8c0ebe7c9cdda.png
-https://magnum.travis-ci.com/astorrer/MowerMan.svg?token=n7sMrAyAZBnK3cxzX4cD&branch=master
+
+{<img src="https://magnum.travis-ci.com/astorrer/MowerMan.svg?token=n7sMrAyAZBnK3cxzX4cD&branch=master" alt="Build Status" />}[https://magnum.travis-ci.com/astorrer/MowerMan]
 
 == README
 
