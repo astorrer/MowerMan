@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :area do
-    name "Melt"
-    number 12345
+    name { Faker::Commerce.department }
+    number { Faker::Number.number(5) }
   end
 end

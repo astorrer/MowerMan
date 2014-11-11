@@ -7,6 +7,6 @@ class Equipment < ActiveRecord::Base
   
   # Notice that I have scoped through an associated model here. I don't know if this is a good plan or not.
     
-  validates :equipment, presence: true, length: { maximum: 35 }
-  validates :number, presence: true, numericality: { only_integer: true }, length: { maximum: 5 }
+  validates :name, presence: true, length: { maximum: 45 }
+  validates :number, presence: true, numericality: { only_integer: true }, length: { maximum: 5 }, uniqueness: true
 end

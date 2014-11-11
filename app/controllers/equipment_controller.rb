@@ -45,6 +45,6 @@ class EquipmentController < ApplicationController
     end
 
     def equipment_params
-      params.require(:equipment).permit(:equipment, :number)
+      params.require(:equipment).permit(:name, :number)
     end
 end

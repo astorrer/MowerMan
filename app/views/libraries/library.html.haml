@@ -95,7 +95,7 @@
                   - @equipment.each do |equipment|
                     %tr
                       %td= equipment.number
-                      %td= equipment.equipment
+                      %td= equipment.name
                       - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
                         %td
                           .btn-group
