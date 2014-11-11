@@ -33,7 +33,7 @@
                       %li
                         %a{"data-toggle" => "pill", :href => "#tab#{task.to_s + @string}"}
                           - @var = task.to_i
-                          = task.to_s + ' | ' + Equipment.find_by_number(@var).equipment
+                          = task.to_s + ' | ' + Equipment.find_by_number(@var).name
 
                 .tab-content.col-md-9
                   - @all.each do |task|
