@@ -2298,3 +2298,4 @@ Migrating to RenameEquipmentToNameOnEquipment (20141111135051)
   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mEquipment Exists (0.2ms)[0m  SELECT  1 AS one FROM "equipment"  WHERE "equipment"."number" IS NULL LIMIT 1
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (13.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m

@@ -1,6 +1,9 @@
+{ http://mowerman.net/assets/name-099c916555c964be8dd8c0ebe7c9cdda.png }
+{ https://magnum.travis-ci.com/astorrer/MowerMan.svg?token=n7sMrAyAZBnK3cxzX4cD&branch=master }
+
 == README
 
-The AG System is a planned task manager. The goal of the AG System is to speed up the PDCA loop. 
+The MowerMan is a planned task manager. The goal of the AG System is to speed up the PDCA loop. 
 (Plan, Do, Check, Act), by automating the planning and checking processes. 
 The AG System is written in Ruby on Rails, a web application framework. AGS features:
 
