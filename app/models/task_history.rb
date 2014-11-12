@@ -6,7 +6,7 @@ class TaskHistory < ActiveRecord::Base
     history.overdue_count = Plantask.overdue.count
     history.save
   end
-  
+
   def self.average(date_1, date_2)
     history = Plantask.where("today >= date_1 AND today <= date_2")
     quantity_avg = history.task_count.sum / history.count
