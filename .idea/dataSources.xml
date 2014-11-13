@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2389128369">
+    <data-source source="LOCAL" name="Rails MowerMan: development" uuid="aacbaf01-1cde-47bf-bd19-438911d48f6b">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:mowerman_development</jdbc-url>
+      <user-name>astorrer</user-name>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails MowerMan: test" uuid="68069988-75b3-45c9-9500-c2706de8e1a5">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:mowerman_test</jdbc-url>
+      <user-name>astorrer</user-name>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+
