@@ -22,10 +22,10 @@
               %i.fa.fa-bug
           = link_to plantask_path(:format => :svg), style: "text-decoration:none; margin: 10px;" do
             %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
-              %i.fa.fa-barcode
-          = link_to :controller => :records, :action => :new, :id => @plantask.id, style: "text-decoration:none; margin: 10px;" do
-            %button.btn.btn-success.btn-circle.btn-lg{:type => "button"}
-              %i.fa.fa-wrench
+              %i.fa.fa-qrcode
+        = link_to :controller => :records, :action => :new, :id => @plantask.id, style: "text-decoration:none; margin: 10px;" do
+          %button.btn.btn-success.btn-circle.btn-lg{:type => "button"}
+            %i.fa.fa-wrench
   .row
     .col-md-12
       .div{ :class => "panel with-nav-tabs #{@panel_style}"}
