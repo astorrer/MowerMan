@@ -31,6 +31,7 @@ class PlantasksController < ApplicationController
       format.html
       format.xls { send_data(@plantask.records.to_xls) }
       format.csv { send_data(@plantask.records.to_csv) }
+      format.svg  { render :qrcode => plantask_url(@plantask), :level => :l, :unit => 10 }
       format.pdf do
         pdf = TaskSummaryReport.new(@plantask, view_context)
         send_data pdf.render, filename: "task#{@plantask.id}_for_#{@plantask.equip_number}.pdf",

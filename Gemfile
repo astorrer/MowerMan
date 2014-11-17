@@ -43,6 +43,9 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'groupdate'
 gem 'active_median'
 
+# Use qr-code3
+gem 'rqrcode-rails3'
+
 # Jquery & Friends
 gem 'jquery-rails'
 gem 'momentjs-rails'
