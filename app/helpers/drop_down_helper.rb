@@ -11,12 +11,12 @@ module DropDownHelper
   
   # Create an array of Equipment, to be used for making drop-down selectors.
   def equipment_select
-    Equipment.uniq.pluck(:equipment, :number).map { |equipment, number| [ equipment + '     | No. #' + number.to_s, equipment ] }
+    Equipment.uniq.pluck(:name, :number).map { |equipment, number| [ equipment + '     | No. #' + number.to_s, equipment ] }
   end
   
   # Create an array of Parts from the planned_tasks model, to be used for making drop-down selectors.
   def part_select
-    Part.uniq.pluck(:part).map { |value| [ value, value ] }
+    Part.uniq.pluck(:name).map { |value| [ value, value ] }
   end
   
   def method_select
