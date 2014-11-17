@@ -206,6 +206,9 @@ GEM
     rake (10.3.2)
     request_store (1.1.0)
     rolify (3.4.1)
+    rqrcode (0.4.2)
+    rqrcode-rails3 (0.1.7)
+      rqrcode (>= 0.4.2)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
@@ -325,6 +328,7 @@ DEPENDENCIES
   rails-i18n (~> 4.0.0)
   rails_12factor (= 0.0.2)
   rolify
+  rqrcode-rails3
   rspec-rails (~> 3.1.0)
   sass-rails (= 4.0.3)
   searchkick
