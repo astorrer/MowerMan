@@ -1,8 +1,8 @@
 class WorkLoad
-  def initialize(user_email, period)
+  def initialize(user_email)
     @tasks  = Plantasks.where(:associate => user_email)
     @timers = EggTimers.all
-    @period = period
+    @period = 525949
   end
 
   def utilized_time
@@ -23,28 +23,9 @@ class WorkLoad
     def timer_weights
       weights = Hash.new
       @timers.each do |timer|
+        if @timer.assign_time <= @period
         weights[timer.id] = (@period  / timer.assign_time)
       end
       return weights
     end
 end
-
-
-#period = 525949
-
-  #def self.associate_workload
-    # Find the average yearly workload of all tasks based upon a 40 hour workweek
-    # Note: This is a dangerous hack. Please fix imediently. 
-   # avl_time = 480
-    #daily = self.daily.sum(:est_time)
-#  #  daily = daily * 270
-#    weekly = self.weekly.sum(:est_time)
-#    weekly = weekly * 54
-#    monthly = self.monthly.sum(:est_time)
-#    monthly = monthly * 12
-#    yearly = self.yearly.sum(:est_time)
-#    total = ( daily + weekly + monthly + yearly )
-#    total = total / 270
-#    workload = ((total.to_f / avl_time.to_f ) * 100 ).round.to_s
-#    return workload
-#  end
