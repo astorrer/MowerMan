@@ -112,7 +112,7 @@
                 %tbody
                   - @part.each do |part|
                     %tr
-                      %td= part.part
+                      %td= part.name
                       - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
                         %td
                           .btn-group
