@@ -6,7 +6,7 @@ module DropDownHelper
   
   # Create an array of Areas from the planned_tasks model, to be used for making drop-down selectors.
   def area_select
-    Area.uniq.pluck(:area).map { |value| [ value, value ] }
+    Area.uniq.pluck(:name).map { |value| [ value, value ] }
   end
   
   # Create an array of Equipment, to be used for making drop-down selectors.
