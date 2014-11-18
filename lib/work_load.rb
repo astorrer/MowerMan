@@ -1,4 +1,5 @@
 class WorkLoad
+  # Tasks with an assignment of over one year are excluded from the calculation
   def initialize(user_email)
     @tasks  = Plantasks.where(:associate => user_email)
     @timers = EggTimers.all
