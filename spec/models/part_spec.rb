@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Part do
   it "has a valid factory" do
-    expect(build(:parts)).to be_valid
+    expect(build(:part)).to be_valid
   end
 
   it "is invalid without a name" do
