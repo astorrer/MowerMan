@@ -5,3 +5,4 @@
 # Mime::Type.register_alias "text/html", :iphone
 Mime::Type.register_alias "text/excel", :xls
 Mime::Type.register_alias "text/pdf", :sumpdf
+Mime::Type.register "image/jpg", :jpg

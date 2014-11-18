@@ -1,0 +1,13 @@
+#qrModal.modal{"aria-hidden" => "true", "aria-labelledby" => "qrModal", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} &times;
+          %span.sr-only Close
+        %h4.modal-title QR Code
+      .modal-body
+        %h5 Copy or Save the following code(s):
+        = image_tag plantask_path(:format => :png)
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} CLOSE

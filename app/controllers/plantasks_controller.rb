@@ -26,12 +26,12 @@ class PlantasksController < ApplicationController
     elsif @plantask.current_status == 'ALERT'
       @panel_style = "panel-danger"
     end
-    
+
     respond_to do |format|
       format.html
       format.xls { send_data(@plantask.records.to_xls) }
       format.csv { send_data(@plantask.records.to_csv) }
-      format.svg  { render :qrcode => plantask_url(@plantask), :level => :l, :unit => 10 }
+      format.png  { render :qrcode => plantask_url(@plantask), :level => :h, :unit => 10, :offset => 10 }
       format.pdf do
         pdf = TaskSummaryReport.new(@plantask, view_context)
         send_data pdf.render, filename: "task#{@plantask.id}_for_#{@plantask.equip_number}.pdf",
@@ -86,7 +86,7 @@ class PlantasksController < ApplicationController
       format.html { redirect_to plantasks_url }
     end
   end
-  
+
   def edit_multiple
     @plantasks = Plantask.find(params[:plantask_ids])
   end

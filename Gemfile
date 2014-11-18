@@ -45,6 +45,7 @@ gem 'active_median'
 
 # Use qr-code3
 gem 'rqrcode-rails3'
+gem 'mini_magick'
 
 # Jquery & Friends
 gem 'jquery-rails'
