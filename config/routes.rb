@@ -24,9 +24,13 @@ AgSystem::Application.routes.draw do
       collection do
         put :complete
       end
-    end  
+    end
 
-    resources :misc_work_orders
+    resources :misc_work_orders do
+      collection do
+        put :complete
+      end
+    end
 
     resources :conversations, only: [:index, :show, :new, :create] do
       member do

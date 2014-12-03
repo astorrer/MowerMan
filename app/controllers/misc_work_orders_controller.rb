@@ -65,6 +65,11 @@ class MiscWorkOrdersController < ApplicationController
     end
   end
 
+  def complete
+    MiscWorkOrder.where(id: params[:misc_work_order_ids]).update_all(completion_switch: true)
+    redirect_to misc_work_orders_url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_misc_work_order

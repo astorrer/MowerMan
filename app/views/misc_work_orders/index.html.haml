@@ -39,27 +39,31 @@
             #tab1default.tab-pane.fade.in.active
               #calendar
             #tab2default.tab-pane.fade
-              %table#datatable.table.table-striped
-                %thead
-                  %tr
-                    %th Actions
-                    %th Urgency
-                    %th Description
-                    %th Complete?
-                    %th.col-md-3
-                %tbody
-                  - @misc_work_orders.each do |work_order|
+              = form_tag complete_misc_work_orders_path, method: :put do
+                %table#datatable.table.table-striped
+                  %thead
                     %tr
-                      %td= check_box_tag "work_order_ids[]", work_order.id
-                      %td= work_order.urgency
-                      %td= work_order.description
-                      %td= work_order.completion_switch
-                      %td
-                        .btn-group
-                          = link_to 'View', work_order
-                          - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
-                            = link_to 'Edit', edit_work_order_path(work_order)
-                            = link_to 'Delete', work_order, method: :delete, data: { confirm: 'Are you sure?' }
- 
+                      %th Actions
+                      %th Urgency
+                      %th Description
+                      %th Complete?
+                      %th.col-md-3
+                  %tbody
+                    - @misc_work_orders.each do |work_order|
+                      %tr
+                        %td= check_box_tag "misc_work_order_ids[]", work_order.id
+                        %td= work_order.urgency
+                        %td= work_order.description
+                        %td= work_order.completion_switch
+                        %td
+                          .btn-group
+                            = link_to 'View', work_order
+                            - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+                              = link_to 'Edit', edit_work_order_path(work_order)
+                              = link_to 'Delete', work_order, method: :delete, data: { confirm: 'Are you sure?' }
+                .form-actions
+                  .row
+                    .col-lg-12
+                      = submit_tag "Complete Checked", class: 'btn btn-default'
 
 = render 'misc_work_orders/calendar.js'
