@@ -53,7 +53,7 @@ class PlantasksController < ApplicationController
     @plantask.assigned_switch = true
     @plantask.overdue_count = 0
     
-    equip = Equipment.where(equipment: @plantask.equipment).pluck(:number)
+    equip = Equipment.where(name: @plantask.equipment).pluck(:number)
     n = equip.to_s
     @plantask.equip_number = n.delete "[]"      
           
