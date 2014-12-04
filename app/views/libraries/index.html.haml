@@ -57,7 +57,7 @@
             %li
               %a{"data-toggle" => "tab", :href => "#tab4"}
                 %i.fa.fa-crosshairs  
-                Methods
+                Procedures
             %li
               %a{"data-toggle" => "tab", :href => "#tab5"}
                 %i.fa.fa-clock-o  
@@ -123,13 +123,13 @@
               %table.data-table.table.table-bordered.table-striped
                 %thead
                   %tr
-                    %th Method
+                    %th Procedure
                     - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
                       %th.col-md-3
                 %tbody
                   - @procedure.each do |procedure|
                     %tr
-                      %td= procedure.method
+                      %td= procedure.name
                       - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
                         %td
                           .btn-group

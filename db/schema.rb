@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204164023) do
+ActiveRecord::Schema.define(version: 20141204170423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -210,7 +210,7 @@ ActiveRecord::Schema.define(version: 20141204164023) do
     t.integer  "ext_lower"
     t.integer  "est_time"
     t.datetime "next_occurrence"
-    t.string   "method"
+    t.string   "procedure"
     t.integer  "target"
     t.text     "ext_description"
     t.boolean  "overdue"
