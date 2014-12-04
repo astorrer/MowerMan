@@ -64,7 +64,17 @@ class WorkOrdersController < ApplicationController
   end
   
   def complete
-    WorkOrder.where(id: params[:work_order_ids]).update_all(completion_switch: true)
+    work_orders = WorkOrder.where(id: params[:work_order_ids])
+
+    work_orders.each do |order|
+      if order.completion_switch == false
+        order.completion_switch = true
+      elsif order.completion_switch == true
+        order.completion_switch = false 
+      end
+      order.save!
+    end
+
     redirect_to work_orders_url
   end
 
