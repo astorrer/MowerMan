@@ -107,6 +107,6 @@ class PlantasksController < ApplicationController
     end
 
     def plantask_params
-      params.require(:plantask).permit(:equip_number, :area, :equipment, :part, :description, :ext_description, :data_type, :upper, :lower, :ext_upper, :ext_lower, :est_time, :current_status, :method, :target, :associate, :department_id, :egg_timer_id )
+      params.require(:plantask).permit(:equip_number, :area, :equipment, :part, :description, :ext_description, :data_type, :upper, :lower, :ext_upper, :ext_lower, :est_time, :current_status, :procedure, :target, :associate, :department_id, :egg_timer_id )
     end
 end

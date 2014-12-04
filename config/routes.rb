@@ -44,7 +44,7 @@ AgSystem::Application.routes.draw do
     resources :parts, except: [:index, :show]
     resources :equipment, except: [:index, :show]
     resources :areas, except: [:index, :show]
-    resources :task_methods, except: [:index, :show]
+    resources :procedures, except: [:index, :show]
     resources :egg_timers, except: [:index, :show]
 
     match "/search"    =>  "plantasks#search",         via: :get

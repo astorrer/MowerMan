@@ -30,7 +30,7 @@
           = link_to new_part_path, style: "text-decoration:none; margin: 8px;" do
             %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
               %i.fa.fa-gear
-          = link_to new_task_method_path, style: "text-decoration:none; margin: 8px;" do
+          = link_to new_procedure_path, style: "text-decoration:none; margin: 8px;" do
             %button.btn.btn-default.btn-circle.btn-lg{:type => "button"}
               %i.fa.fa-crosshairs
         - if current_user.has_role? :admin
@@ -127,15 +127,15 @@
                     - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
                       %th.col-md-3
                 %tbody
-                  - @task_method.each do |task_method|
+                  - @procedure.each do |procedure|
                     %tr
-                      %td= task_method.method
+                      %td= procedure.method
                       - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
                         %td
                           .btn-group
-                            = link_to 'EDIT', edit_task_method_path(task_method), class: "btn btn-default"
-                            = link_to 'DELETE', task_method, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
-              = paginate @task_method, :param_name => "page_method", :params => { :anchor => 'tab4' }
+                            = link_to 'EDIT', edit_procedure_path(procedure), class: "btn btn-default"
+                            = link_to 'DELETE', procedure, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
+              = paginate @procedure, :param_name => "page_method", :params => { :anchor => 'tab4' }
             #tab5.tab-pane.fade.in
               %table.data-table.table.table-bordered.table-striped
                 %thead
