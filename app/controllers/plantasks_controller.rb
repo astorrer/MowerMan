@@ -67,7 +67,7 @@ class PlantasksController < ApplicationController
   end
 
   def update
-    equip = Equipment.where(equipment: @plantask.equipment).pluck(:number)
+    equip = Equipment.where(name: @plantask.equipment).pluck(:number)
     n = equip.to_s
     @plantask.equip_number = n.delete "[]"
     
