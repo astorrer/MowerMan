@@ -12,7 +12,7 @@ class Ability
       can :manage, Area
       can :manage, Equipment
       can :manage, Part
-      can :manage, TaskMethod
+      can :manage, Procedure
       can :manage, WorkOrder
       can :manage, MiscWorkOrder
       can :create, Record
