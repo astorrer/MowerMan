@@ -88,7 +88,11 @@ class PlantasksController < ApplicationController
   end
 
   def edit_multiple
-    @plantasks = Plantask.find(params[:plantask_ids])
+    if params[:plantask_ids].nil? 
+      redirect_to plantasks_path
+    else
+      @plantasks = Plantask.find(params[:plantask_ids])
+    end
   end
 
   def update_multiple
