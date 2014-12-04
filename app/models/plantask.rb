@@ -25,7 +25,7 @@ class Plantask < ActiveRecord::Base
   validates :equipment, presence: true
   validates :part, presence: true
   validates :description, presence: true
-  validates :method, presence: true
+  validates :procedure, presence: true
   validates :associate, presence: true
   validates :est_time, presence: true, numericality: { only_integer: true }
   validates :current_status, presence: true

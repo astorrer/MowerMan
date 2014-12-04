@@ -1,20 +1,20 @@
-class TaskMethodsController < ApplicationController
+class ProceduresController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
-  before_action :set_task_methods, only: [:edit, :update, :destroy]
+  before_action :set_procedures, only: [:edit, :update, :destroy]
 
   def new
-    @task_method = TaskMethod.new
+    @procedure = Procedure.new
   end
 
   def edit
   end
 
   def create
-    @task_method = TaskMethod.new(task_params)
+    @procedure = Procedure.new(task_params)
     respond_to do |format|
-      if @task_method.save
-        format.html { redirect_to libraries_path, notice: 'Method was successfully created.' }
+      if @procedure.save
+        format.html { redirect_to libraries_path, notice: 'Procedure was successfully created.' }
       else
         format.html { render action: 'new' }
       end
@@ -23,8 +23,8 @@ class TaskMethodsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @task_method.update(task_params)
-        format.html { redirect_to libraries_path, notice: 'Method was successfully updated.' }
+      if @procedure.update(task_params)
+        format.html { redirect_to libraries_path, notice: 'Procedure was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end
@@ -32,7 +32,7 @@ class TaskMethodsController < ApplicationController
   end
 
   def destroy
-    @task_method.destroy    
+    @procedure.destroy    
     respond_to do |format|
       format.html { redirect_to libraries_path }
     end
@@ -40,12 +40,12 @@ class TaskMethodsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_task_methods
-      @task_method = TaskMethod.find(params[:id]) 
+    def set_procedures
+      @procedure = Procedure.find(params[:id]) 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task_method).permit(:method)
+      params.require(:procedure).permit(:name)
     end
 end

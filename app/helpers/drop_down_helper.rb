@@ -19,7 +19,7 @@ module DropDownHelper
     Part.uniq.pluck(:name).map { |value| [ value, value ] }
   end
   
-  def method_select
-    TaskMethod.uniq.pluck(:method).map { |value| [ value, value ] }
+  def procedure_select
+    Procedure.uniq.pluck(:name).map { |value| [ value, value ] }
   end
 end 
