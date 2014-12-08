@@ -19,6 +19,4 @@ class User < ActiveRecord::Base
   def mailboxer_email(object)
     email
   end
-
-  validates_plausible_phone :phone_number, :presence => true
 end
