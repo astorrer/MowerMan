@@ -42,7 +42,7 @@ AgSystem::Application.routes.draw do
 
     resources :records, except: [:index, :edit, :destroy]
     resources :parts, except: [:index, :show]
-    resources :equipment, except: [:index, :show]
+    resources :equipment, except: [:index]
     resources :areas, except: [:index, :show]
     resources :procedures, except: [:index, :show]
     resources :egg_timers, except: [:index, :show]

@@ -90,7 +90,7 @@
                     %th No.
                     %th Equipment
                     - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
-                      %th.col-md-3
+                      %th.col-md-4
                 %tbody
                   - @equipment.each do |equipment|
                     %tr
@@ -99,6 +99,7 @@
                       - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
                         %td
                           .btn-group
+                            = link_to 'SHOW', equipment, class: "btn btn-default"
                             = link_to 'EDIT', edit_equipment_path(equipment), class: "btn btn-default"
                             = link_to 'DELETE', equipment, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
               = paginate @equipment, :param_name => "page_equipment", :params => { :anchor => 'tab2' }

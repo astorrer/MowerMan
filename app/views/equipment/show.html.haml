@@ -1,0 +1,46 @@
+- provide(:title, 'Equipment')
+
+= render 'layouts/flash' if !flash.empty?
+
+.container-fluid
+  / Page Heading
+  .row
+    .col-lg-12
+      %h1.page-header
+        Equipment
+        %small= " #{@plantasks.count} Tasks"
+
+        
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          Task List
+        .panel-content
+          %table.table.table-striped
+            %thead
+              %tr
+                %th Equip No.
+                %th Area
+                %th Equipment
+                %th Part
+                %th Associate
+                %th Date
+                %th
+            %tbody
+              - @plantasks.each do |plantask|
+                %tr
+                  %td= plantask.equip_number
+                  %td= plantask.area
+                  %td= plantask.equipment
+                  %td= plantask.part
+                  %td= plantask.associate
+                  %td= plantask.date
+                  %td
+                    = link_to 'View', plantask_path(plantask)
+                    - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+                      = link_to 'Edit', edit_plantask_path(plantask)
+                      = link_to 'Delete'.html_safe, plantask, method: :delete, data: { confirm: 'Are you sure?' }
+
+  = render 'layouts/flash' if !flash.empty?
+
