@@ -36,7 +36,7 @@ class RecordsController < ApplicationController
           end
         end
 
-        format.html { redirect_to mytasks_path, notice: 'You record was created.' }
+        format.html { redirect_to mytasks_path, notice: 'Your record was created.' }
       else
         format.html { render action: 'new' }
       end
