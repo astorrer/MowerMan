@@ -11,7 +11,16 @@ AgSystem::Application.routes.draw do
     root :to => 'static_pages#home'
 
     devise_for :users # Devise resource paths
-    resources :users
+    resources :users do
+      member do
+        post 'assign_admin_role'
+        post 'demote_from_admin_role'
+        post 'assign_manager_role'
+        post 'demote_from_manager_role'
+        post 'deactivate_account'
+        post 'activate_account'
+      end
+    end
 
     resources :plantasks do
       collection do

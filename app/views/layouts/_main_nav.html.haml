@@ -101,6 +101,11 @@
           = link_to helpdesk_path do
             %i.fa.fa-fw.fa-life-saver
             = t('navigation.helpdesk')
+        - if (current_user.has_role? :admin) || (current_user.has_role? :manager)
+          %li
+            = link_to users_path do
+              %i.fa.fa-fw.fa-user
+              Manage Users
         - if current_user.has_role? :admin
           %li
             = link_to helpdesk.admin_root_path do

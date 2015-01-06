@@ -1,0 +1,45 @@
+.row
+  .col-lg-12
+    %h1.page-header
+      Manage Users
+
+.row
+  .col-lg-12
+    .table-responsive
+      %table.table.table-bordered
+        %thead
+          %tr
+            %th Email
+            %th
+
+        %tbody
+          - User.find_each do |user|
+            %tr
+              %td
+                %h4= user.email
+              %td
+                .btn-group
+                  = link_to user, class: 'btn btn-default' do
+                    %i.fa.fa-fw.fa-external-link
+                  - if (current_user.has_role? :admin)
+                    - if user.has_role? 'admin'
+                      = link_to demote_from_admin_role_user_path(user), :method => :post, class: 'btn btn-info' do
+                        %i.fa.fa-fw.fa-unlock
+                    - else
+                      = link_to assign_admin_role_user_path(user), :method => :post, class: 'btn btn-default' do
+                        %i.fa.fa-fw.fa-lock
+                  - if user.has_role? 'manager'
+                    = link_to demote_from_manager_role_user_path(user), :method => :post, class: 'btn btn-info' do
+                      %i.fa.fa-fw.fa-folder-open
+                  -else
+                    = link_to assign_manager_role_user_path(user), :method => :post, class: 'btn btn-default' do
+                      %i.fa.fa-fw.fa-folder
+                  - if user.active_account?
+                    = link_to deactivate_account_user_path(user), :method => :post, class: 'btn btn-success' do
+                      %i.fa.fa-fw.fa-power-off
+                  - else
+                    = link_to activate_account_user_path(user), :method => :post, class: 'btn btn-default' do
+                      %i.fa.fa-fw.fa-power-off
+                  = link_to user, :method => :delete, class: 'btn btn-danger', :data => { :confirm => 'Are you sure?' } do
+                    %i.fa.fa-fw.fa-trash
+
