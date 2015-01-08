@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base  
+class User < ActiveRecord::Base
   belongs_to :department
   has_and_belongs_to_many :work_orders
   has_and_belongs_to_many :misc_work_orders
@@ -19,14 +19,14 @@ class User < ActiveRecord::Base
   def mailboxer_email(object)
     email
   end
-  
+
   # Modify Devise to Allow Manual Account Activation
   def active_for_authentication?
     # Uncomment the below debug statement to view the properties of the returned self model values.
     # logger.debug self.to_yaml
     super && active_account?
   end
-  
+
   protected
     def assign_active_state
       self.update(:active_account => false)
