@@ -7,6 +7,9 @@ gem 'useragent' # Required to detect and block internet explorer.
 gem 'phony_rails' # Use to enable validations on phone_numbers, rational numbers only. 
 gem 'bootstrap-wysihtml5-rails'
 
+# Defend with RackAttack
+gem 'rack-attack'
+
 # Use Prawn to generate PDFs
 gem 'prawn'
 gem 'prawn-table', '~> 0.1.0'
