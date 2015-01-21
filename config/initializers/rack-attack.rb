@@ -33,7 +33,7 @@ class Rack::Attack
   # The most common brute-force login attack is a brute-force password
   # attack where an attacker simply tries a large number of emails and
   # passwords to see if any credentials match.
-  #
+
   # Another common method of attack is to use a swarm of computers with
   # different IPs to try brute-forcing a password for a specific account.
 
