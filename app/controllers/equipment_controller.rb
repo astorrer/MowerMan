@@ -12,10 +12,11 @@ class EquipmentController < ApplicationController
 
   def show
     @plantasks = Plantask.equipment(@equipment.number)
+    equipment = @equipment
 
     respond_to do |format|
       format.html
-      format.png  { render :qrcode => equipment_url(@equipment), :level => :h, :unit => 10, :offset => 10 }
+      format.png  { render :qrcode => equipment_url(equipment), :level => :h, :unit => 10, :offset => 10 }
     end
   end
 
