@@ -46,7 +46,7 @@
                   = @plantask.area
                 .col-md-6
                   %h3 Equipment
-                  = @plantask.equipment
+                  = link_to @plantask.equipment, equipment_path(@plantask.equipment)
               %hr
               .row
                 .col-md-2
