@@ -55201,3 +55201,1020 @@ Started GET "/assets/bootstrap-wysihtml5/locales/it-IT.js?body=1" for 127.0.0.1 
 
 
 Started GET "/en/libraries" for 127.0.0.1 at 2015-01-30 09:04:09 -0500
+
+
+Started GET "/en" for 127.0.0.1 at 2015-01-30 09:36:05 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+
+
+Started GET "/en" for 127.0.0.1 at 2015-01-30 09:36:05 -0500
+Processing by StaticPagesController#home as HTML
+  Parameters: {"locale"=>"en"}
+  Rendered static_pages/home.html.haml within layouts/layout_static (10.3ms)
+  Rendered layouts/_favicons.html.haml (3.1ms)
+  Rendered layouts/_static_navigation.html.haml (2.9ms)
+Completed 200 OK in 593ms (Views: 581.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery-ui/theme.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:06 -0500
+
+
+Started GET "/assets/static.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:06 -0500
+
+
+Started GET "/assets/jquery-ui/menu.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:06 -0500
+
+
+Started GET "/assets/jquery-ui/button.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:06 -0500
+
+
+Started GET "/assets/jquery-ui/dialog.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:06 -0500
+
+
+Started GET "/assets/jquery-ui/sortable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:06 -0500
+
+
+Started GET "/assets/jquery-ui/slider.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:06 -0500
+
+
+Started GET "/assets/jquery-ui/tabs.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:06 -0500
+
+
+Started GET "/assets/jquery-ui/tooltip.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:06 -0500
+
+
+Started GET "/assets/jquery-ui/base.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:06 -0500
+
+
+Started GET "/assets/jquery-ui/all.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/small-business.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/feature.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/resizable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/selectmenu.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/spinner.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/datepicker.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/progressbar.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/core.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/widget.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/accordion.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/position.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/menu.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/autocomplete.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/button.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/datepicker.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/mouse.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/draggable.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/resizable.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/dialog.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/droppable.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect-blind.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect-bounce.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect-clip.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect-drop.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect-explode.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect-fade.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect-fold.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect-highlight.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect-size.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect-scale.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect-puff.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect-pulsate.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect-shake.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect-slide.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/effect-transfer.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/progressbar.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:07 -0500
+
+
+Started GET "/assets/jquery-ui/selectable.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:08 -0500
+
+
+Started GET "/assets/jquery-ui/selectmenu.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:08 -0500
+
+
+Started GET "/assets/jquery-ui/slider.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:08 -0500
+
+
+Started GET "/assets/jquery-ui/sortable.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:08 -0500
+
+
+Started GET "/assets/jquery-ui/spinner.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:08 -0500
+
+
+Started GET "/assets/jquery-ui/tabs.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:08 -0500
+
+
+Started GET "/assets/jquery-ui/tooltip.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:08 -0500
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:08 -0500
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:08 -0500
+
+
+Started GET "/assets/google-track.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:08 -0500
+
+
+Started GET "/assets/static.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:08 -0500
+
+
+Started GET "/assets/jquery-ui/core.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:10 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/assets/jquery-ui/accordion.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:10 -0500
+
+
+Started GET "/assets/jquery-ui/autocomplete.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:10 -0500
+
+
+Started GET "/assets/jquery-ui/draggable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:10 -0500
+
+
+Started GET "/assets/jquery-ui/selectable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:10 -0500
+
+
+Started GET "/assets/logo.png" for 127.0.0.1 at 2015-01-30 09:36:10 -0500
+
+
+Started GET "/assets/mockup.png" for 127.0.0.1 at 2015-01-30 09:36:10 -0500
+
+
+Started GET "/en/users/sign_in" for 127.0.0.1 at 2015-01-30 09:36:12 -0500
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  Rendered devise/shared/_links.haml (3.2ms)
+  Rendered devise/sessions/new.html.haml within layouts/layout_devise (19.2ms)
+  Rendered layouts/_favicons.html.haml (0.1ms)
+Completed 200 OK in 558ms (Views: 554.5ms | ActiveRecord: 0.0ms)
+
+
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:12 -0500
+Started GET "/assets/jquery-ui/core.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:12 -0500
+
+
+Started GET "/assets/jquery-ui/accordion.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/jquery-ui/menu.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/jquery-ui/selectable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/messages.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/jquery-ui/theme.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/jquery-ui/autocomplete.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/morris.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/social-buttons.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/jquery-ui/button.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/select2.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/sb-admin-2.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/bootstrap3-wysihtml5.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/bootstrap-switch.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/jquery-ui/sortable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-datetimepicker.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/fullcalendar.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/metisMenu.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/timeline.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/jquery-ui/draggable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/select2-bootstrap.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/dataTables.bootstrap.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/panel_tabs.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/bootstrap3-wysihtml5.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/index.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/ar-AR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/cocoon.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/ca-CT.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/fullcalendar.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/da-DK.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/index.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/el-GR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/bg-BG.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/es-AR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/cs-CZ.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/fr-FR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/hr-HR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/de-DE.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/hu-HU.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/en-US.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/es-ES.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/it-IT.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/ko-KR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/fr-NL.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/mo-MD.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/il-HE.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/nl-NL.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/ja-JP.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/pt-BR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/lt-LT.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/nb-NB.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/sk-SK.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/pl-PL.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/tr-TR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/ru-RU.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/zh-CN.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/sv-SE.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/index.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/ua-UA.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/zh-TW.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/stickyTabs/stickytabs.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/dataTables/jquery.dataTables.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/metisMenu/metisMenu.min.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/mask/jquery.mask.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/dataTables/dataTables.bootstrap.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/dataSlider/data-slider.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/numberSpinner/numberspinner.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/select2.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/switch/bootstrap-switch.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/inits/select2.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/plugins/modalDelete/modal-delete.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/inits/switch.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/sb-admin-2.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/inits/mask.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/inits/datepicker.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started GET "/assets/bootstrap-datetimepicker.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:13 -0500
+
+
+Started POST "/en/users/sign_in" for 127.0.0.1 at 2015-01-30 09:36:23 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gOK3lrH0sp2nfMGkZLyT64a1EOo60vaR8zD+XSD7qkE=", "user"=>{"email"=>"aaron_storrer@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in", "locale"=>"en"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'aaron_storrer@gmail.com'  ORDER BY "users"."id" ASC LIMIT 1[0m
+Completed 401 Unauthorized in 6ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gOK3lrH0sp2nfMGkZLyT64a1EOo60vaR8zD+XSD7qkE=", "user"=>{"email"=>"aaron_storrer@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in", "locale"=>"en"}
+  Rendered devise/shared/_links.haml (0.5ms)
+  Rendered devise/sessions/new.html.haml within layouts/layout_devise (2.6ms)
+  Rendered layouts/_favicons.html.haml (0.0ms)
+Completed 200 OK in 118ms (Views: 42.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:24 -0500
+
+
+Started GET "/assets/jquery-ui/theme.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:24 -0500
+
+
+Started GET "/assets/jquery-ui/accordion.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:24 -0500
+
+
+Started GET "/assets/jquery-ui/core.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:24 -0500
+
+
+Started GET "/assets/jquery-ui/menu.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:24 -0500
+
+
+Started GET "/assets/jquery-ui/autocomplete.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:24 -0500
+
+
+Started GET "/assets/jquery-ui/button.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:24 -0500
+
+
+Started GET "/assets/jquery-ui/selectable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:24 -0500
+
+
+Started GET "/assets/jquery-ui/sortable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:24 -0500
+
+
+Started GET "/assets/jquery-ui/draggable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:24 -0500
+
+
+Started POST "/en/users/sign_in" for 127.0.0.1 at 2015-01-30 09:36:31 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gOK3lrH0sp2nfMGkZLyT64a1EOo60vaR8zD+XSD7qkE=", "user"=>{"email"=>"aaron_storrer@asamacm.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in", "locale"=>"en"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'aaron_storrer@asamacm.com'  ORDER BY "users"."id" ASC LIMIT 1
+Completed 401 Unauthorized in 82ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gOK3lrH0sp2nfMGkZLyT64a1EOo60vaR8zD+XSD7qkE=", "user"=>{"email"=>"aaron_storrer@asamacm.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in", "locale"=>"en"}
+  Rendered devise/shared/_links.haml (0.7ms)
+  Rendered devise/sessions/new.html.haml within layouts/layout_devise (3.1ms)
+  Rendered layouts/_favicons.html.haml (0.1ms)
+Completed 200 OK in 127ms (Views: 46.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery-ui/theme.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:31 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:31 -0500
+
+
+Started GET "/assets/jquery-ui/accordion.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:31 -0500
+
+
+Started GET "/assets/jquery-ui/autocomplete.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:31 -0500
+
+
+Started GET "/assets/jquery-ui/selectable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:31 -0500
+
+
+
+
+Started GET "/assets/jquery-ui/sortable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:31 -0500
+Started GET "/assets/jquery-ui/core.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:31 -0500
+
+
+Started GET "/assets/jquery-ui/menu.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:31 -0500
+
+
+Started GET "/assets/jquery-ui/button.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:31 -0500
+
+
+Started GET "/assets/jquery-ui/draggable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:31 -0500
+
+
+Started POST "/en/users/sign_in" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gOK3lrH0sp2nfMGkZLyT64a1EOo60vaR8zD+XSD7qkE=", "user"=>{"email"=>"aaron_storrer@asamacm.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in", "locale"=>"en"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'aaron_storrer@asamacm.com'  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = 1[0m  [["current_sign_in_at", "2015-01-30 14:36:35.237348"], ["last_sign_in_at", "2015-01-30 14:04:00.338163"], ["sign_in_count", 76], ["updated_at", "2015-01-30 14:36:35.238598"]]
+  [1m[35m (8.0ms)[0m  COMMIT
+Redirected to http://mowerman.dev/en
+Completed 302 Found in 117ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/en" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+Processing by DashboardController#dash as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "plantasks"  WHERE "plantasks"."department_id" = 3
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "plantasks"  WHERE "plantasks"."department_id" = 3 AND "plantasks"."current_status" = 'GOOD'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "plantasks"  WHERE "plantasks"."department_id" = 3 AND "plantasks"."current_status" = 'WARNING'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "plantasks"  WHERE "plantasks"."department_id" = 3 AND "plantasks"."current_status" = 'ALERT'[0m
+  [1m[35mDepartment Load (0.3ms)[0m  SELECT  "departments".* FROM "departments"  WHERE "departments"."id" = $1 LIMIT 1  [["id", 3]]
+  Rendered layouts/_flash.html.erb (0.8ms)
+  [1m[36mPlantask Load (0.9ms)[0m  [1mSELECT  "plantasks".* FROM "plantasks"  WHERE "plantasks"."department_id" = 3 AND "plantasks"."current_status" = 'GOOD'  ORDER BY updated_at DESC LIMIT 5[0m
+  Rendered dashboard/modals/_good.html.haml (20.7ms)
+  [1m[35mPlantask Load (0.5ms)[0m  SELECT  "plantasks".* FROM "plantasks"  WHERE "plantasks"."department_id" = 3 AND "plantasks"."current_status" = 'WARNING'  ORDER BY updated_at DESC LIMIT 5
+  Rendered dashboard/modals/_warning.html.haml (5.7ms)
+  [1m[36mPlantask Load (0.7ms)[0m  [1mSELECT  "plantasks".* FROM "plantasks"  WHERE "plantasks"."department_id" = 3 AND "plantasks"."current_status" = 'ALERT'  ORDER BY updated_at DESC LIMIT 5[0m
+  Rendered dashboard/modals/_alert.html.haml (6.0ms)
+  Rendered dashboard/_status.js.erb (0.6ms)
+  Rendered dashboard/_overdue.js.erb (0.6ms)
+  Rendered dashboard/dash.html.haml within layouts/application (165.6ms)
+  Rendered layouts/_favicons.html.haml (0.1ms)
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = $1 AND (((roles.name = 'admin') AND (roles.resource_type IS NULL) AND (roles.resource_id IS NULL)))  [["user_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "roles" INNER JOIN "users_roles" ON "roles"."id" = "users_roles"."role_id" WHERE "users_roles"."user_id" = $1 AND (((roles.name = 'manager') AND (roles.resource_type IS NULL) AND (roles.resource_id IS NULL)))[0m  [["user_id", 1]]
+  Rendered layouts/_main_nav.html.haml (53.3ms)
+Completed 200 OK in 274ms (Views: 258.6ms | ActiveRecord: 10.0ms)
+
+
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+Started GET "/assets/jquery-ui/theme.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/core.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/accordion.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/autocomplete.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/menu.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/draggable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/button.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/selectable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/dialog.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/spinner.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/sortable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/all.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/tooltip.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/sb-admin-2.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/plugins/metisMenu.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/plugins/bootstrap-switch.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/plugins/messages.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/fullcalendar.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/plugins/social-buttons.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/resizable.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/select2.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/tabs.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/index.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/plugins/morris.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/selectmenu.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/select2-bootstrap.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/jquery-ui/slider.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:35 -0500
+
+
+Started GET "/assets/bootstrap-datetimepicker.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/plugins/panel_tabs.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/base.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/plugins/timeline.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/bootstrap3-wysihtml5.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/datepicker.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/plugins/dataTables.bootstrap.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/position.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/progressbar.css?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/datepicker.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/widget.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/dialog.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/autocomplete.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/effect-bounce.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/effect-fade.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/draggable.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/effect-scale.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/effect.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/effect-slide.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/effect-drop.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/selectmenu.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/effect-highlight.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/tabs.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/effect-pulsate.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-datetimepicker.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/progressbar.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/ar-AR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/sortable.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/da-DK.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/es-AR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/bootstrap3-wysihtml5.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/hr-HR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/ca-CT.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/el-GR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/ja-JP.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/fr-FR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/nb-NB.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/il-HE.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/ru-RU.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/ua-UA.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/lt-LT.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/plugins/stickyTabs/stickytabs.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/pl-PL.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/plugins/numberSpinner/numberspinner.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/sv-SE.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/plugins/modalDelete/modal-delete.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/zh-TW.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/inits/mask.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/plugins/dataTables/dataTables.bootstrap.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/inits/datepicker.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/plugins/flot/jquery.flot.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/plugins/switch/bootstrap-switch.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/plugins/flot/excanvas.min.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/sb-admin-2.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/core.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/plugins/morris/raphael.min.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/mouse.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/plugins/flot/jquery.flot.resize.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/droppable.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/application_base.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/effect-fold.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/effect-transfer.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/menu.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/tooltip.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/index.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/effect-clip.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/effect-puff.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/cs-CZ.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/fr-NL.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/jquery-ui/slider.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/mo-MD.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/tr-TR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/en-US.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/plugins/metisMenu/metisMenu.min.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/it-IT.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/inits/select2.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/pt-BR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:36 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/index.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/plugins/dataSlider/data-slider.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/plugins/flot/jquery.flot.pie.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/jquery-ui/accordion.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/jquery-ui/effect-explode.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/jquery-ui/spinner.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/plugins/flot/flot-data.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/de-DE.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/jquery-ui/resizable.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/hu-HU.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/jquery-ui/effect-shake.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/zh-CN.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/fullcalendar.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/inits/switch.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/nl-NL.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/jquery-ui/button.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/plugins/mask/jquery.mask.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/cocoon.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/plugins/flot/jquery.flot.tooltip.min.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/sk-SK.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/jquery-ui/effect-size.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/ko-KR.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/es-ES.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/select2.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/bootstrap-wysihtml5/locales/bg-BG.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/jquery-ui/selectable.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/jquery-ui/effect-blind.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/plugins/morris/morris.min.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/assets/plugins/dataTables/jquery.dataTables.js?body=1" for 127.0.0.1 at 2015-01-30 09:36:37 -0500
+
+
+Started GET "/en/workplanner" for 127.0.0.1 at 2015-01-30 09:36:43 -0500
