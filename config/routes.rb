@@ -57,6 +57,7 @@ AgSystem::Application.routes.draw do
     resources :egg_timers, except: [:index, :show]
 
     match "/search"    =>  "plantasks#search",         via: :get
+    match "/search_equipment"    =>  "equipment#equipment_search",   via: :get
 
     match "/dash"      =>  "dashboard#dash",           via: :get
     match "/workloads" =>  "dashboard#workloads",      via: :get
