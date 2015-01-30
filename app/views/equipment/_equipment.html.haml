@@ -2,5 +2,8 @@
   .panel-heading
     %h3.panel-title
       = " No. #{equipment.number} "
+    = link_to equipment_path(equipment) do
+      %i.fa.fa-external-link-square
   .panel-body
     %p= equipment.name
+    
