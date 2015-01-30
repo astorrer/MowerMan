@@ -1,0 +1,8 @@
+.panel.panel-primary
+  .panel-heading
+    %h3.panel-title
+      = " ID. #{equipment.id} | No. #{equipment.number} "
+      = link_to equipment_path(equipment) do
+        %i.fa.fa-external-link-square
+  .panel-body
+    %p= equipment.name
