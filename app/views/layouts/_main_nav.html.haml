@@ -56,7 +56,7 @@
           %li.sidebar-search
             = form_tag search_path, class: "input-group", method: :get do
               .input-group
-                = text_field_tag :query, params[:query], class: "form-control", :placeholder => "Plantasks...", id: "plantask_search", autocomplete: "off"
+                = text_field_tag :query, params[:query], class: "form-control", :placeholder => "Equipment...", id: "equipment_search", autocomplete: "off"
                 .input-group-btn
                   = submit_tag t('navigation.search'), class: "btn btn-default"
                 - if params[:query].present?

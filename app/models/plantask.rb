@@ -5,7 +5,6 @@ class Plantask < ActiveRecord::Base
 
   # include PublicActivity::Model
 
-  searchkick # Re-index by running: rake searchkick:reindex CLASS=Plantask 
   # tracked owner: Proc.new{ |controller, model| controller && controller.current_user }
 
   has_many :records,     :dependent => :destroy
