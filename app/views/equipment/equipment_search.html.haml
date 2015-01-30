@@ -1,12 +1,1 @@
-= form_tag equipment_path, class: "form-inline", method: :get do
-  .form-group
-    = text_field_tag :query, params[:query], class: "form-control"
-  '
-  = submit_tag "Search", class: "btn btn-primary"
-  - if params[:query].present?
-    '
-    = link_to "clear", equipment_path
-
-= render @equipment
-
-= paginate @equipment
+test
