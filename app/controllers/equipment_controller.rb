@@ -3,14 +3,6 @@ class EquipmentController < ApplicationController
   load_and_authorize_resource
   before_action :set_equipment, only: [:show, :edit, :update, :destroy]
 
-  def equipment_search
-    if params[:query].present?
-      @equipment = Equipment.search(params[:query], page: params[:page])
-    else
-      @equipment = Equipment.all.page params[:page]
-    end
-  end
-
   def new
     @equipment = Equipment.new
   end

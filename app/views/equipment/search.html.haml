@@ -6,12 +6,12 @@
     .col-lg-12
       %h1.page-header
         Search Results
-        %small Plantask
+        %small Equipment
   
   = render 'layouts/flash' if !flash.empty?
   
   .row
     .col-lg-12
-      = render @plantask_results
+      = render @equipment_results
 
-      = paginate @plantask_results
+      = paginate @equipment_results
