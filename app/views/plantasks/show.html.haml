@@ -85,7 +85,7 @@
                       %td= record.data
                       %td= record.created_at
                       %td= record.comments
-              = paginate @records, :param_name => "page_record", :params => { :anchor => 'tab2' }
+              = paginate @records, :param_name => "page_records", :params => { :anchor => 'tab2' }
 
             #tab3default.tab-pane.fade
               %table.table
