@@ -48,7 +48,7 @@
                     %td= plantask.equipment
                     %td= plantask.part
                     %td= plantask.associate
-                    %td= plantask.egg_timer.egg_timer.kind
+                    %td= plantask.egg_timer.kind
                     %td
                       = link_to 'View', plantask_path(plantask)
                       - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
