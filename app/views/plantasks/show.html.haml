@@ -32,14 +32,14 @@
         .panel-heading
           %ul.nav.nav-tabs
             %li.active
-              %a{"data-toggle" => "tab", :href => "#tab1default"} Information
+              %a{"data-toggle" => "tab", :href => "#tab1"} Information
             %li
-              %a{"data-toggle" => "tab", :href => "#tab2default"} Records
+              %a{"data-toggle" => "tab", :href => "#tab2"} Records
             %li
-              %a{"data-toggle" => "tab", :href => "#tab3default"} Work Orders
+              %a{"data-toggle" => "tab", :href => "#tab3"} Work Orders
         .panel-body
           .tab-content
-            #tab1default.tab-pane.fade.in.active
+            #tab1.tab-pane.fade.in.active
               .row
                 .col-md-6
                   %h3 Area
@@ -65,7 +65,7 @@
               .row
                 .col-lg-12
                   %h3= "Current Status: #{@plantask.current_status}"
-            #tab2default.tab-pane.fade
+            #tab2.tab-pane.fade
               .bs-component{:style => "margin-bottom: 15px;"}
                 .btn-group.btn-group-justified
                   = link_to "PDF", plantask_path(@plantask, format: "pdf"), class: "btn btn-danger"
@@ -87,7 +87,7 @@
                       %td= record.comments
               = paginate @records, :param_name => "page_records", :params => { :anchor => 'tab2' }
 
-            #tab3default.tab-pane.fade
+            #tab3.tab-pane.fade
               %table.table
                 %thead
                   %tr
