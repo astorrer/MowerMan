@@ -15,7 +15,7 @@ class PlantasksController < ApplicationController
 
   def show
     @plantask = Plantask.find(params[:id])
-    @records = @plantask.records.all.order(created_at: :asc).page(params[:page_records]).per(8)
+    @records = @plantask.records.all.order(created_at: :desc).page(params[:page_records]).per(8)
 
     @orders = @plantask.work_orders.order(created_at: :asc)
 
