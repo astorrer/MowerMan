@@ -12,7 +12,7 @@
           = "Plantasks | #{current_user.department.name} Department"
 
   = render 'layouts/flash' if !flash.empty?
-  
+
   .row
     .col-lg-12
       .text-center{:style => "margin-top: 10px; margin-bottom: 20px;"}
@@ -48,7 +48,7 @@
                     %td= plantask.equipment
                     %td= plantask.part
                     %td= plantask.associate
-                    %td= plantask.date
+                    %td= plantask.egg_timer.egg_timer.kind
                     %td
                       = link_to 'View', plantask_path(plantask)
                       - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
