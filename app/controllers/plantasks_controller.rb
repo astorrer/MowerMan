@@ -15,8 +15,9 @@ class PlantasksController < ApplicationController
 
   def show
     @plantask = Plantask.find(params[:id])
-    @records = @plantask.records.order(created_at: :desc)
-    @orders = @plantask.work_orders.order(created_at: :desc)
+    @records = @plantask.records.all..order(created_at: :asc).page(params[:page_records]).per(8)
+
+    @orders = @plantask.work_orders.order(created_at: :asec)
 
     # Change the panel color based upon the tasks current status.
     if @plantask.current_status == 'GOOD'
@@ -52,11 +53,11 @@ class PlantasksController < ApplicationController
     @plantask = Plantask.new(plantask_params)
     @plantask.assigned_switch = true
     @plantask.overdue_count = 0
-    
+
     equip = Equipment.where(name: @plantask.equipment).pluck(:number)
     n = equip.to_s
-    @plantask.equip_number = n.delete "[]"      
-          
+    @plantask.equip_number = n.delete "[]"
+
     respond_to do |format|
       if @plantask.save
         format.html { redirect_to @plantask, notice: 'Your new task was successfully created.' }
@@ -70,7 +71,7 @@ class PlantasksController < ApplicationController
     equip = Equipment.where(name: @plantask.equipment).pluck(:number)
     n = equip.to_s
     @plantask.equip_number = n.delete "[]"
-    
+
     respond_to do |format|
       if @plantask.update(plantask_params)
         format.html { redirect_to @plantask, notice: 'Your task was successfully updated.' }
@@ -88,7 +89,7 @@ class PlantasksController < ApplicationController
   end
 
   def edit_multiple
-    if params[:plantask_ids].nil? 
+    if params[:plantask_ids].nil?
       redirect_to plantasks_path
     else
       @plantasks = Plantask.find(params[:plantask_ids])

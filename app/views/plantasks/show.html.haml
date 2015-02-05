@@ -1,6 +1,6 @@
 - provide(:title, 'View Plantask')
 
-.container-fluid  
+.container-fluid
   .row
     .col-lg-12
       %h1.page-header= "Planned Task No. #{@plantask.id}"
@@ -85,6 +85,8 @@
                       %td= record.data
                       %td= record.created_at
                       %td= record.comments
+              = paginate @record, :param_name => "page_record", :params => { :anchor => 'tab2' }
+
             #tab3default.tab-pane.fade
               %table.table
                 %thead
