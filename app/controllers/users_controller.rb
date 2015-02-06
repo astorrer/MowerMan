@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
   require 'work_load'
-  
+
   def show
     @user = User.find(params[:id])
-    @workload = WorkLoad.utilized_time(@user.email)
+    wl = WorkLoad.new(@user.email)
+    @workload = wl.utilized_time
   end
 
   def assign_manager_role
