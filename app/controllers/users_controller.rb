@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
 
+  def show
+    @user = User.find(params[:id])
+    @workload = WorkLoad.utilized_time(@user.email)
+  end
+
   def assign_manager_role
     @user = User.find(params[:id])
     @user.add_role :manager
