@@ -45,7 +45,7 @@
                             %th Description
                             %th Actions
                         %tbody
-                          - timer.plantasks.assigned.equipment(task).each do |x|
+                          - timer.plantasks.associated_user(current_user).assigned.equipment(task).each do |x|
                             %tr
                               %td= x.part
                               %td= x.description
