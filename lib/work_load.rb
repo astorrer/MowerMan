@@ -6,7 +6,7 @@ class WorkLoad
     @period = 525949
   end
 
-  def utilized_time
+  def self.utilized_time
     timer_weights.each do |id, weight|
       @tasks.where(:egg_timer_id => id).each do |task|
         utilized = utilized + (task.estimated_time * weight)
@@ -15,7 +15,7 @@ class WorkLoad
     return utilized
   end
 
-  def utilized_percentage
+  def self.utilized_percentage
     return ( utilized_time / @period ) * 100
   end
 
