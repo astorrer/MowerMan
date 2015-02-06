@@ -16,7 +16,7 @@ class WorkLoad
   end
 
   def utilized_percentage
-    return ( utilized_time / @period ) * 100 
+    return ( utilized_time / @period ) * 100
   end
 
   private
@@ -25,7 +25,8 @@ class WorkLoad
       weights = Hash.new
       @timers.each do |timer|
         if @timer.assign_time <= @period
-        weights[timer.id] = (@period  / timer.assign_time)
+          weights[timer.id] = (@period  / timer.assign_time)
+        end
       end
       return weights
     end
