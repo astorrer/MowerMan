@@ -27,31 +27,33 @@
     .col-lg-12
       .panel.panel-primary
         .panel-body
-          = form_tag edit_multiple_plantasks_path, method: :get do
-            %table#datatable.table.table-striped
-              %thead
-                %tr
-                  %th
-                  %th Equip No.
-                  %th Area
-                  %th Equipment
-                  %th Part
-                  %th Associate
-                  %th Date
-                  %th
-              %tbody
-                - @plantasks.each do |plantask|
+          = form_tag edit_multiple_equipment_plantasks_path, method: get do
+            = form_tag edit_multiple_plantasks_path, method: :get do
+              %table#datatable.table.table-striped
+                %thead
                   %tr
-                    %td= check_box_tag "plantask_ids[]", plantask.id
-                    %td= plantask.equip_number
-                    %td= plantask.area
-                    %td= plantask.equipment
-                    %td= plantask.part
-                    %td= plantask.associate
-                    %td= plantask.egg_timer.kind
-                    %td
-                      = link_to 'View', plantask_path(plantask)
-                      - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
-                        = link_to 'Edit', edit_plantask_path(plantask)
-                        = link_to 'Delete'.html_safe, plantask, method: :delete, data: { confirm: 'Are you sure?' }
-            = submit_tag "Change Associate", class: 'btn btn-default'
+                    %th
+                    %th Equip No.
+                    %th Area
+                    %th Equipment
+                    %th Part
+                    %th Associate
+                    %th Date
+                    %th
+                %tbody
+                  - @plantasks.each do |plantask|
+                    %tr
+                      %td= check_box_tag "plantask_ids[]", plantask.id
+                      %td= plantask.equip_number
+                      %td= plantask.area
+                      %td= plantask.equipment
+                      %td= plantask.part
+                      %td= plantask.associate
+                      %td= plantask.egg_timer.kind
+                      %td
+                        = link_to 'View', plantask_path(plantask)
+                        - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
+                          = link_to 'Edit', edit_plantask_path(plantask)
+                          = link_to 'Delete'.html_safe, plantask, method: :delete, data: { confirm: 'Are you sure?' }
+              = submit_tag "Change Associate", class: 'btn btn-default'
+            = submit_tag "Change Equipment", class: 'btn btn-default'

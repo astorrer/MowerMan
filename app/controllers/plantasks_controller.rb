@@ -97,6 +97,14 @@ class PlantasksController < ApplicationController
     end
   end
 
+  def edit_multiple_equipment
+    if params[:plantask_ids].nil?
+      redirect_to plantasks_path
+    else
+      @plantasks = Plantask.find(params[:plantask_ids])
+    end
+  end
+
   def update_multiple
     @plantasks = Plantask.update(params[:plantasks].keys, params[:plantasks].values)
     @plantasks.reject! { |p| p.errors.empty? }
@@ -104,6 +112,16 @@ class PlantasksController < ApplicationController
       redirect_to plantasks_path
     else
       render "edit_multiple"
+    end
+  end
+
+  def update_multiple_equipment
+    @plantasks = Plantask.update(params[:plantasks].keys, params[:plantasks].values)
+    @plantasks.reject! { |p| p.errors.empty? }
+    if @plantasks.empty?
+      redirect_to plantasks_path
+    else
+      render "edit_multiple_equipment"
     end
   end
 

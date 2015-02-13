@@ -26,6 +26,8 @@ AgSystem::Application.routes.draw do
       collection do
         get :edit_multiple
         put :update_multiple
+        get :edit_multiple_equipment
+        put :edit_multiple_equipment
       end
     end
 
