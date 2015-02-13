@@ -42,6 +42,9 @@
                           .form-group
                             = f.label :associate, 'Select an associate to assign this task too.'
                             = f.select(:associate, email_select, {}, {:class => 'select2 form-control'})
+                          .form-group
+                            = f.label :equipment, 'Select an equipment to assign this task too.'
+                            = f.select(:equipment, equipment_select, {}, {:class => 'select2 form-control'})
             %hr
         .form-actions
           .row
