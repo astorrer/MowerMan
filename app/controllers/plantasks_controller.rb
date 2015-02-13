@@ -68,12 +68,13 @@ class PlantasksController < ApplicationController
   end
 
   def update
-    equip = Equipment.where(name: @plantask.equipment).pluck(:number)
-    n = equip.to_s
-    @plantask.equip_number = n.delete "[]"
-
+    
     respond_to do |format|
       if @plantask.update(plantask_params)
+            equip = Equipment.where(name: @plantask.equipment).pluck(:number)
+            n = equip.to_s
+            @plantask.equip_number = n.delete "[]"
+            @plantask.save!
         format.html { redirect_to @plantask, notice: 'Your task was successfully updated.' }
       else
         format.html { render action: 'edit' }
