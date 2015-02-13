@@ -44,7 +44,7 @@
                             = f.select(:associate, email_select, {}, {:class => 'select2 form-control'})
                           .form-group
                             = f.label :equipment, 'Select an equipment to assign this task too.'
-                            = f.select :department_id, Department.all.collect {|x| [x.name, x.id]}, {}, :class => 'select-2 form-control'
+                            = f.select :equipment_id, equipment.all.collect {|x| [x.name, x.id]}, {}, :class => 'select-2 form-control'
 
             %hr
         .form-actions
