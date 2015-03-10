@@ -10,6 +10,8 @@ AgSystem::Application.routes.draw do
 
     root :to => 'static_pages#home'
 
+    match "/death" => "dead#index",      via: :get
+
     devise_for :users # Devise resource paths
     resources :users do
       member do
