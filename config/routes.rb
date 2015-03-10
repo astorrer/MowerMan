@@ -10,7 +10,6 @@ AgSystem::Application.routes.draw do
 
     root :to => 'static_pages#home'
 
-    match "/death" => "dead#index",      via: :get
 
     devise_for :users # Devise resource paths
     resources :users do
@@ -82,5 +81,7 @@ AgSystem::Application.routes.draw do
     match "/contact"   =>    "static_pages#contact",   via: :get
 
     match "/workplanner" => "work_planner#index", via: :get
+
+    match "/death" => "dead#index",      via: :get
   end
 end
