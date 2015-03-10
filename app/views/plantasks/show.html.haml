@@ -3,7 +3,7 @@
 .container-fluid
   .row
     .col-lg-12
-      %h1.page-header= "Planned Task No. #{@plantask.id}"
+      %h1.page-header= "Planned Task No. #{@plantask.id} | Equipment No. #{@plantask.equip_number}"
 
   = render 'layouts/flash' if !flash.empty?
 

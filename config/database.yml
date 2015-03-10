@@ -1,15 +1,15 @@
+default: &default
+      adapter: postgresql
+      encoding: SQL_ASCII
+      pool: 5
+      username: <%= ENV['USERNAME'] %>
+      password: <%= ENV['PASSWORD'] %>
+      host:     <%= ENV['IP'] %>
+
 development:
-  adapter: postgresql
-  encoding: utf8
+  <<: *default
   database: mowerman_development
-  pool: 5
-  username: astorrer
-  password:
 
 test: &TEST
-  adapter: postgresql
-  encoding: utf8
+  <<: *default
   database: mowerman_test
-  pool: 5
-  username: astorrer
-  password:

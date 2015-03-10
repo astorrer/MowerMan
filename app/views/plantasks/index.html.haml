@@ -54,4 +54,4 @@
                       - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
                         = link_to 'Edit', edit_plantask_path(plantask)
                         = link_to 'Delete'.html_safe, plantask, method: :delete, data: { confirm: 'Are you sure?' }
-            = submit_tag "Change Associate", class: 'btn btn-default'
+            = submit_tag "Edit Multiple", class: 'btn btn-default'
