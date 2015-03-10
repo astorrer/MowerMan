@@ -86,20 +86,6 @@
               %i.fa.fa-arrow-circle-right
             .clearfix
 
-  .row
-    .col-lg-12
-      .panel.panel-default
-        .panel-heading
-          = t('dashboard.workload_chart')
-        .panel-body
-          #workload-bar-chart
-        %a{:href => "#", :'data-toggle' => "modal", :'data-target' =>"#alertModal"}
-          .panel-footer
-            %span.pull-left= t('view_details')
-            %span.pull-right
-              %i.fa.fa-arrow-circle-right
-            .clearfix
-
 = render 'dashboard/modals/good'
 = render 'dashboard/modals/warning'
 = render 'dashboard/modals/alert'
