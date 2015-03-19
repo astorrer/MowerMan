@@ -98,10 +98,6 @@ class PlantasksController < ApplicationController
   end
 
   def update_multiple
-    equip = Equipment.where(name: @plantasks.equipment).pluck(:number)
-    n = equip.to_s
-    n = n.delete "[]"
-    
     @plantasks = Plantask.update(params[:plantasks].keys, params[:plantasks].values)
     
     @plantasks.reject! { |p| p.errors.empty? }
