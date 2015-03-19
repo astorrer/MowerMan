@@ -98,7 +98,7 @@ class PlantasksController < ApplicationController
   end
 
   def update_multiple
-    equip = Equipment.where(name: @plantask.equipment).pluck(:number)
+    equip = Equipment.where(name: @plantask.equip).pluck(:number)
     n = equip.to_s
     n = n.delete "[]"
     
