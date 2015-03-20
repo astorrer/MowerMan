@@ -26,9 +26,6 @@ gem 'twilio-ruby'
 # Use Mailboxer for internal messaging
 gem 'mailboxer'
 
-# Use searchkick (Depends on Elasticsearch)
-gem "searchkick"
-
 # Authentication Gems
 gem 'devise', '3.2.2'
 gem 'bcrypt-ruby', '3.1.2' # For encryption

@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   # Filters
   before_filter :configure_permitted_parameters, if: :devise_controller? 
-  before_filter :search
   before_filter :access_user
   before_filter :set_locale
   before_filter :check_browser
@@ -45,18 +44,6 @@ class ApplicationController < ActionController::Base
   def access_user
     if user_signed_in?
       @access_user = current_user
-    end
-  end
-
-  # Enable SearchKick (ElasticSearch) on Plantasks (Currently set up as the only search.)
-  # Bonsai is required for heroku.
-  # heroku addons:add bonsai
-  # heroku config:add ELASTICSEARCH_URL=`heroku config:get BONSAI_URL`
-  def search
-    if params[:query].present?
-      @equipment_results = Equipment.search(params[:query], misspellings: {edit_distance: 2}, page: params[:page], per_page: 4)
-    else
-      @equipment_results = Equipment.all.page params[:page]
     end
   end
 

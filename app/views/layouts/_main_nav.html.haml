@@ -52,17 +52,6 @@
   .navbar-default.sidebar{:role => "navigation"}
     .sidebar-nav.navbar-collapse
       %ul#side-menu.nav
-        - if (current_user.has_role? :manager) || (current_user.has_role? :admin)
-          %li.sidebar-search
-            = form_tag search_path, class: "input-group", method: :get do
-              .input-group
-                = text_field_tag :query, params[:query], class: "form-control", :placeholder => "Equipment...", id: "equipment_search", autocomplete: "off"
-                .input-group-btn
-                  = submit_tag t('navigation.search'), class: "btn btn-default"
-                - if params[:query].present?
-                  .input-group-btn
-                    = link_to search_path, class: "btn btn-default" do
-                      %i.fa.fa-eraser
         %li
           = link_to dash_path, class: active_page(dash_path) do
             %i.fa.fa-fw.fa-dashboard
