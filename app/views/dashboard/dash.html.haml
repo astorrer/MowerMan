@@ -6,6 +6,12 @@
       %h1.page-header
         = "#{extract_name}#{t('dashboard.welcome')}"
         %small= "#{t('dashboard.department_tasks')}: #{@total_tasks_count}"
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title MowerMan Lives!
+        .panel-body
+          %p Version 2.1 of MowerMan is planned for November 2015. Version 2.1 is an incremental support update. This update is required to ensure continuing functionality, due to changing requirements mandated by Heroku, which improve stability and eliminate certain security flaws. The changes to the user interface will be minimal. Currently, there is no plan to restore search engine functionality, at least for the time being. Please remember that the helpdesk is still monitored, and issues will be sent to my inbox.
+          %p Why? Because without this update, the software would cease to function, and the world be plunged into darkness. 
       %ol.breadcrumb
         %li.active
           %i.fa.fa-dashboard
