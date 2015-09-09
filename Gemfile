@@ -69,10 +69,12 @@ gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
 gem 'jbuilder'
 
+# Postgresql Database as global default
+gem 'pg'
+
 group :production do
   gem 'rails_12factor', '0.0.2'
   gem 'newrelic_rpm' # For logging during production
-  gem 'pg'
 end
 
 group :development, :test do
