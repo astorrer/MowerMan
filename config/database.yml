@@ -7,8 +7,10 @@ default: &default
       host:     <%= ENV['IP'] %>
 
 development:
-  <<: *default
-  database: mowerman_development
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+  database: mowerman_development.sqlite3
 
 test: &TEST
   <<: *default
