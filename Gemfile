@@ -78,6 +78,7 @@ end
 group :development, :test do
   gem 'rspec-rails', "~> 3.1.0"
   gem 'factory_girl_rails', "~> 4.4.1"
+  gem 'sqlite3'
 end
 
 group :test do

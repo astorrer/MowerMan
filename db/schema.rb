@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216202448) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20150106135709) do
 
   create_table "areas", force: true do |t|
     t.string   "name"
@@ -63,8 +60,8 @@ ActiveRecord::Schema.define(version: 20150216202448) do
     t.text     "text"
   end
 
-  add_index "helpdesk_faq_translations", ["helpdesk_faq_id"], name: "index_helpdesk_faq_translations_on_helpdesk_faq_id", using: :btree
-  add_index "helpdesk_faq_translations", ["locale"], name: "index_helpdesk_faq_translations_on_locale", using: :btree
+  add_index "helpdesk_faq_translations", ["helpdesk_faq_id"], name: "index_helpdesk_faq_translations_on_helpdesk_faq_id"
+  add_index "helpdesk_faq_translations", ["locale"], name: "index_helpdesk_faq_translations_on_locale"
 
   create_table "helpdesk_faqs", force: true do |t|
     t.integer  "position"
@@ -91,8 +88,8 @@ ActiveRecord::Schema.define(version: 20150216202448) do
     t.string   "title"
   end
 
-  add_index "helpdesk_ticket_type_translations", ["helpdesk_ticket_type_id"], name: "index_554cec9438d399db021564d4a79520a28d0749cc", using: :btree
-  add_index "helpdesk_ticket_type_translations", ["locale"], name: "index_helpdesk_ticket_type_translations_on_locale", using: :btree
+  add_index "helpdesk_ticket_type_translations", ["helpdesk_ticket_type_id"], name: "index_554cec9438d399db021564d4a79520a28d0749cc"
+  add_index "helpdesk_ticket_type_translations", ["locale"], name: "index_helpdesk_ticket_type_translations_on_locale"
 
   create_table "helpdesk_ticket_types", force: true do |t|
     t.integer  "position"
@@ -119,8 +116,8 @@ ActiveRecord::Schema.define(version: 20150216202448) do
     t.integer "conversation_id"
   end
 
-  add_index "mailboxer_conversation_opt_outs", ["conversation_id"], name: "index_mailboxer_conversation_opt_outs_on_conversation_id", using: :btree
-  add_index "mailboxer_conversation_opt_outs", ["unsubscriber_id", "unsubscriber_type"], name: "index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type", using: :btree
+  add_index "mailboxer_conversation_opt_outs", ["conversation_id"], name: "index_mailboxer_conversation_opt_outs_on_conversation_id"
+  add_index "mailboxer_conversation_opt_outs", ["unsubscriber_id", "unsubscriber_type"], name: "index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type"
 
   create_table "mailboxer_conversations", force: true do |t|
     t.string   "subject",    default: ""
@@ -146,10 +143,10 @@ ActiveRecord::Schema.define(version: 20150216202448) do
     t.datetime "expires"
   end
 
-  add_index "mailboxer_notifications", ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id", using: :btree
-  add_index "mailboxer_notifications", ["notified_object_id", "notified_object_type"], name: "index_mailboxer_notifications_on_notified_object_id_and_type", using: :btree
-  add_index "mailboxer_notifications", ["sender_id", "sender_type"], name: "index_mailboxer_notifications_on_sender_id_and_sender_type", using: :btree
-  add_index "mailboxer_notifications", ["type"], name: "index_mailboxer_notifications_on_type", using: :btree
+  add_index "mailboxer_notifications", ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id"
+  add_index "mailboxer_notifications", ["notified_object_id", "notified_object_type"], name: "index_mailboxer_notifications_on_notified_object_id_and_type"
+  add_index "mailboxer_notifications", ["sender_id", "sender_type"], name: "index_mailboxer_notifications_on_sender_id_and_sender_type"
+  add_index "mailboxer_notifications", ["type"], name: "index_mailboxer_notifications_on_type"
 
   create_table "mailboxer_receipts", force: true do |t|
     t.integer  "receiver_id"
@@ -163,8 +160,8 @@ ActiveRecord::Schema.define(version: 20150216202448) do
     t.datetime "updated_at",                                 null: false
   end
 
-  add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
-  add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
+  add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
+  add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
 
   create_table "misc_work_orders", force: true do |t|
     t.integer  "account_number"
@@ -219,7 +216,6 @@ ActiveRecord::Schema.define(version: 20150216202448) do
     t.integer  "overdue_count"
     t.integer  "department_id"
     t.integer  "egg_timer_id"
-    t.integer  "equipment_id"
   end
 
   create_table "procedures", force: true do |t|
@@ -245,8 +241,8 @@ ActiveRecord::Schema.define(version: 20150216202448) do
     t.datetime "updated_at"
   end
 
-  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
-  add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+  add_index "roles", ["name"], name: "index_roles_on_name"
 
   create_table "task_histories", force: true do |t|
     t.integer  "task_count"
@@ -279,16 +275,16 @@ ActiveRecord::Schema.define(version: 20150216202448) do
     t.boolean  "active_account"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "users_roles", id: false, force: true do |t|
     t.integer "user_id"
     t.integer "role_id"
   end
 
-  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
 
   create_table "users_work_orders", id: false, force: true do |t|
     t.integer "work_order_id"
@@ -306,11 +302,5 @@ ActiveRecord::Schema.define(version: 20150216202448) do
     t.datetime "start_date"
     t.integer  "department_id",     default: 1
   end
-
-  add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", name: "mb_opt_outs_on_conversations_id", column: "conversation_id"
-
-  add_foreign_key "mailboxer_notifications", "mailboxer_conversations", name: "notifications_on_conversation_id", column: "conversation_id"
-
-  add_foreign_key "mailboxer_receipts", "mailboxer_notifications", name: "receipts_on_notification_id", column: "notification_id"
 
 end
