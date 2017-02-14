@@ -57232,3 +57232,1195 @@ Migrating to AddEquipmentIdToPlantasks (20150216202448)
             AND t3.nspname = ANY (current_schemas(false))
           ORDER BY c.conname
         [0m
+  [1m[36m (4.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreatePlantasks (20140108134151)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "plantasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "area" varchar(255), "equipment" varchar(255), "part" varchar(255), "description" text, "date" text, "data_type" varchar(255), "upper" integer, "lower" integer, "current_status" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140108134151"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to DeviseCreateUsers (20140108165756)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140108165756"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to AddAssoicateToPlantask (20140109164425)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "plantasks" ADD "associate" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140109164425"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to AddConfirmableToUsers (20140109173707)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "users" ADD "confirmation_token" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "confirmed_at" datetime
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "confirmation_sent_at" datetime[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "confirmed_at" = '2017-01-24 23:19:24.118146'[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140109173707"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to AddOccuranceRulesToPlantasks (20140113135855)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mALTER TABLE "plantasks" ADD "occurance_count" integer[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "plantasks" ADD "assigned_switch" boolean
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140113135855"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to AddExtUpperAndExtLowerToPlantasks (20140114142149)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "plantasks" ADD "ext_upper" integer
+  [1m[36m (0.9ms)[0m  [1mALTER TABLE "plantasks" ADD "ext_lower" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140114142149"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to AddEstTimeToPlantasks (20140114142256)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "plantasks" ADD "est_time" integer[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140114142256"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to AddTickleAtrToPlantasks (20140121132537)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "plantasks" ADD "next_occurrence" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "plantasks" ADD "tickle_expression" varchar(255)
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140121132537"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to CreateAreas (20140122141254)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "area" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140122141254"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to CreateEquipment (20140122141340)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "equipment" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "equipment" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140122141340"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+Migrating to CreateParts (20140122141424)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "parts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "part" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140122141424"]]
+  [1m[35m (1.6ms)[0m  commit transaction
+Migrating to AddMethodToPlantask (20140129195202)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "plantasks" ADD "method" varchar(255)
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140129195202"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+Migrating to CreateRecords (20140131131724)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "records" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar(255), "data" integer, "plantask_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140131131724"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to AddTargetToPlantask (20140206143437)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "plantasks" ADD "target" integer
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140206143437"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to AddExtDescriptionToPlantask (20140206143544)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "plantasks" ADD "ext_description" text
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140206143544"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to AddTaskNumberToPlantask (20140206143652)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "plantasks" ADD "task_number" integer
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140206143652"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateTaskMethods (20140206144634)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "task_methods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "method" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140206144634"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to AddRoleToUser (20140207164645)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "users" ADD "role" boolean
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140207164645"]]
+  [1m[35m (2.0ms)[0m  commit transaction
+Migrating to AddLocaleToUser (20140214132145)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "users" ADD "locale" varchar(255)
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140214132145"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to RemoveTickleExpressionFromPlantask (20140221133259)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TEMPORARY TABLE "aplantasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "area" varchar(255), "equipment" varchar(255), "part" varchar(255), "description" text, "date" text, "data_type" varchar(255), "upper" integer, "lower" integer, "current_status" varchar(255), "created_at" datetime, "updated_at" datetime, "associate" varchar(255), "occurance_count" integer, "assigned_switch" boolean, "ext_upper" integer, "ext_lower" integer, "est_time" integer, "next_occurrence" datetime, "tickle_expression" varchar(255), "method" varchar(255), "target" integer, "ext_description" text, "task_number" integer) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "plantasks"[0m
+  [1m[35m (1.2ms)[0m  DROP TABLE "plantasks"
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "plantasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "area" varchar(255), "equipment" varchar(255), "part" varchar(255), "description" text, "date" text, "data_type" varchar(255), "upper" integer, "lower" integer, "current_status" varchar(255), "created_at" datetime, "updated_at" datetime, "associate" varchar(255), "occurance_count" integer, "assigned_switch" boolean, "ext_upper" integer, "ext_lower" integer, "est_time" integer, "next_occurrence" datetime, "method" varchar(255), "target" integer, "ext_description" text, "task_number" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "aplantasks"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "aplantasks"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140221133259"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to RemoveOccuranceCountFromPlantask (20140221133615)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "aplantasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "area" varchar(255), "equipment" varchar(255), "part" varchar(255), "description" text, "date" text, "data_type" varchar(255), "upper" integer, "lower" integer, "current_status" varchar(255), "created_at" datetime, "updated_at" datetime, "associate" varchar(255), "occurance_count" integer, "assigned_switch" boolean, "ext_upper" integer, "ext_lower" integer, "est_time" integer, "next_occurrence" datetime, "method" varchar(255), "target" integer, "ext_description" text, "task_number" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "plantasks"
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "plantasks"[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "plantasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "area" varchar(255), "equipment" varchar(255), "part" varchar(255), "description" text, "date" text, "data_type" varchar(255), "upper" integer, "lower" integer, "current_status" varchar(255), "created_at" datetime, "updated_at" datetime, "associate" varchar(255), "assigned_switch" boolean, "ext_upper" integer, "ext_lower" integer, "est_time" integer, "next_occurrence" datetime, "method" varchar(255), "target" integer, "ext_description" text, "task_number" integer) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "aplantasks"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "aplantasks"
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140221133615"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to ChangeColumnNameRoleToUser (20140221135148)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  CREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "confirmation_token" varchar(255), "confirmed_at" datetime, "confirmation_sent_at" datetime, "admin" boolean, "locale" varchar(255)) 
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "tindex_ausers_on_confirmation_token" ON "ausers" ("confirmation_token")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "tindex_ausers_on_reset_password_token" ON "ausers" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "tindex_ausers_on_email" ON "ausers" ("email")[0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "users"
+  [1m[36m (0.4ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "confirmation_token" varchar(255), "confirmed_at" datetime, "confirmation_sent_at" datetime, "admin" boolean, "locale" varchar(255)) 
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "ausers"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "ausers"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140221135148"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to AddCommentsToRecords (20140304144029)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "records" ADD "comments" text
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140304144029"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to AddOverdueToPlantasks (20140305142512)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "plantasks" ADD "overdue" boolean
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140305142512"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to And (20140310144716)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140310144716"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to Add (20140310144731)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140310144731"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to AddNumberToEquipment (20140310150434)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "equipment" ADD "number" integer
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140310150434"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to AddNumberArea (20140310150454)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140310150454"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to AddNumberToArea (20140310151555)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "areas" ADD "number" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140310151555"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Migrating to AddEquipNumberToPlantask (20140320142052)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "plantasks" ADD "equip_number" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140320142052"]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+Migrating to AddPhoneNumberToUsers (20140331131501)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "users" ADD "phone_number" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140331131501"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to ChangePhoneNumberToString (20140331185110)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "confirmation_token" varchar(255), "confirmed_at" datetime, "confirmation_sent_at" datetime, "admin" boolean, "locale" varchar(255), "phone_number" integer) [0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "tindex_ausers_on_confirmation_token" ON "ausers" ("confirmation_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "tindex_ausers_on_reset_password_token" ON "ausers" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "tindex_ausers_on_email" ON "ausers" ("email")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "users"[0m
+  [1m[35m (0.5ms)[0m  DROP TABLE "users"
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "confirmation_token" varchar(255), "confirmed_at" datetime, "confirmation_sent_at" datetime, "admin" boolean, "locale" varchar(255), "phone_number" varchar(255)) [0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_email' AND type='index'
+
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "ausers"[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "ausers"
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140331185110"]]
+  [1m[35m (2.0ms)[0m  commit transaction
+Migrating to Remove (20140401133412)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TEMPORARY TABLE "aplantasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "area" varchar(255), "equipment" varchar(255), "part" varchar(255), "description" text, "date" text, "data_type" varchar(255), "upper" integer, "lower" integer, "current_status" varchar(255), "created_at" datetime, "updated_at" datetime, "associate" varchar(255), "assigned_switch" boolean, "ext_upper" integer, "ext_lower" integer, "est_time" integer, "next_occurrence" datetime, "method" varchar(255), "target" integer, "ext_description" text, "task_number" integer, "overdue" boolean, "equip_number" integer) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "plantasks"[0m
+  [1m[35m (0.4ms)[0m  DROP TABLE "plantasks"
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "plantasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "area" varchar(255), "equipment" varchar(255), "part" varchar(255), "description" text, "date" text, "data_type" varchar(255), "upper" integer, "lower" integer, "current_status" varchar(255), "created_at" datetime, "updated_at" datetime, "associate" varchar(255), "assigned_switch" boolean, "ext_upper" integer, "ext_lower" integer, "est_time" integer, "next_occurrence" datetime, "method" varchar(255), "target" integer, "ext_description" text, "overdue" boolean, "equip_number" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "aplantasks"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "aplantasks"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140401133412"]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+Migrating to AddThemeToUser (20140404164556)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "users" ADD "theme" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140404164556"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateWorkOrders (20140421151110)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "work_orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "plantask_id" integer, "urgency" integer, "description" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140421151110"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to AddCompletedSwitchToWorkorders (20140423135512)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "work_orders" ADD "completion_switch" boolean[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140423135512"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTaskHistories (20140606180156)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "task_histories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "task_count" integer, "overdue_count" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140606180156"]]
+  [1m[36m (3.7ms)[0m  [1mcommit transaction[0m
+Migrating to AddMostRecentCommentToPlantask (20140912131717)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "plantasks" ADD "most_recent_comment" text[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140912131717"]]
+  [1m[36m (6.8ms)[0m  [1mcommit transaction[0m
+Migrating to AddOverdueCountToPlantasks (20140918133320)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mALTER TABLE "plantasks" ADD "overdue_count" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140918133320"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateMailboxer (20140922123956)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "mailboxer_conversations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "subject" varchar(255) DEFAULT '', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "mailboxer_receipts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "receiver_id" integer, "receiver_type" varchar(255), "notification_id" integer NOT NULL, "is_read" boolean DEFAULT 'f', "trashed" boolean DEFAULT 'f', "deleted" boolean DEFAULT 'f', "mailbox_type" varchar(25), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "mailboxer_notifications" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar(255), "body" text, "subject" varchar(255) DEFAULT '', "sender_id" integer, "sender_type" varchar(255), "conversation_id" integer, "draft" boolean DEFAULT 'f', "notification_code" varchar(255), "notified_object_id" integer, "notified_object_type" varchar(255), "attachment" varchar(255), "updated_at" datetime NOT NULL, "created_at" datetime NOT NULL, "global" boolean DEFAULT 'f', "expires" datetime) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_mailboxer_receipts_on_notification_id" ON "mailboxer_receipts" ("notification_id")
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_mailboxer_notifications_on_conversation_id" ON "mailboxer_notifications" ("conversation_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140922123956"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+Migrating to AddConversationOptout (20140922123957)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "mailboxer_conversation_opt_outs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "unsubscriber_id" integer, "unsubscriber_type" varchar(255), "conversation_id" integer) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140922123957"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to AddMissingIndices (20140922123958)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE  INDEX "index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type" ON "mailboxer_conversation_opt_outs" ("unsubscriber_id", "unsubscriber_type")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_mailboxer_conversation_opt_outs_on_conversation_id" ON "mailboxer_conversation_opt_outs" ("conversation_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_notifications_on_conversation_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_notifications_on_conversation_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_mailboxer_notifications_on_type" ON "mailboxer_notifications" ("type")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_notifications_on_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_notifications_on_type' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_notifications_on_conversation_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_notifications_on_conversation_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  CREATE  INDEX "index_mailboxer_notifications_on_sender_id_and_sender_type" ON "mailboxer_notifications" ("sender_id", "sender_type")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_notifications_on_sender_id_and_sender_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_notifications_on_sender_id_and_sender_type' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_notifications_on_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_notifications_on_type' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_notifications_on_conversation_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_notifications_on_conversation_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_mailboxer_notifications_on_notified_object_id_and_type" ON "mailboxer_notifications" ("notified_object_id", "notified_object_type")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_receipts_on_notification_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_receipts_on_notification_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_mailboxer_receipts_on_receiver_id_and_receiver_type" ON "mailboxer_receipts" ("receiver_id", "receiver_type")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140922123958"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to AddSystemAdminToUsers (20140924170117)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "users" ADD "system_admin" boolean
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140924170117"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to CreateHelpdeskTickets (20140924170230)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "helpdesk_tickets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "subject" varchar(255), "description" text, "requester_id" integer, "assignee_id" integer, "status" varchar(255), "ticket_type_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140924170230"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to CreateHelpdeskComments (20140924170231)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "helpdesk_comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "ticket_id" integer, "comment" text, "author_id" integer, "public" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140924170231"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateHelpdeskTicketTypes (20140924170232)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "helpdesk_ticket_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "position" integer, "active" boolean DEFAULT 't' NOT NULL, "tr_class" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "helpdesk_ticket_type_translations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "helpdesk_ticket_type_id" integer NOT NULL, "locale" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "helpdesk_ticket_type_translations" ADD "title" varchar(255)
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_554cec9438d399db021564d4a79520a28d0749cc" ON "helpdesk_ticket_type_translations" ("helpdesk_ticket_type_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_554cec9438d399db021564d4a79520a28d0749cc' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_554cec9438d399db021564d4a79520a28d0749cc' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_helpdesk_ticket_type_translations_on_locale" ON "helpdesk_ticket_type_translations" ("locale")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "helpdesk_ticket_types" ("created_at", "tr_class", "updated_at") VALUES (?, ?, ?)  [["created_at", "2017-01-24 23:19:24.443482"], ["tr_class", "warning"], ["updated_at", "2017-01-24 23:19:24.443482"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "helpdesk_ticket_type_translations" ("created_at", "helpdesk_ticket_type_id", "locale", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2017-01-24 23:19:24.448750"], ["helpdesk_ticket_type_id", 1], ["locale", "pl"], ["title", "Sugestia"], ["updated_at", "2017-01-24 23:19:24.448750"]]
+  [1m[35mHelpdesk::TicketType Load (0.1ms)[0m  SELECT  "helpdesk_ticket_types".* FROM "helpdesk_ticket_types"  WHERE "helpdesk_ticket_types"."id" = ?  ORDER BY position ASC LIMIT 1  [["id", 1]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.457010' WHERE "helpdesk_ticket_types"."id" = 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "helpdesk_ticket_type_translations" ("created_at", "helpdesk_ticket_type_id", "locale", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2017-01-24 23:19:24.464778"], ["helpdesk_ticket_type_id", 1], ["locale", "en"], ["title", "Sugestion"], ["updated_at", "2017-01-24 23:19:24.464778"]]
+  [1m[36mHelpdesk::TicketType Load (0.1ms)[0m  [1mSELECT  "helpdesk_ticket_types".* FROM "helpdesk_ticket_types"  WHERE "helpdesk_ticket_types"."id" = ?  ORDER BY position ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.466557' WHERE "helpdesk_ticket_types"."id" = 1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.467567' WHERE "helpdesk_ticket_types"."id" = 1[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.468313' WHERE "helpdesk_ticket_types"."id" = 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "helpdesk_ticket_types" ("created_at", "tr_class", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2017-01-24 23:19:24.472169"], ["tr_class", "success"], ["updated_at", "2017-01-24 23:19:24.472169"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "helpdesk_ticket_type_translations" ("created_at", "helpdesk_ticket_type_id", "locale", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2017-01-24 23:19:24.473651"], ["helpdesk_ticket_type_id", 2], ["locale", "pl"], ["title", "Pochwała"], ["updated_at", "2017-01-24 23:19:24.473651"]]
+  [1m[36mHelpdesk::TicketType Load (0.1ms)[0m  [1mSELECT  "helpdesk_ticket_types".* FROM "helpdesk_ticket_types"  WHERE "helpdesk_ticket_types"."id" = ?  ORDER BY position ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.476491' WHERE "helpdesk_ticket_types"."id" = 2
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "helpdesk_ticket_type_translations" ("created_at", "helpdesk_ticket_type_id", "locale", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2017-01-24 23:19:24.477964"], ["helpdesk_ticket_type_id", 2], ["locale", "en"], ["title", "Appreciation"], ["updated_at", "2017-01-24 23:19:24.477964"]]
+  [1m[35mHelpdesk::TicketType Load (0.0ms)[0m  SELECT  "helpdesk_ticket_types".* FROM "helpdesk_ticket_types"  WHERE "helpdesk_ticket_types"."id" = ?  ORDER BY position ASC LIMIT 1  [["id", 2]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.479509' WHERE "helpdesk_ticket_types"."id" = 2[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.480478' WHERE "helpdesk_ticket_types"."id" = 2
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.481177' WHERE "helpdesk_ticket_types"."id" = 2[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "helpdesk_ticket_types" ("created_at", "tr_class", "updated_at") VALUES (?, ?, ?)  [["created_at", "2017-01-24 23:19:24.483555"], ["tr_class", "error"], ["updated_at", "2017-01-24 23:19:24.483555"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "helpdesk_ticket_type_translations" ("created_at", "helpdesk_ticket_type_id", "locale", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2017-01-24 23:19:24.485003"], ["helpdesk_ticket_type_id", 3], ["locale", "pl"], ["title", "Błąd"], ["updated_at", "2017-01-24 23:19:24.485003"]]
+  [1m[35mHelpdesk::TicketType Load (0.0ms)[0m  SELECT  "helpdesk_ticket_types".* FROM "helpdesk_ticket_types"  WHERE "helpdesk_ticket_types"."id" = ?  ORDER BY position ASC LIMIT 1  [["id", 3]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.486464' WHERE "helpdesk_ticket_types"."id" = 3[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "helpdesk_ticket_type_translations" ("created_at", "helpdesk_ticket_type_id", "locale", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2017-01-24 23:19:24.487718"], ["helpdesk_ticket_type_id", 3], ["locale", "en"], ["title", "Complaint"], ["updated_at", "2017-01-24 23:19:24.487718"]]
+  [1m[36mHelpdesk::TicketType Load (0.0ms)[0m  [1mSELECT  "helpdesk_ticket_types".* FROM "helpdesk_ticket_types"  WHERE "helpdesk_ticket_types"."id" = ?  ORDER BY position ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.489119' WHERE "helpdesk_ticket_types"."id" = 3
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.489987' WHERE "helpdesk_ticket_types"."id" = 3[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.490682' WHERE "helpdesk_ticket_types"."id" = 3
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "helpdesk_ticket_types" ("created_at", "tr_class", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2017-01-24 23:19:24.492560"], ["tr_class", "info"], ["updated_at", "2017-01-24 23:19:24.492560"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "helpdesk_ticket_type_translations" ("created_at", "helpdesk_ticket_type_id", "locale", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2017-01-24 23:19:24.493931"], ["helpdesk_ticket_type_id", 4], ["locale", "pl"], ["title", "Pytanie"], ["updated_at", "2017-01-24 23:19:24.493931"]]
+  [1m[36mHelpdesk::TicketType Load (0.1ms)[0m  [1mSELECT  "helpdesk_ticket_types".* FROM "helpdesk_ticket_types"  WHERE "helpdesk_ticket_types"."id" = ?  ORDER BY position ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.495765' WHERE "helpdesk_ticket_types"."id" = 4
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "helpdesk_ticket_type_translations" ("created_at", "helpdesk_ticket_type_id", "locale", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2017-01-24 23:19:24.497241"], ["helpdesk_ticket_type_id", 4], ["locale", "en"], ["title", "Enquiry"], ["updated_at", "2017-01-24 23:19:24.497241"]]
+  [1m[35mHelpdesk::TicketType Load (0.0ms)[0m  SELECT  "helpdesk_ticket_types".* FROM "helpdesk_ticket_types"  WHERE "helpdesk_ticket_types"."id" = ?  ORDER BY position ASC LIMIT 1  [["id", 4]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.498755' WHERE "helpdesk_ticket_types"."id" = 4[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.499676' WHERE "helpdesk_ticket_types"."id" = 4
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.500378' WHERE "helpdesk_ticket_types"."id" = 4[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "helpdesk_ticket_types" ("created_at", "tr_class", "updated_at") VALUES (?, ?, ?)  [["created_at", "2017-01-24 23:19:24.502785"], ["tr_class", "contact"], ["updated_at", "2017-01-24 23:19:24.502785"]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "helpdesk_ticket_type_translations" ("created_at", "helpdesk_ticket_type_id", "locale", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2017-01-24 23:19:24.506253"], ["helpdesk_ticket_type_id", 5], ["locale", "pl"], ["title", "Kontakt"], ["updated_at", "2017-01-24 23:19:24.506253"]]
+  [1m[35mHelpdesk::TicketType Load (0.1ms)[0m  SELECT  "helpdesk_ticket_types".* FROM "helpdesk_ticket_types"  WHERE "helpdesk_ticket_types"."id" = ?  ORDER BY position ASC LIMIT 1  [["id", 5]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.509301' WHERE "helpdesk_ticket_types"."id" = 5[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "helpdesk_ticket_type_translations" ("created_at", "helpdesk_ticket_type_id", "locale", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2017-01-24 23:19:24.511515"], ["helpdesk_ticket_type_id", 5], ["locale", "en"], ["title", "Contact"], ["updated_at", "2017-01-24 23:19:24.511515"]]
+  [1m[36mHelpdesk::TicketType Load (0.1ms)[0m  [1mSELECT  "helpdesk_ticket_types".* FROM "helpdesk_ticket_types"  WHERE "helpdesk_ticket_types"."id" = ?  ORDER BY position ASC LIMIT 1[0m  [["id", 5]]
+  [1m[35mSQL (0.1ms)[0m  UPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.513815' WHERE "helpdesk_ticket_types"."id" = 5
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.515118' WHERE "helpdesk_ticket_types"."id" = 5[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "helpdesk_ticket_types" SET "updated_at" = '2017-01-24 23:19:24.516002' WHERE "helpdesk_ticket_types"."id" = 5
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140924170232"]]
+  [1m[35m (1.7ms)[0m  commit transaction
+Migrating to CreateHelpdeskFaqs (20140924170233)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "helpdesk_faqs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "position" integer, "active" boolean DEFAULT 'f' NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "helpdesk_faq_translations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "helpdesk_faq_id" integer NOT NULL, "locale" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "helpdesk_faq_translations" ADD "title" varchar(255)
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "helpdesk_faq_translations" ADD "text" text[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_helpdesk_faq_translations_on_helpdesk_faq_id" ON "helpdesk_faq_translations" ("helpdesk_faq_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_helpdesk_faq_translations_on_helpdesk_faq_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_helpdesk_faq_translations_on_helpdesk_faq_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_helpdesk_faq_translations_on_locale" ON "helpdesk_faq_translations" ("locale")
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140924170233"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to CreateHelpdeskSubscribers (20140924170234)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "helpdesk_subscribers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "lang" varchar(255), "hashcode" varchar(255), "confirmed" boolean DEFAULT 'f' NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140924170234"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to RolifyCreateRoles (20140925120823)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "resource_id" integer, "resource_type" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "users_roles" ("user_id" integer, "role_id" integer) [0m
+  [1m[35m (0.2ms)[0m  CREATE  INDEX "index_roles_on_name" ON "roles" ("name")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_roles_on_name' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_roles_on_name' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_roles_on_name_and_resource_type_and_resource_id" ON "roles" ("name", "resource_type", "resource_id")
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_users_roles_on_user_id_and_role_id" ON "users_roles" ("user_id", "role_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140925120823"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Migrating to RemoveAdminFromUsers (20140930133421)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "confirmation_token" varchar(255), "confirmed_at" datetime, "confirmation_sent_at" datetime, "admin" boolean, "locale" varchar(255), "phone_number" varchar(255), "theme" varchar(255), "system_admin" boolean) [0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "tindex_ausers_on_confirmation_token" ON "ausers" ("confirmation_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "tindex_ausers_on_reset_password_token" ON "ausers" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "tindex_ausers_on_email" ON "ausers" ("email")
+  [1m[36m (0.2ms)[0m  [1mSELECT * FROM "users"[0m
+  [1m[35m (0.6ms)[0m  DROP TABLE "users"
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "confirmation_token" varchar(255), "confirmed_at" datetime, "confirmation_sent_at" datetime, "locale" varchar(255), "phone_number" varchar(255), "theme" varchar(255), "system_admin" boolean) [0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "ausers"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "ausers"
+  [1m[36m (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "confirmation_token" varchar(255), "confirmed_at" datetime, "confirmation_sent_at" datetime, "locale" varchar(255), "phone_number" varchar(255), "theme" varchar(255), "system_admin" boolean) [0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "tindex_ausers_on_confirmation_token" ON "ausers" ("confirmation_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "tindex_ausers_on_reset_password_token" ON "ausers" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "tindex_ausers_on_email" ON "ausers" ("email")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "users"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "users"
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "confirmation_token" varchar(255), "confirmed_at" datetime, "confirmation_sent_at" datetime, "locale" varchar(255), "phone_number" varchar(255), "theme" varchar(255)) [0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_ausers_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "ausers"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "ausers"
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140930133421"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+Migrating to AddAlertToUsers (20141001124905)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "users" ADD "alert" boolean
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141001124905"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateDepartments (20141001141458)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "number" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141001141458"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to AddDepartmentIdToUsers (20141001141529)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "users" ADD "department_id" integer
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141001141529"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to AddDepartmentIdToPlantasks (20141001141552)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  ALTER TABLE "plantasks" ADD "department_id" integer
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141001141552"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+Migrating to CreateWorkOrdersAndUsers (20141006172208)
+  [1m[36m (4.6ms)[0m  [1mCREATE TABLE "work_orders_users" ("work_order_id" integer, "user_id" integer) [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141006172208"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateEggTimers (20141007154229)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "egg_timers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "kind" varchar(255), "assign_time" integer, "overdue_time" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141007154229"]]
+  [1m[35m (2.3ms)[0m  commit transaction
+Migrating to AddEggTimerIdToPlantasks (20141007185124)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  ALTER TABLE "plantasks" ADD "egg_timer_id" integer
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141007185124"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to RenameWorkOrdersUsers (20141022182115)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "work_orders_users" RENAME TO "users_work_orders"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141022182115"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to AddDueDateToWorkOrders (20141027195218)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "work_orders" ADD "due_date" datetime
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141027195218"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to AddStartDateToWorkOrders (20141028154130)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "work_orders" ADD "start_date" datetime
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141028154130"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to AddDepartmentIdToWorkOrders (20141106141948)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "work_orders" ADD "department_id" integer DEFAULT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141106141948"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to CreateMiscWorkOrders (20141106145613)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "misc_work_orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_number" integer, "cost_unit" varchar(255), "cost_center" varchar(255), "cost_description" text, "start_date" datetime, "due_date" datetime, "description" text, "urgency" integer, "completion_switch" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141106145613"]]
+  [1m[35m (2.6ms)[0m  commit transaction
+Migrating to CreateMiscWorkOrdersUsers (20141106145649)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "misc_work_orders_users" ("misc_work_order_id" integer, "user_id" integer) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141106145649"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to AddDepartmentIdToMiscWorkOrders (20141106155651)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "misc_work_orders" ADD "department_id" integer
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141106155651"]]
+  [1m[35m (3.7ms)[0m  commit transaction
+Migrating to RenameAreaAreaToName (20141110180215)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TEMPORARY TABLE "aareas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "number" integer) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "areas"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "areas"
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "areas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "number" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "aareas"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "aareas"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141110180215"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Migrating to RenameEquipmentToNameOnEquipment (20141111135051)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "aequipment" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "number" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "equipment"
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "equipment"[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "equipment" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "number" integer) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "aequipment"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "aequipment"
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141111135051"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to RenamePartInPartsToName (20141111181013)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TEMPORARY TABLE "aparts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "parts"[0m
+  [1m[35m (0.4ms)[0m  DROP TABLE "parts"
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "parts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "aparts"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "aparts"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141111181013"]]
+  [1m[36m (2.0ms)[0m  [1mcommit transaction[0m
+Migrating to RenameTaskMethods (20141204155902)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "task_methods" RENAME TO "procedures"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141204155902"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Migrating to RenameProcedureMethodToName (20141204164023)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "aprocedures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "procedures"
+  [1m[36m (0.4ms)[0m  [1mDROP TABLE "procedures"[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "procedures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "aprocedures"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "aprocedures"
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141204164023"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to RenamePlantaskMethodToProcedure (20141204170423)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TEMPORARY TABLE "aplantasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "area" varchar(255), "equipment" varchar(255), "part" varchar(255), "description" text, "date" text, "data_type" varchar(255), "upper" integer, "lower" integer, "current_status" varchar(255), "created_at" datetime, "updated_at" datetime, "associate" varchar(255), "assigned_switch" boolean, "ext_upper" integer, "ext_lower" integer, "est_time" integer, "next_occurrence" datetime, "procedure" varchar(255), "target" integer, "ext_description" text, "overdue" boolean, "equip_number" integer, "most_recent_comment" text, "overdue_count" integer, "department_id" integer, "egg_timer_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "plantasks"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "plantasks"
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "plantasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "area" varchar(255), "equipment" varchar(255), "part" varchar(255), "description" text, "date" text, "data_type" varchar(255), "upper" integer, "lower" integer, "current_status" varchar(255), "created_at" datetime, "updated_at" datetime, "associate" varchar(255), "assigned_switch" boolean, "ext_upper" integer, "ext_lower" integer, "est_time" integer, "next_occurrence" datetime, "procedure" varchar(255), "target" integer, "ext_description" text, "overdue" boolean, "equip_number" integer, "most_recent_comment" text, "overdue_count" integer, "department_id" integer, "egg_timer_id" integer) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "aplantasks"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "aplantasks"[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141204170423"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Migrating to ChangeDatatypeForRecord (20141210161046)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "arecords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar(255), "data" integer, "plantask_id" integer, "created_at" datetime, "updated_at" datetime, "comments" text) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "records"
+  [1m[36m (0.4ms)[0m  [1mDROP TABLE "records"[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "records" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar(255), "data" decimal, "plantask_id" integer, "created_at" datetime, "updated_at" datetime, "comments" text) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "arecords"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "arecords"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141210161046"]]
+  [1m[35m (2.0ms)[0m  commit transaction
+Migrating to AddActiveAcountToUser (20150106135709)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "users" ADD "active_account" boolean
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150106135709"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_helpdesk_faq_translations_on_locale' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_helpdesk_faq_translations_on_locale' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_helpdesk_faq_translations_on_helpdesk_faq_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_helpdesk_faq_translations_on_helpdesk_faq_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_helpdesk_ticket_type_translations_on_locale' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_helpdesk_ticket_type_translations_on_locale' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_554cec9438d399db021564d4a79520a28d0749cc' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_554cec9438d399db021564d4a79520a28d0749cc' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_conversation_opt_outs_on_conversation_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_conversation_opt_outs_on_conversation_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_notifications_on_notified_object_id_and_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_notifications_on_notified_object_id_and_type' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_notifications_on_sender_id_and_sender_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_notifications_on_sender_id_and_sender_type' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_notifications_on_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_notifications_on_type' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_notifications_on_conversation_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_notifications_on_conversation_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_receipts_on_receiver_id_and_receiver_type' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_receipts_on_receiver_id_and_receiver_type' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_mailboxer_receipts_on_notification_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_mailboxer_receipts_on_notification_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_roles_on_name_and_resource_type_and_resource_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_roles_on_name_and_resource_type_and_resource_id' AND type='index'
+
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_roles_on_name' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_roles_on_name' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_roles_on_user_id_and_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_roles_on_user_id_and_role_id' AND type='index'
+[0m

@@ -4,6 +4,8 @@ gem 'haml-rails'
 gem 'whenever', :require => false
 gem 'useragent' # Required to detect and block internet explorer.
 
+gem 'rails-erd'
+
 gem 'phony_rails' # Use to enable validations on phone_numbers, rational numbers only. 
 gem 'bootstrap-wysihtml5-rails'
 
@@ -64,6 +66,8 @@ gem 'sass-rails', '4.0.3'
 gem 'kaminari' # Enables easy pagination
 gem 'kaminari-bootstrap', '~> 3.0.1' # Styles kaminari to match bootstrap
 
+gem 'sqlite3'
+
 # Javascript interpreters, DSL, etc
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
@@ -76,8 +80,6 @@ group :production do
 end
 
 group :development, :test do
-  gem 'rspec-rails', "~> 3.1.0"
-  gem 'factory_girl_rails', "~> 4.4.1"
 end
 
 group :test do
